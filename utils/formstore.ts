@@ -1,8 +1,10 @@
 import { create } from 'zustand';
 
-const formStore = create((set) => ({
-  tags: [],
-  projects: '',
-  setTags: (tags: string) => set({ tags }),
-  setProjects: (projects: string) => set({ projects }),
+export const formStore = create((set) => ({
+  allTagsStore: ['test'] as string[],
+  projectsStore: '' as string,
+  setAllTags: (tagsStore: string) => set({ tagsStore }),
+  setProjects: (projectsStore: string) => set({ projectsStore }),
+  removeAllTags: () => set({ tagsStore: [] }),
+  removeProjects: () => set({ projectsStore: '' }),
 }));

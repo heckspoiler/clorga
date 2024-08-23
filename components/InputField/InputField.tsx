@@ -16,13 +16,14 @@ gsap.registerPlugin(Draggable, useGSAP);
 
 export default function InputField({ ideas }: { ideas: Idea[] }) {
   const draggableRef = useRef(null);
+  const foldContainerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
 
   useGSAP(() => {
     Draggable.create(draggableRef.current, {
       type: 'x,y',
-      edgeResistance: 1,
+      edgeResistance: 0.5,
       bounds: window,
       inertia: true,
       autoScroll: 1,
@@ -35,7 +36,7 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
   return (
     <div ref={draggableRef} className={styles.Main}>
       <div className={styles.FoldArrowContainer}>
-        <h4>{isClosed ? 'Ideabox' : 'Give me something'}</h4>
+        <h4>{isClosed ? 'Feed me' : 'Ideabox'}</h4>
         <div
           className={styles.FoldArrow}
           onClick={() => setIsClosed(!isClosed)}
@@ -50,6 +51,7 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
         className={`${styles.Container} ${
           isClosed ? styles.FormContainerClosed : ''
         }`}
+        ref={foldContainerRef}
       >
         <div
           className={`${styles.FormContainer} ${
