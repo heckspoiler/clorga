@@ -1,24 +1,30 @@
 import { createClient } from '@/utils/supabase/server';
-
 import InputField from '@/components/InputField/InputField';
 
-export default async function Index() {
-  const canInitSupabaseClient = () => {
-    // This function is just for the interactive tutorial.
-    // Feel free to remove it once you have Supabase connected.
-    try {
-      createClient();
-      return true;
-    } catch (e) {
-      return false;
-    }
-  };
+type Idea = {
+  id: number;
+  created_at: string;
+  project_name: string;
+  idea_title: string;
+  idea_description: string;
+  tags: string[];
+};
 
-  const isSupabaseConnected = canInitSupabaseClient();
+export default async function Index() {
+  const supabase = createClient();
+  const { data: ideas } = await supabase.from('ideas').select('*');
 
   return (
     <main>
-      <InputField />
+      {ideas && <InputField ideas={ideas} />}
+
+      <div>
+        {ideas?.map((idea: Idea) => (
+          <div key={idea.id}>
+            <h2>{idea.project_name}</h2>
+          </div>
+        ))}
+      </div>
     </main>
   );
 }

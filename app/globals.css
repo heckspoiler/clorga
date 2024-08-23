@@ -18,6 +18,10 @@ body {
   height: 100vh;
 }
 
+h4 {
+  text-transform: uppercase;
+}
+
 a {
   color: inherit;
   text-decoration: none;

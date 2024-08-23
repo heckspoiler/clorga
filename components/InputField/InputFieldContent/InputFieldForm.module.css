@@ -34,20 +34,14 @@
     width: 100%;
 }
 
-.Tags {
-    height: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    max-height: 6em;
-    overflow: scroll;
-    gap: 0.5em;
-}
+
 
 .Tags {
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    max-height: 9em;
+    max-height: 8.5em;
+    padding: 0.5em 0;
     overflow-y: auto;
     overflow-x: hidden;
     gap: 0.5em;
@@ -73,9 +67,16 @@
 .Project {
     border: 1px solid black;
     width: fit-content;
-    padding: 0.5em;
+    padding: 0.5em 1em;
     border-radius: 30px;
     background-color: lightblue;
+    font-size: 0.65rem;
+}
+
+
+.Tag:hover,
+.Project:hover {
+    cursor: pointer;
 }
 
 /* .Tag {

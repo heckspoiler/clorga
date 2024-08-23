@@ -10,10 +10,11 @@ import gsap from 'gsap';
 import { Draggable } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
 import InputFieldForm from './InputFieldContent/InputFieldForm';
+import { Idea } from './InputFieldContent/InputFieldForm';
 
 gsap.registerPlugin(Draggable, useGSAP);
 
-export default function InputField() {
+export default function InputField({ ideas }: { ideas: Idea[] }) {
   const draggableRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
@@ -31,13 +32,10 @@ export default function InputField() {
     });
   });
 
-  useEffect(() => {
-    console.log(isClosed);
-  }, [isClosed]);
-
   return (
     <div ref={draggableRef} className={styles.Main}>
       <div className={styles.FoldArrowContainer}>
+        <h4>{isClosed ? 'Ideabox' : 'Give me something'}</h4>
         <div
           className={styles.FoldArrow}
           onClick={() => setIsClosed(!isClosed)}
@@ -58,7 +56,7 @@ export default function InputField() {
             isClosed ? styles.FormContainerClosed : ''
           }`}
         >
-          <InputFieldForm />
+          <InputFieldForm ideas={ideas} />
         </div>
       </div>
     </div>

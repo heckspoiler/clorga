@@ -4,8 +4,19 @@ import React, { useState, useEffect } from 'react';
 import styles from './InputFieldForm.module.css';
 import creativeProjectTags from './tagsArray';
 import randomProjectArray from './projectArray';
+import TagField from './tagfield/TagField';
+import ProjectField from './projectfield/ProjectField';
 
-export default function InputFieldForm() {
+export type Idea = {
+  id: number;
+  created_at: string;
+  project_name: string;
+  idea_title: string;
+  idea_description: string;
+  tags: string[];
+};
+
+export default function InputFieldForm({ ideas }: { ideas: Idea[] }) {
   return (
     <form className={styles.Form}>
       <div className={styles.FormContainer}>
@@ -17,40 +28,8 @@ export default function InputFieldForm() {
           <label htmlFor="name">By:</label>
           <input id="name" type="text" placeholder="Enter Name" />
         </div>
-        <div className={styles.TagsContainer}>
-          <div className={styles.FormCell}>
-            <label htmlFor="tags">Tags:</label>
-            <div className={styles.Tags}>
-              {creativeProjectTags.map((tag, index) => (
-                <div
-                  data-clickable="true"
-                  key={index}
-                  className={styles.Tag}
-                  data-type={tag}
-                >
-                  {tag}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-        <div className={styles.TagsContainer}>
-          <div className={styles.FormCell}>
-            <label htmlFor="project">Project:</label>
-            <div className={styles.Tags}>
-              {randomProjectArray.map((project, index) => (
-                <div
-                  data-clickable="true"
-                  key={index}
-                  className={styles.Project}
-                  data-type={project}
-                >
-                  {project}
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
+        <TagField styles={styles} ideas={ideas} />
+        <ProjectField styles={styles} ideas={ideas} />
         <button className={styles.Submit}>Submit</button>
       </div>
     </form>
