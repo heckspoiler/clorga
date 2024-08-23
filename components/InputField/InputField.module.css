@@ -40,9 +40,9 @@
     transition: transform 0.2s cubic-bezier(0.215, 0.610, 0.355, 1)
 }
 
-.FormContainerClosed {
+/* .FormContainerClosed {
     transform: scaleY(0);
-}
+} */
 
 
 /* Enable hover only on non-touch devices */
