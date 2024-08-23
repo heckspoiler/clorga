@@ -1,5 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 
+import InputField from '@/components/InputField/InputField';
+
 export default async function Index() {
   const canInitSupabaseClient = () => {
     // This function is just for the interactive tutorial.
@@ -14,5 +16,9 @@ export default async function Index() {
 
   const isSupabaseConnected = canInitSupabaseClient();
 
-  return <main></main>;
+  return (
+    <main>
+      <InputField />
+    </main>
+  );
 }

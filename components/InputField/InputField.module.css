@@ -1,0 +1,60 @@
+.Main {
+    display: flex;
+    flex-direction: column;
+    bottom: 2rem;
+    right: 2rem;
+    position: absolute;
+}
+
+.Container,
+.FoldArrowContainer {
+    background-color: lightgrey;
+
+}
+
+.Container {
+    width: 20rem;
+    resize: both;
+    border: 1px solid black;
+}
+
+.FoldArrowContainer {
+    padding: 1em;
+    border: 1px solid black;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.FoldArrow {
+    height: 0.6em;
+    width: 0.6em;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    rotate: 135deg;
+}
+
+.FormContainer,
+.Container {
+    transform: scaleY(1);
+    transform-origin: top;
+    overflow: hidden;
+    border-top: none;
+    transition: transform 0.2s cubic-bezier(0.215, 0.610, 0.355, 1)
+}
+
+.FormContainerClosed {
+    transform: scaleY(0);
+}
+
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {}
+
+
+
+/* Mobile */
+@media (max-width: 768px) {}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 768px) and (max-width: 1120px) {}
