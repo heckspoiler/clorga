@@ -20,21 +20,35 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
   const [isDragging, setIsDragging] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
 
+  useEffect(() => {
+    console.log(isDragging);
+  }, [isDragging]);
+
   useGSAP(() => {
     Draggable.create(draggableRef.current, {
       type: 'x,y',
-      edgeResistance: 0.5,
-      bounds: window,
+      edgeResistance: 0,
+      zIndexBoost: true,
       inertia: true,
       autoScroll: 1,
       dragClickables: false,
-      onClick: () => setIsDragging(false),
-      onDragEnd: () => setIsDragging(false),
+      onDragStart: () => {
+        setIsDragging(true);
+        console.log(window);
+      },
+      onDragEnd: () => {
+        setIsDragging(false);
+      },
     });
   });
 
   return (
-    <div ref={draggableRef} className={styles.Main}>
+    <div
+      ref={draggableRef}
+      className={`${styles.Main} ${isDragging ? styles.isDragging : null} `}
+      onMouseDown={() => setIsDragging(true)}
+      onMouseUp={() => setIsDragging(false)}
+    >
       <div className={styles.FoldArrowContainer}>
         <h4>{isClosed ? 'Feed me' : 'Ideabox'}</h4>
         <div

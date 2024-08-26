@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Idea } from '../InputFieldForm';
 
 import { formStore } from '../../../../utils/formstore';
+import AddTagField from './AddTagField';
 
 export default function TagField({
   styles,
@@ -38,6 +39,12 @@ export default function TagField({
       return array.indexOf(tag) === index;
     });
 
+  useEffect(() => {
+    console.log(tags);
+    allTagsStore.forEach((tag: string) => tags.push(tag));
+    console.log(tags);
+  }, [tagIsSubmitted]);
+
   return (
     <div className={styles.TagsContainer}>
       <div className={styles.FormCell}>
@@ -47,13 +54,14 @@ export default function TagField({
             className={styles.AddTag}
             onClick={() => setSubmitTagWindowIsOpen(!submitTagWindowIsOpen)}
           >
-            add tag
+            {submitTagWindowIsOpen ? 'close' : 'add tag'}
           </div>
-          {tags.map((t, index) => (
+          {tags.map((t: string, index: number) => (
             <p
               className={styles.Tag}
               key={index}
               data-value={`${t.toLowerCase()}`}
+              data-clickable="true"
             >
               {`${t.toLowerCase()}`}
             </p>
@@ -65,12 +73,15 @@ export default function TagField({
           submitTagWindowIsOpen ? styles.SubmitFieldVisible : ''
         }`}
       >
-        <input />
-        <div
-          onClick={() => setSubmitTagWindowIsOpen(!submitTagWindowIsOpen)}
-        >
-          Add tag
-        </div>
+        <AddTagField
+          state={submitTagWindowIsOpen}
+          setState={setSubmitTagWindowIsOpen}
+          styles={styles}
+          newTag={newTag}
+          setNewTag={setNewTag}
+          tagIsSubmitted={tagIsSubmitted}
+          setTagIsSubmitted={setTagIsSubmitted}
+        />
       </div>
     </div>
   );

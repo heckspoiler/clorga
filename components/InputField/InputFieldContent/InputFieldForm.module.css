@@ -44,7 +44,7 @@
     height: 100%;
     display: flex;
     flex-wrap: wrap;
-    max-height: 6em;
+    max-height: 9em;
     padding: 0.5em 1em;
     overflow-y: auto;
     overflow-x: hidden;

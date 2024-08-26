@@ -22,11 +22,21 @@ export default function InputFieldForm({ ideas }: { ideas: Idea[] }) {
       <div className={styles.FormContainer}>
         <div className={styles.FormCell}>
           <label htmlFor="idea">Idea:</label>
-          <input id="idea" type="text" placeholder="Enter Idea" />
+          <input
+            id="idea"
+            type="text"
+            placeholder="Enter Idea"
+            data-clickable="true"
+          />
         </div>
         <div className={styles.FormCell}>
           <label htmlFor="name">By:</label>
-          <input id="name" type="text" placeholder="Enter Name" />
+          <input
+            id="name"
+            type="text"
+            placeholder="Enter Name"
+            data-clickable="true"
+          />
         </div>
         <TagField styles={styles} ideas={ideas} />
         <ProjectField styles={styles} ideas={ideas} />
