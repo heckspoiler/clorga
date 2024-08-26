@@ -8,7 +8,9 @@ export const metadata = {
 
 export default async function Ideas() {
   const supabase = createClient();
-  const { data: notes } = await supabase.from('ideas').select('*');
+  const { data: projects } = await supabase.from('projects').select('*');
 
-  return <pre>{JSON.stringify(notes, null, 2)}</pre>;
+  console.log(projects);
+
+  return <pre>{JSON.stringify(projects, null, 2)}</pre>;
 }

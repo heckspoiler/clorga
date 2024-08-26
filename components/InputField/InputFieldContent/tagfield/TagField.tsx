@@ -1,39 +1,61 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import { Idea } from '../InputFieldForm';
-
+import React, { useState, useEffect } from 'react';
 import { formStore } from '../../../../utils/formstore';
 import AddTagField from './AddTagField';
+import { Project } from '../../../../app/page';
 
 export default function TagField({
   styles,
-  ideas,
+  selectedProject,
+  projects,
 }: {
   styles: any;
-  ideas: Idea[];
+  selectedProject: string;
+  projects: Project[];
 }) {
-  const { allTagsStore } = formStore() as { allTagsStore: any };
-  const { setAllTags } = formStore() as { setAllTags: any };
-
-  // submitting a tag to the store
-
   const [newTag, setNewTag] = useState('');
-  const [tagIsSubmitted, setTagIsSubmitted] = useState(false);
   const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
-  const [activeTags, setActiveTags] = useState(new Set());
+  const [activeTags, setActiveTags] = useState(new Set<string>());
+  const [renderedTags, setRenderedTags] = useState<JSX.Element[]>([]);
 
   const toggleTag = (tag: string) => {
     setActiveTags((prev) => {
-      const newActiveTags = new Set(prev);
-      if (newActiveTags.has(tag)) {
-        newActiveTags.delete(tag);
+      const newSet = new Set(prev);
+      if (newSet.has(tag)) {
+        newSet.delete(tag);
       } else {
-        newActiveTags.add(tag);
+        newSet.add(tag);
       }
-      return newActiveTags;
+      return newSet;
     });
   };
+
+  console.log(projects);
+
+  useEffect(() => {
+    const selectedProjectTags =
+      projects.find((project) => project.project_name == selectedProject)
+        ?.project_tags || [];
+
+    const newRenderedTags = selectedProjectTags.map(
+      (tag: string, index: number) => (
+        <p
+          className={`${styles.Tag} ${
+            activeTags.has(tag.toLowerCase()) ? styles.TagClicked : ''
+          }`}
+          key={index}
+          data-value={`${tag.toLowerCase()}`}
+          data-clickable="true"
+          onClick={() => toggleTag(tag.toLowerCase())}
+        >
+          {`${tag.toLowerCase()}`}
+        </p>
+      )
+    );
+
+    setRenderedTags(newRenderedTags);
+  }, [selectedProject]);
 
   return (
     <div className={styles.TagsContainer}>
@@ -44,40 +66,26 @@ export default function TagField({
             className={styles.AddTag}
             onClick={() => setSubmitTagWindowIsOpen(!submitTagWindowIsOpen)}
           >
-            {submitTagWindowIsOpen ? 'close' : 'add tag'}
+            {submitTagWindowIsOpen ? 'close' : 'new tag'}
           </div>
-          {allTagsStore.map((t: string, index: number) => (
-            <p
-              className={`${styles.Tag} ${
-                activeTags.has(t.toLowerCase()) ? styles.TagClicked : ''
-              }`}
-              key={index}
-              data-value={`${t.toLowerCase()}`}
-              data-clickable="true"
-              onClick={() => toggleTag(t.toLowerCase())}
-            >
-              {`${t.toLowerCase()}`}
-            </p>
-          ))}
+          {renderedTags}
         </div>
       </div>
-      <div
-        className={`${styles.SubmitField} ${
-          submitTagWindowIsOpen ? styles.SubmitFieldVisible : ''
-        }`}
-      >
-        <AddTagField
-          state={submitTagWindowIsOpen}
-          setState={setSubmitTagWindowIsOpen}
-          styles={styles}
-          newTag={newTag}
-          setNewTag={setNewTag}
-          tagIsSubmitted={tagIsSubmitted}
-          setTagIsSubmitted={setTagIsSubmitted}
-          setAllTags={setAllTags}
-          allTagsStore={allTagsStore}
-        />
-      </div>
+      {submitTagWindowIsOpen && (
+        <div className={`${styles.SubmitField} ${styles.SubmitFieldVisible}`}>
+          <AddTagField
+            state={submitTagWindowIsOpen}
+            setState={setSubmitTagWindowIsOpen}
+            styles={styles}
+            newTag={newTag}
+            setNewTag={setNewTag}
+            allTagsStore={[]}
+            setAllTags={function (value: any): void {
+              throw new Error('Function not implemented.');
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }

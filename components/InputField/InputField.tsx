@@ -6,11 +6,11 @@ import gsap from 'gsap';
 import { Draggable } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
 import InputFieldForm from './InputFieldContent/InputFieldForm';
-import { Idea } from './InputFieldContent/InputFieldForm';
+import { Project } from '../../app/page';
 
 gsap.registerPlugin(Draggable, useGSAP);
 
-export default function InputField({ ideas }: { ideas: Idea[] }) {
+export default function InputField({ projects }: { projects: Project[] }) {
   const draggableRef = useRef(null);
   const foldContainerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -23,9 +23,10 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
 
   // Memoize tags calculation to avoid unnecessary recalculations
   const tags = useMemo(() => {
-    const tagsUnjoined = ideas?.flatMap((idea) => idea.tags) || [];
+    const tagsUnjoined =
+      projects?.flatMap((project) => project.project_tags) || [];
     return [...new Set(tagsUnjoined)].sort();
-  }, [ideas]);
+  }, [projects]);
 
   // Update store only once when component mounts or when tags change
   useEffect(() => {
@@ -56,7 +57,7 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
       onMouseUp={() => setIsDragging(false)}
     >
       <div className={styles.FoldArrowContainer}>
-        <h4>{isClosed ? 'Feed me' : 'Ideabox'}</h4>
+        <h4>{isClosed ? 'Feed me' : 'projectbox'}</h4>
         <div
           className={styles.FoldArrow}
           onClick={() => setIsClosed(!isClosed)}
@@ -78,7 +79,7 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
             isClosed ? styles.FormContainerClosed : ''
           }`}
         >
-          <InputFieldForm ideas={ideas} />
+          <InputFieldForm projects={projects} />
         </div>
       </div>
     </div>

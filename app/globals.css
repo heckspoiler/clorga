@@ -5,6 +5,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  line-height: 1.2;
 }
 
 html,
@@ -39,6 +40,7 @@ textarea {
   border: 1px solid black;
   padding: 0.25rem 0.5rem;
   font-family: inherit;
+  text-transform: lowercase;
 }
 
 input:focus {

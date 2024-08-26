@@ -5,6 +5,8 @@ import styles from './InputFieldForm.module.css';
 import TagField from './tagfield/TagField';
 import ProjectField from './projectfield/ProjectField';
 
+import { Project } from '@/app/page';
+
 export type Idea = {
   id: number;
   created_at: string;
@@ -14,7 +16,15 @@ export type Idea = {
   tags: string[];
 };
 
-export default function InputFieldForm({ ideas }: { ideas: Idea[] }) {
+export default function InputFieldForm({ projects }: { projects: Project[] }) {
+  const projectProp = projects.map((project) => project.project_name);
+
+  const [selectedProject, setSelectedProject] = useState('');
+
+  useEffect(() => {
+    console.log(selectedProject);
+  }, [selectedProject]);
+
   return (
     <form className={styles.Form}>
       <div className={styles.FormContainer}>
@@ -36,8 +46,17 @@ export default function InputFieldForm({ ideas }: { ideas: Idea[] }) {
             data-clickable="true"
           />
         </div>
-        <TagField styles={styles} ideas={ideas} />
-        <ProjectField styles={styles} ideas={ideas} />
+        <ProjectField
+          styles={styles}
+          projects={projectProp.filter(Boolean)}
+          selectedProject={selectedProject}
+          setSelectedProject={setSelectedProject}
+        />
+        <TagField
+          styles={styles}
+          selectedProject={selectedProject}
+          projects={projects}
+        />
         <button className={styles.Submit}>Submit</button>
       </div>
     </form>

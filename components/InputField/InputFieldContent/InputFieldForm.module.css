@@ -140,6 +140,12 @@
     background-color: beige;
 }
 
+.SubmitButton {
+    border: 1px solid black;
+    padding: 0.25rem 0.3rem;
+    background-color: chartreuse;
+}
+
 /* .Tag {
     background-color: rgb(192, 255, 200);
 }

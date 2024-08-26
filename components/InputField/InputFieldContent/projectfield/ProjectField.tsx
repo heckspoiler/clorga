@@ -1,33 +1,68 @@
-import React from 'react';
-import { Idea } from '../InputFieldForm';
+import React, { useState } from 'react';
+import AddProjectField from './AddProjectField';
 
 export default function ProjectField({
   styles,
-  ideas,
+  projects,
+  selectedProject,
+  setSelectedProject,
 }: {
   styles: any;
-  ideas: Idea[];
+  projects: (string | null)[];
+  selectedProject: string;
+  setSelectedProject: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const projects = ideas?.map((idea, index) => {
-    return idea.project_name;
-  });
+  const [newProject, setNewProject] = useState('');
+  const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
+
+  const handleProjectClick = (project: string) => {
+    setSelectedProject(project);
+  };
+
   return (
     <div className={styles.TagsContainer}>
       <div className={styles.FormCell}>
         <label htmlFor="project">Project:</label>
+
         <div className={styles.Tags}>
-          {projects.map((project, index) => (
-            <div
-              data-clickable="true"
-              key={index}
-              className={styles.Project}
-              data-value={project}
-            >
-              {project}
-            </div>
-          ))}
+          <div
+            className={styles.AddTag}
+            onClick={() => setSubmitTagWindowIsOpen(!submitTagWindowIsOpen)}
+          >
+            {submitTagWindowIsOpen ? 'close' : 'add project'}
+          </div>
+          {projects?.map(
+            (project, index) =>
+              project && (
+                <div
+                  className={`${styles.Tag} ${
+                    selectedProject === project.toLowerCase()
+                      ? styles.TagClicked
+                      : ''
+                  }`}
+                  key={index}
+                  data-value={project.toLowerCase()}
+                  data-clickable="true"
+                  onClick={() => handleProjectClick(project.toLowerCase())}
+                >
+                  {project.toLowerCase()}
+                </div>
+              )
+          )}
         </div>
       </div>
+      {submitTagWindowIsOpen && (
+        <div className={`${styles.SubmitField} ${styles.SubmitFieldVisible}`}>
+          <AddProjectField
+            state={submitTagWindowIsOpen}
+            setState={setSubmitTagWindowIsOpen}
+            styles={styles}
+            projects={projects}
+            newProject={newProject}
+            setNewProject={setNewProject}
+          />
+        </div>
+      )}
     </div>
   );
 }

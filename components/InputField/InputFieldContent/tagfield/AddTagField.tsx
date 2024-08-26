@@ -8,8 +8,6 @@ export default function AddTagField({
   styles,
   newTag,
   setNewTag,
-  tagIsSubmitted,
-  setTagIsSubmitted,
   allTagsStore,
   setAllTags,
 }: {
@@ -18,8 +16,6 @@ export default function AddTagField({
   styles: any;
   newTag: string;
   setNewTag: React.Dispatch<React.SetStateAction<string>>;
-  tagIsSubmitted: boolean;
-  setTagIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
   allTagsStore: string[];
   setAllTags: React.Dispatch<React.SetStateAction<any>>;
 }) {
@@ -42,7 +38,6 @@ export default function AddTagField({
     event.preventDefault();
     addNewTag();
     setState(!state);
-    setTagIsSubmitted(true);
   };
 
   return (
@@ -52,7 +47,9 @@ export default function AddTagField({
         onChange={handleInputChange}
         placeholder="Enter new tag"
       />
-      <button onClick={handleSubmit}>add tag</button>
+      <button onClick={handleSubmit} className={styles.SubmitButton}>
+        add tag
+      </button>
     </>
   );
 }
