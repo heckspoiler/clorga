@@ -1,6 +1,8 @@
 import { createClient } from '@/utils/supabase/server';
 import InputField from '@/components/InputField/InputField';
 
+import { formStore } from '@/utils/formstore';
+
 type Idea = {
   id: number;
   created_at: string;

@@ -2,8 +2,6 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './InputFieldForm.module.css';
-import creativeProjectTags from './tagsArray';
-import randomProjectArray from './projectArray';
 import TagField from './tagfield/TagField';
 import ProjectField from './projectfield/ProjectField';
 

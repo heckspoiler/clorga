@@ -1,11 +1,7 @@
 'use client';
-// React Imports
-import React, { useEffect, useRef, useState } from 'react';
-
-// CSS
+import React, { useEffect, useRef, useState, useMemo } from 'react';
 import styles from './InputField.module.css';
-
-// GSAP
+import { formStore } from '@/utils/formstore';
 import gsap from 'gsap';
 import { Draggable } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
@@ -20,10 +16,25 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
   const [isDragging, setIsDragging] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
 
-  useEffect(() => {
-    console.log(isDragging);
-  }, [isDragging]);
+  const { allTagsStore, setAllTags } = formStore() as {
+    allTagsStore: any;
+    setAllTags: any;
+  };
 
+  // Memoize tags calculation to avoid unnecessary recalculations
+  const tags = useMemo(() => {
+    const tagsUnjoined = ideas?.flatMap((idea) => idea.tags) || [];
+    return [...new Set(tagsUnjoined)].sort();
+  }, [ideas]);
+
+  // Update store only once when component mounts or when tags change
+  useEffect(() => {
+    if (JSON.stringify(allTagsStore) !== JSON.stringify(tags)) {
+      setAllTags(tags);
+    }
+  }, [tags, allTagsStore, setAllTags]);
+
+  // Draggable setup
   useGSAP(() => {
     Draggable.create(draggableRef.current, {
       type: 'x,y',
@@ -32,20 +43,15 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
       inertia: true,
       autoScroll: 1,
       dragClickables: false,
-      onDragStart: () => {
-        setIsDragging(true);
-        console.log(window);
-      },
-      onDragEnd: () => {
-        setIsDragging(false);
-      },
+      onDragStart: () => setIsDragging(true),
+      onDragEnd: () => setIsDragging(false),
     });
-  });
+  }, []);
 
   return (
     <div
       ref={draggableRef}
-      className={`${styles.Main} ${isDragging ? styles.isDragging : null} `}
+      className={`${styles.Main} ${isDragging ? styles.isDragging : ''}`}
       onMouseDown={() => setIsDragging(true)}
       onMouseUp={() => setIsDragging(false)}
     >
@@ -59,7 +65,7 @@ export default function InputField({ ideas }: { ideas: Idea[] }) {
             cursor: 'pointer',
             transform: isClosed ? 'rotate(0deg)' : 'rotate(180deg)',
           }}
-        ></div>
+        />
       </div>
       <div
         className={`${styles.Container} ${

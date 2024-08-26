@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useCallback } from 'react';
 
 export default function AddTagField({
   state,
@@ -10,6 +10,8 @@ export default function AddTagField({
   setNewTag,
   tagIsSubmitted,
   setTagIsSubmitted,
+  allTagsStore,
+  setAllTags,
 }: {
   state: boolean;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
@@ -18,15 +20,30 @@ export default function AddTagField({
   setNewTag: React.Dispatch<React.SetStateAction<string>>;
   tagIsSubmitted: boolean;
   setTagIsSubmitted: React.Dispatch<React.SetStateAction<boolean>>;
+  allTagsStore: string[];
+  setAllTags: React.Dispatch<React.SetStateAction<any>>;
 }) {
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setNewTag(event.target.value);
   };
 
-  useEffect(() => {
-    console.log(newTag);
-    console.log(tagIsSubmitted);
-  }, [newTag, tagIsSubmitted]);
+  const addNewTag = useCallback(() => {
+    console.log('Current allTagsStore:', allTagsStore);
+    console.log('New tag:', newTag);
+    if (newTag && !allTagsStore.includes(newTag)) {
+      allTagsStore.push(newTag);
+      console.log('Updated allTagsStore:', [...allTagsStore, newTag]);
+      setNewTag('');
+      setState(false);
+    }
+  }, [newTag, allTagsStore, setAllTags, setNewTag, setState]);
+
+  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    addNewTag();
+    setState(!state);
+    setTagIsSubmitted(true);
+  };
 
   return (
     <>
@@ -35,14 +52,7 @@ export default function AddTagField({
         onChange={handleInputChange}
         placeholder="Enter new tag"
       />
-      <div
-        onClick={() => {
-          setState(!state);
-          setTagIsSubmitted(!tagIsSubmitted);
-        }}
-      >
-        add tag
-      </div>
+      <button onClick={handleSubmit}>add tag</button>
     </>
   );
 }

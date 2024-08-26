@@ -21,29 +21,19 @@ export default function TagField({
   const [newTag, setNewTag] = useState('');
   const [tagIsSubmitted, setTagIsSubmitted] = useState(false);
   const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
+  const [activeTags, setActiveTags] = useState(new Set());
 
-  useEffect(() => {
-    setAllTags(() => [...allTagsStore, newTag]);
-  }, [tagIsSubmitted]);
-
-  // filtering out duplicate tags and sorting them alphabetically
-
-  const tagsUnjoined = ideas?.map((idea, index) => {
-    return idea.tags;
-  });
-
-  const tags: string[] = ([] as string[])
-    .concat(...tagsUnjoined)
-    .sort()
-    .filter((tag, index, array) => {
-      return array.indexOf(tag) === index;
+  const toggleTag = (tag: string) => {
+    setActiveTags((prev) => {
+      const newActiveTags = new Set(prev);
+      if (newActiveTags.has(tag)) {
+        newActiveTags.delete(tag);
+      } else {
+        newActiveTags.add(tag);
+      }
+      return newActiveTags;
     });
-
-  useEffect(() => {
-    console.log(tags);
-    allTagsStore.forEach((tag: string) => tags.push(tag));
-    console.log(tags);
-  }, [tagIsSubmitted]);
+  };
 
   return (
     <div className={styles.TagsContainer}>
@@ -56,12 +46,15 @@ export default function TagField({
           >
             {submitTagWindowIsOpen ? 'close' : 'add tag'}
           </div>
-          {tags.map((t: string, index: number) => (
+          {allTagsStore.map((t: string, index: number) => (
             <p
-              className={styles.Tag}
+              className={`${styles.Tag} ${
+                activeTags.has(t.toLowerCase()) ? styles.TagClicked : ''
+              }`}
               key={index}
               data-value={`${t.toLowerCase()}`}
               data-clickable="true"
+              onClick={() => toggleTag(t.toLowerCase())}
             >
               {`${t.toLowerCase()}`}
             </p>
@@ -81,6 +74,8 @@ export default function TagField({
           setNewTag={setNewTag}
           tagIsSubmitted={tagIsSubmitted}
           setTagIsSubmitted={setTagIsSubmitted}
+          setAllTags={setAllTags}
+          allTagsStore={allTagsStore}
         />
       </div>
     </div>
