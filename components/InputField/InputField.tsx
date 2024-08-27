@@ -1,7 +1,11 @@
 'use client';
 import React, { useEffect, useRef, useState, useMemo } from 'react';
 import styles from './InputField.module.css';
+
+// zustand imports
 import { formStore } from '@/utils/formstore';
+import { projectStore } from '@/utils/projectstore';
+
 import gsap from 'gsap';
 import { Draggable } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
@@ -15,6 +19,20 @@ export default function InputField({ projects }: { projects: Project[] }) {
   const foldContainerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
+
+  // zustand stores
+
+  const { projectsStore, setProjects } = projectStore() as {
+    projectsStore: any;
+    setProjects: any;
+  };
+
+  useEffect(() => {
+    if (JSON.stringify(projectsStore) !== JSON.stringify(projects)) {
+      setProjects(projects);
+      console.log(projects);
+    }
+  }, [projects, projectsStore, setProjects]);
 
   const { allTagsStore, setAllTags } = formStore() as {
     allTagsStore: any;

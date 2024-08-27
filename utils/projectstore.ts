@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
 export const projectStore = create((set) => ({
-  projectsStore: [] as string[],
+  projectsStore: [],
   setProjects: (projects: string[]) => set({ projectsStore: projects }),
 }));

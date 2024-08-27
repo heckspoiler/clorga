@@ -5,7 +5,15 @@ import styles from './InputFieldForm.module.css';
 import TagField from './tagfield/TagField';
 import ProjectField from './projectfield/ProjectField';
 
+import { newProjectStore } from '@/utils/newProjectStore';
+import By from './byField/By';
+
+import Idea from './ideaField/Idea';
+
 import { Project } from '@/app/page';
+import IdeaTextField from './ideaTextField/IdeaTextField';
+import SubmitButton from './submitButton/SubmitButton';
+import DateField from './dateField/DateField';
 
 export type Idea = {
   id: number;
@@ -19,6 +27,11 @@ export type Idea = {
 export default function InputFieldForm({ projects }: { projects: Project[] }) {
   const projectProp = projects.map((project) => project.project_name);
 
+  // Zustand Stores
+
+  const { newProject, setNewProject } = newProjectStore();
+
+  // useStates
   const [selectedProject, setSelectedProject] = useState('');
 
   return (
@@ -30,44 +43,16 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
           selectedProject={selectedProject}
           setSelectedProject={setSelectedProject}
         />
-        <div className={styles.FormCell}>
-          <label htmlFor="idea">Idea:</label>
-          <input
-            id="idea"
-            type="text"
-            placeholder="Enter Idea"
-            data-clickable="true"
-          />
-        </div>
-        <div className={styles.FormCell}>
-          <label htmlFor="name">By:</label>
-          <input
-            id="name"
-            type="text"
-            placeholder="Enter Name"
-            data-clickable="true"
-          />
-        </div>
-
-        <div className={styles.FormCell}>
-          <label htmlFor="name">Elaborate:</label>
-          <textarea
-            id="idea-description"
-            name="idea-description"
-            placeholder="3D vito bing chasing etienne in mario kart"
-            required
-            wrap="soft"
-            aria-label="Idea description"
-            data-clickable="true"
-          ></textarea>
-        </div>
-
+        {newProject && <DateField styles={styles} />}
+        <By styles={styles} />
+        <Idea styles={styles} />
+        <IdeaTextField styles={styles} />
         <TagField
           styles={styles}
           selectedProject={selectedProject}
           projects={projects}
         />
-        <button className={styles.Submit}>Submit</button>
+        <SubmitButton styles={styles} />
       </div>
     </form>
   );

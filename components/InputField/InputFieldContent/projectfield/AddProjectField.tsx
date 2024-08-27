@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useCallback } from 'react';
+import React, { useCallback, useRef } from 'react';
+import { projectStore } from '@/utils/projectstore';
 
 export default function AddProjectField({
   state,
@@ -9,42 +10,67 @@ export default function AddProjectField({
   projects,
   newProject,
   setNewProject,
+  projectName,
 }: {
   state: boolean;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
   styles: any;
-  newProject: string;
-  setNewProject: React.Dispatch<React.SetStateAction<string>>;
+  newProject: boolean;
+  setNewProject: any;
   projects: (string | null)[];
+  projectName: string;
+  setProjectName: (projectName: string) => void;
 }) {
+  // refs
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  // zustand stores
+  const { projectsStore, setProjects } = projectStore() as {
+    projectsStore: any;
+    setProjects: any;
+  };
+
+  // methods/functions
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    console.log(event.target.value);
     setNewProject(event.target.value);
   };
 
-  const addNewProject = useCallback(() => {
-    if (newProject && !projects.includes(newProject)) {
-      projects.push(newProject);
-      setNewProject('');
-      setState(false);
-    }
-  }, [newProject, setNewProject, setState]);
-
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    addNewProject();
-    setState(!state);
-  };
+  const handleSubmit = useCallback(
+    (event: React.MouseEvent<HTMLDivElement>) => {
+      event.preventDefault();
+      if (newProject && !projectsStore.includes(projectName)) {
+        const updatedProjects = [...projectsStore, projectName];
+        setProjects(updatedProjects);
+        setNewProject('');
+        setState(false);
+        if (inputRef.current) {
+          inputRef.current.value = '';
+        }
+        console.log('Updated projects:', updatedProjects);
+      }
+    },
+    [
+      newProject,
+      projectName,
+      projectsStore,
+      setProjects,
+      setState,
+      setNewProject,
+    ]
+  );
 
   return (
     <>
       <input
-        value={newProject}
         onChange={handleInputChange}
         placeholder="Enter new Project"
+        ref={inputRef}
       />
-      <button onClick={handleSubmit} className={styles.SubmitButton}>
+      <div onClick={handleSubmit} className={styles.SubmitButton}>
         add project
-      </button>
+      </div>
     </>
   );
 }

@@ -35,6 +35,10 @@ button {
   font-family: inherit;
 }
 
+button:hover {
+  cursor: pointer;
+}
+
 input,
 textarea {
   border: 1px solid black;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AddProjectField from './AddProjectField';
+import { newProjectStore } from '@/utils/newProjectStore';
 
 export default function ProjectField({
   styles,
@@ -12,8 +13,16 @@ export default function ProjectField({
   selectedProject: string;
   setSelectedProject: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const [newProject, setNewProject] = useState('');
+  // zustand Stores
+
+  const { newProject, setNewProject } = newProjectStore();
+  const { projectName, setProjectName } = newProjectStore();
+
+  // useStates
+
   const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
+
+  // setting active State for project that is being edited/created
 
   const handleProjectClick = (project: string) => {
     if (selectedProject === project) {
@@ -31,7 +40,10 @@ export default function ProjectField({
         <div className={styles.Tags}>
           <div
             className={styles.AddTag}
-            onClick={() => setSubmitTagWindowIsOpen(!submitTagWindowIsOpen)}
+            onClick={() => {
+              setSubmitTagWindowIsOpen(!submitTagWindowIsOpen);
+              setNewProject(!newProject);
+            }}
           >
             {submitTagWindowIsOpen ? 'close' : 'new project'}
           </div>
@@ -68,6 +80,8 @@ export default function ProjectField({
           projects={projects}
           newProject={newProject}
           setNewProject={setNewProject}
+          projectName={projectName}
+          setProjectName={setProjectName}
         />
       </div>
     </div>
