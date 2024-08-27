@@ -21,13 +21,15 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
 
   const [selectedProject, setSelectedProject] = useState('');
 
-  useEffect(() => {
-    console.log(selectedProject);
-  }, [selectedProject]);
-
   return (
     <form className={styles.Form}>
       <div className={styles.FormContainer}>
+        <ProjectField
+          styles={styles}
+          projects={projectProp.filter(Boolean)}
+          selectedProject={selectedProject}
+          setSelectedProject={setSelectedProject}
+        />
         <div className={styles.FormCell}>
           <label htmlFor="idea">Idea:</label>
           <input
@@ -46,12 +48,20 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
             data-clickable="true"
           />
         </div>
-        <ProjectField
-          styles={styles}
-          projects={projectProp.filter(Boolean)}
-          selectedProject={selectedProject}
-          setSelectedProject={setSelectedProject}
-        />
+
+        <div className={styles.FormCell}>
+          <label htmlFor="name">Elaborate:</label>
+          <textarea
+            id="idea-description"
+            name="idea-description"
+            placeholder="3D vito bing chasing etienne in mario kart"
+            required
+            wrap="soft"
+            aria-label="Idea description"
+            data-clickable="true"
+          ></textarea>
+        </div>
+
         <TagField
           styles={styles}
           selectedProject={selectedProject}

@@ -10,7 +10,5 @@ export default async function Ideas() {
   const supabase = createClient();
   const { data: projects } = await supabase.from('projects').select('*');
 
-  console.log(projects);
-
   return <pre>{JSON.stringify(projects, null, 2)}</pre>;
 }

@@ -26,10 +26,6 @@ export default async function Index() {
 
   const { data: projects } = await supabase.from('projects').select('*');
 
-  console.log(
-    projects?.forEach((project: Project) => console.log(project.project_name))
-  );
-
   return (
     <main>
       {projects && <InputField projects={projects} />}

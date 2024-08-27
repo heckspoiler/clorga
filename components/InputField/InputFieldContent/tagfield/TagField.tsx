@@ -31,12 +31,12 @@ export default function TagField({
     });
   };
 
-  console.log(projects);
-
   useEffect(() => {
     const selectedProjectTags =
-      projects.find((project) => project.project_name == selectedProject)
-        ?.project_tags || [];
+      projects.find(
+        (project) =>
+          project.project_name?.toLowerCase() === selectedProject.toLowerCase()
+      )?.project_tags || [];
 
     const newRenderedTags = selectedProjectTags.map(
       (tag: string, index: number) => (
@@ -55,7 +55,7 @@ export default function TagField({
     );
 
     setRenderedTags(newRenderedTags);
-  }, [selectedProject]);
+  }, [selectedProject, projects, activeTags, styles]); // Added activeTags to the dependency array
 
   return (
     <div className={styles.TagsContainer}>
@@ -71,21 +71,24 @@ export default function TagField({
           {renderedTags}
         </div>
       </div>
-      {submitTagWindowIsOpen && (
-        <div className={`${styles.SubmitField} ${styles.SubmitFieldVisible}`}>
-          <AddTagField
-            state={submitTagWindowIsOpen}
-            setState={setSubmitTagWindowIsOpen}
-            styles={styles}
-            newTag={newTag}
-            setNewTag={setNewTag}
-            allTagsStore={[]}
-            setAllTags={function (value: any): void {
-              throw new Error('Function not implemented.');
-            }}
-          />
-        </div>
-      )}
+
+      <div
+        className={`${styles.SubmitField} ${
+          submitTagWindowIsOpen ? styles.SubmitFieldVisible : ''
+        }`}
+      >
+        <AddTagField
+          state={submitTagWindowIsOpen}
+          setState={setSubmitTagWindowIsOpen}
+          styles={styles}
+          newTag={newTag}
+          setNewTag={setNewTag}
+          allTagsStore={[]}
+          setAllTags={function (value: any): void {
+            throw new Error('Function not implemented.');
+          }}
+        />
+      </div>
     </div>
   );
 }

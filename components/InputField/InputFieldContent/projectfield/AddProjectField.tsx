@@ -24,8 +24,6 @@ export default function AddProjectField({
   const addNewProject = useCallback(() => {
     if (newProject && !projects.includes(newProject)) {
       projects.push(newProject);
-      console.log(projects);
-
       setNewProject('');
       setState(false);
     }

@@ -16,7 +16,11 @@ export default function ProjectField({
   const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
 
   const handleProjectClick = (project: string) => {
-    setSelectedProject(project);
+    if (selectedProject === project) {
+      setSelectedProject('');
+    } else {
+      setSelectedProject(project);
+    }
   };
 
   return (
@@ -29,7 +33,7 @@ export default function ProjectField({
             className={styles.AddTag}
             onClick={() => setSubmitTagWindowIsOpen(!submitTagWindowIsOpen)}
           >
-            {submitTagWindowIsOpen ? 'close' : 'add project'}
+            {submitTagWindowIsOpen ? 'close' : 'new project'}
           </div>
           {projects?.map(
             (project, index) =>
@@ -51,18 +55,21 @@ export default function ProjectField({
           )}
         </div>
       </div>
-      {submitTagWindowIsOpen && (
-        <div className={`${styles.SubmitField} ${styles.SubmitFieldVisible}`}>
-          <AddProjectField
-            state={submitTagWindowIsOpen}
-            setState={setSubmitTagWindowIsOpen}
-            styles={styles}
-            projects={projects}
-            newProject={newProject}
-            setNewProject={setNewProject}
-          />
-        </div>
-      )}
+
+      <div
+        className={`${styles.SubmitField} ${
+          submitTagWindowIsOpen ? styles.SubmitFieldVisible : ''
+        }`}
+      >
+        <AddProjectField
+          state={submitTagWindowIsOpen}
+          setState={setSubmitTagWindowIsOpen}
+          styles={styles}
+          projects={projects}
+          newProject={newProject}
+          setNewProject={setNewProject}
+        />
+      </div>
     </div>
   );
 }

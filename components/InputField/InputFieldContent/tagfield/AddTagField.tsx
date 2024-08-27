@@ -24,11 +24,8 @@ export default function AddTagField({
   };
 
   const addNewTag = useCallback(() => {
-    console.log('Current allTagsStore:', allTagsStore);
-    console.log('New tag:', newTag);
     if (newTag && !allTagsStore.includes(newTag)) {
       allTagsStore.push(newTag);
-      console.log('Updated allTagsStore:', [...allTagsStore, newTag]);
       setNewTag('');
       setState(false);
     }
