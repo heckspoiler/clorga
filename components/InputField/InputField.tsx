@@ -30,7 +30,6 @@ export default function InputField({ projects }: { projects: Project[] }) {
   useEffect(() => {
     if (JSON.stringify(projectsStore) !== JSON.stringify(projects)) {
       setProjects(projects);
-      console.log(projects);
     }
   }, [projects, projectsStore, setProjects]);
 

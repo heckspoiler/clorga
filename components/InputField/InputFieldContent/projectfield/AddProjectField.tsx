@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { projectStore } from '@/utils/projectstore';
 
 export default function AddProjectField({
@@ -11,12 +11,13 @@ export default function AddProjectField({
   newProject,
   setNewProject,
   projectName,
+  setProjectName,
 }: {
   state: boolean;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
   styles: any;
   newProject: boolean;
-  setNewProject: any;
+  setNewProject: (newProject: boolean) => void;
   projects: (string | null)[];
   projectName: string;
   setProjectName: (projectName: string) => void;
@@ -33,8 +34,7 @@ export default function AddProjectField({
   // methods/functions
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     event.preventDefault();
-    console.log(event.target.value);
-    setNewProject(event.target.value);
+    setProjectName(event.target.value);
   };
 
   const handleSubmit = useCallback(

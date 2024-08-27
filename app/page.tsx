@@ -34,6 +34,15 @@ export default async function Index() {
         {projects?.map((project: Project) => (
           <div key={project.id}>
             <h2>{project.project_name}</h2>
+            <div>
+              {project.project_ideas.map((idea: Idea) => (
+                <div key={idea.id}>
+                  <h3>{idea.title}</h3>
+                  <p>{idea.description}</p>
+                  <p>{idea.tags?.join(', ')}</p>
+                </div>
+              ))}
+            </div>
           </div>
         ))}
       </div>
