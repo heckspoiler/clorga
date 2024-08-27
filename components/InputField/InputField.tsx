@@ -75,7 +75,7 @@ export default function InputField({ projects }: { projects: Project[] }) {
       onMouseUp={() => setIsDragging(false)}
     >
       <div className={styles.FoldArrowContainer}>
-        <h4>{isClosed ? 'Feed me' : 'projectbox'}</h4>
+        <h4>{isClosed ? 'Feed me' : 'Ideabox'}</h4>
         <div
           className={styles.FoldArrow}
           onClick={() => setIsClosed(!isClosed)}

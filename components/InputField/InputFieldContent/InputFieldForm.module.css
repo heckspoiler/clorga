@@ -17,13 +17,25 @@
     gap: 1.5em;
 }
 
-.FormCell {
+.FormCell,
+.FormCellDate {
     display: flex;
     align-items: left;
     gap: 0.5em;
     width: fit-content;
     flex-direction: column;
     width: 100%;
+}
+
+.FormCellDate {
+    max-height: 0px;
+    transform: scaleY(0);
+    transition: max-height 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+}
+
+.DateFieldIsVisible {
+    max-height: 100px;
+    transform: scaleY(1);
 }
 
 .FormCell label {

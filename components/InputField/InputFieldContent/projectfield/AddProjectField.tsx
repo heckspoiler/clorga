@@ -43,12 +43,10 @@ export default function AddProjectField({
       if (newProject && !projectsStore.includes(projectName)) {
         const updatedProjects = [...projectsStore, projectName];
         setProjects(updatedProjects);
-        setNewProject('');
         setState(false);
         if (inputRef.current) {
           inputRef.current.value = '';
         }
-        console.log('Updated projects:', updatedProjects);
       }
     },
     [

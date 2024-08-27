@@ -43,7 +43,7 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
           selectedProject={selectedProject}
           setSelectedProject={setSelectedProject}
         />
-        {newProject && <DateField styles={styles} />}
+        <DateField styles={styles} newProject={newProject} />
         <By styles={styles} />
         <Idea styles={styles} />
         <IdeaTextField styles={styles} />

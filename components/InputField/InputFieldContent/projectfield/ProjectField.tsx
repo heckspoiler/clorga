@@ -42,6 +42,7 @@ export default function ProjectField({
             className={styles.AddTag}
             onClick={() => {
               setSubmitTagWindowIsOpen(!submitTagWindowIsOpen);
+              console.log('new project:', newProject);
               setNewProject(!newProject);
             }}
           >
