@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Space_Mono } from 'next/font/google';
 import './globals.css';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
 
 const spacemono = Space_Mono({
   subsets: ['latin'],
@@ -24,7 +26,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={spacemono.className}>
+      <body className={GeistSans.className}>
         <main>{children}</main>
       </body>
     </html>

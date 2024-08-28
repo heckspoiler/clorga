@@ -60,15 +60,15 @@ export default function AddProjectField({
   );
 
   return (
-    <>
+    <div className={styles.InputProject}>
       <input
         onChange={handleInputChange}
-        placeholder="Enter new Project"
+        placeholder="Project Name"
         ref={inputRef}
       />
       <div onClick={handleSubmit} className={styles.SubmitButton}>
         add project
       </div>
-    </>
+    </div>
   );
 }

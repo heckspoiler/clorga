@@ -31,8 +31,8 @@ export default async function Index() {
       {projects && <InputField projects={projects} />}
 
       <div>
-        {projects?.map((project: Project) => (
-          <div key={project.id}>
+        {projects?.map((project: Project, index: number) => (
+          <div key={`${project.id} ${index}`}>
             <h2>{project.project_name}</h2>
             <div>
               {project.project_ideas.map((idea: Idea) => (

@@ -2,7 +2,7 @@
     height: 100%;
     width: 100%;
     z-index: 10;
-    padding: 2em 2em;
+    padding: 1em 1em;
     font-size: 12px;
 }
 
@@ -14,28 +14,37 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.5em;
+
 }
 
 .FormCell,
 .FormCellDate {
     display: flex;
     align-items: left;
-    gap: 0.5em;
+    gap: 1em;
     width: fit-content;
     flex-direction: column;
     width: 100%;
+    padding: 1rem 0.5rem;
+    border-top: 1px solid black;
+}
+
+.FormCell:nth-of-type(1) {
+
+    border-top: none;
 }
 
 .FormCellDate {
     max-height: 0px;
     transform: scaleY(0);
-    transition: max-height 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+    opacity: 0;
+    transition: max-height 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.1s cubic-bezier(0.165, 0.84, 0.44, 1)
 }
 
 .DateFieldIsVisible {
     max-height: 100px;
     transform: scaleY(1);
+    opacity: 1;
 }
 
 .FormCell label {
@@ -70,18 +79,20 @@
     overflow: hidden;
     gap: 1em;
     border: none;
-    align-items: center;
-    justify-content: center;
-    display: flex;
     transform: scaleY(0);
-    transition: max-height 0.3s ease-out, opacity 0.2s ease-out, transform 0.2s ease-out;
+    opacity: 0;
+    transition: max-height 0.3s ease-out, transform 0.2s ease-out;
     transform-origin: top;
+    display: none;
 }
 
 .SubmitFieldVisible {
     max-height: 100px;
     opacity: 1;
     transform: scaleY(1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .SubmitField div {
@@ -118,13 +129,13 @@
 
 .Tag,
 .Project {
-    background-color: lightblue;
+    background-color: azure;
 }
 
 .AddTag,
 .AddProject,
 .SubmitField div {
-    background-color: azure;
+    background-color: rgb(194, 252, 252);
 }
 
 
@@ -152,10 +163,16 @@
     background-color: beige;
 }
 
+.ButtonContainer {
+    padding-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
 .SubmitButton {
     border: 1px solid black;
     padding: 0.25rem 0.3rem;
-    background-color: chartreuse;
+    background-color: azure;
 }
 
 /* .Tag {
@@ -172,7 +189,19 @@
     align-self: flex-end;
     background-color: rgb(255, 255, 255);
     border: 1px solid black;
+
 }
+
+
+.InputProject {
+    background-color: lightgrey !important;
+    border: none !important;
+    display: flex;
+    padding-bottom: 1rem !important;
+    gap: 1em;
+}
+
+
 
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {}

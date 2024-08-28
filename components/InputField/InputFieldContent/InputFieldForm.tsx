@@ -52,7 +52,9 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
           selectedProject={selectedProject}
           projects={projects}
         />
-        <SubmitButton styles={styles} />
+        <div className={styles.ButtonContainer}>
+          <SubmitButton styles={styles} />
+        </div>
       </div>
     </form>
   );
