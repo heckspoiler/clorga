@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import AddProjectField from './AddProjectField';
 import { newProjectStore } from '@/utils/newProjectStore';
 
+import Plussign from '@/components/general/Plussign';
+
 export default function ProjectField({
   styles,
   projects,
@@ -45,7 +47,10 @@ export default function ProjectField({
               setNewProject(!newProject);
             }}
           >
-            {submitTagWindowIsOpen ? 'close' : 'new project'}
+            <p>{submitTagWindowIsOpen ? 'close' : 'new project'}</p>
+            <div className={styles.SvgContainer}>
+              <Plussign height={'15px'} width={'15px'} />
+            </div>
           </div>
           {projects?.map(
             (project, index) =>

@@ -3,12 +3,9 @@
     width: 100%;
     z-index: 10;
     padding: 1em 1em;
-    font-size: 12px;
 }
 
-.Form * {
-    font-size: 1em;
-}
+
 
 .FormContainer {
     height: 100%;
@@ -21,12 +18,12 @@
 .FormCellDate {
     display: flex;
     align-items: left;
-    gap: 1em;
+    gap: 0.5em;
     width: fit-content;
     flex-direction: column;
     width: 100%;
-    padding: 1rem 0.5rem;
-    border-top: 1px solid black;
+    padding: 1rem 0;
+
 }
 
 .FormCell:nth-of-type(1) {
@@ -48,11 +45,16 @@
 }
 
 .FormCell label {
-    min-width: 5em;
+    min-width: 4rem;
 }
 
 .FormCell input {
     width: 100%;
+}
+
+
+.FormCell textarea {
+    min-height: 6rem;
 }
 
 .TagsContainer {
@@ -72,6 +74,7 @@
     gap: 0.5em;
     align-items: center;
     justify-content: center;
+    font-size: 0.7rem;
 }
 
 .SubmitField {
@@ -123,56 +126,87 @@
     border: 1px solid black;
     width: fit-content;
     padding: 0.5em 1em;
-    border-radius: 30px;
-    font-size: 0.65rem;
+    box-shadow: 1px 1px 1px black;
+    font-size: 0.7rem;
+
 }
 
 .Tag,
 .Project {
-    background-color: azure;
+    background-color: var(--pastel-green);
+    border-radius: 30px;
+
 }
 
 .AddTag,
-.AddProject,
-.SubmitField div {
-    background-color: rgb(194, 252, 252);
-}
-
-
-.Tag:hover,
-.Project:hover,
-.AddTag:hover,
-.AddProject:hover {
-    cursor: pointer;
-    transform: scale(1.03);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    filter: brightness(1.1);
+.AddProject {
+    background-color: var(--yellow);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+    font-size: 0.7rem;
+    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
 }
 
 .Tag:hover,
 .Project:hover,
 .AddTag:hover,
-.AddProject:hover {
+.AddProject:hover,
+.SubmitButton:hover {
     cursor: pointer;
     transform: scale(1.03);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 1px 1px black;
     filter: brightness(1.1);
 }
+
+.SvgContainer {
+    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+}
+
+.AddTag:hover .SvgContainer,
+.AddProject:hover .SvgContainer {
+    transform: rotate(90deg);
+}
+
+
+.Tag:active,
+.Project:active,
+.AddTag:active,
+.AddProject:active,
+.SubmitButton:active {
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0px 0px 0px black;
+    filter: brightness(1.1);
+
+}
+
 
 .TagClicked {
-    background-color: beige;
+    background-color: var(--active-pink);
 }
 
 .ButtonContainer {
-    padding-top: 1rem;
+    padding-top: 0.5rem;
     display: flex;
     justify-content: flex-end;
 }
 
 .SubmitButton {
     border: 1px solid black;
-    padding: 0.25rem 0.3rem;
-    background-color: azure;
+    background-color: var(--active-pink);
+    display: flex;
+    align-items: center;
+    box-shadow: 1px 1px 1px black;
+    font-size: 0.7rem;
+}
+
+.SubmitButton:hover {
+    cursor: pointer;
 }
 
 /* .Tag {
@@ -187,18 +221,20 @@
     padding: 0.5em 1em;
     width: fit-content;
     align-self: flex-end;
-    background-color: rgb(255, 255, 255);
+    background-color: var(--active-pink);
     border: 1px solid black;
-
+    box-shadow: 1px 1px 1px black;
+    font-size: 0.9rem;
 }
 
 
 .InputProject {
-    background-color: lightgrey !important;
+    background-color: white !important;
     border: none !important;
     display: flex;
     padding-bottom: 1rem !important;
     gap: 1em;
+
 }
 
 

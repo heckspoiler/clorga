@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { formStore } from '../../../../utils/formstore';
 import AddTagField from './AddTagField';
 import { Project } from '../../../../app/page';
+import Plussign from '@/components/general/Plussign';
 
 export default function TagField({
   styles,
@@ -66,7 +67,10 @@ export default function TagField({
             className={styles.AddTag}
             onClick={() => setSubmitTagWindowIsOpen(!submitTagWindowIsOpen)}
           >
-            {submitTagWindowIsOpen ? 'close' : 'new tag'}
+            <p>{submitTagWindowIsOpen ? 'close' : 'new tag'}</p>
+            <div className={styles.SvgContainer}>
+              <Plussign height={'15px'} width={'15px'} />
+            </div>
           </div>
           {renderedTags}
         </div>

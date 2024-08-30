@@ -2,6 +2,8 @@
 
 import React, { useCallback } from 'react';
 
+import PlusSign from '@/public/svg/plussign.svg';
+
 export default function AddTagField({
   state,
   setState,
@@ -31,7 +33,7 @@ export default function AddTagField({
     }
   }, [newTag, allTagsStore, setAllTags, setNewTag, setState]);
 
-  const handleSubmit = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSubmit = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     addNewTag();
     setState(!state);
@@ -44,9 +46,9 @@ export default function AddTagField({
         onChange={handleInputChange}
         placeholder="Enter new tag"
       />
-      <button onClick={handleSubmit} className={styles.SubmitButton}>
-        add tag
-      </button>
+      <div onClick={handleSubmit} className={styles.SubmitButton}>
+        <p>add tag</p>
+      </div>
     </>
   );
 }
