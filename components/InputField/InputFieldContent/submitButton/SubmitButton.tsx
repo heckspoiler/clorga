@@ -13,36 +13,83 @@ export default function SubmitButton({ styles }: { styles: any }) {
     projectName,
     projectTags,
     projectDueDate,
-    projectIdeas,
     ideaTitle,
     ideaAuthor,
     ideaDescription,
     selectedTagsForIdea,
   } = newProjectStore();
 
-  const handleSubmit = async (event: any) => {
-    // event.preventDefault();
+  const handleSubmit = async (event: React.MouseEvent) => {
+    event.preventDefault();
+
+    if (projectName === '') {
+      alert('Project name is required.');
+      console.error('Project name is required.');
+      return;
+    }
+
     try {
-      const { data, error } = await supabase.from('projects').insert({
-        project_name: projectName,
-        project_tags: projectTags,
-        due_date: projectDueDate,
-        project_ideas: [
-          {
-            tags: selectedTagsForIdea ? Array.from(selectedTagsForIdea) : [],
-            title: ideaTitle,
-            created_at: new Date(),
-            description: ideaDescription,
-            author: ideaAuthor,
-          },
-        ],
-      });
+      const formattedDueDate = projectDueDate
+        ? new Date(projectDueDate).toISOString()
+        : null;
+      const actualProjectName =
+        projectName === '' ? 'Untitled Project' : projectName;
 
-      if (error) throw error;
+      // Check if the project already exists
+      const { data: existingProjects, error: fetchError } = await supabase
+        .from('projects')
+        .select('*')
+        .eq('project_name', actualProjectName);
 
-      console.log('Project submitted successfully:', data);
+      if (fetchError) throw fetchError;
+
+      const newIdea = {
+        tags: selectedTagsForIdea ? Array.from(selectedTagsForIdea) : [],
+        title: ideaTitle,
+        created_at: new Date().toISOString(),
+        description: ideaDescription,
+        author: ideaAuthor,
+      };
+
+      let projectData;
+      if (existingProjects && existingProjects.length > 0) {
+        // Project exists, add to it
+        const existingProject = existingProjects[0];
+
+        const updatedTags = Array.from(
+          new Set([...existingProject.project_tags, ...projectTags])
+        );
+        const updatedIdeas = [...existingProject.project_ideas, newIdea];
+
+        const { data, error } = await supabase
+          .from('projects')
+          .update({
+            project_tags: updatedTags,
+            due_date: formattedDueDate || existingProject.due_date,
+            project_ideas: updatedIdeas,
+          })
+          .eq('id', existingProject.id);
+
+        if (error) throw error;
+        projectData = data;
+        console.log('Added to existing project:', actualProjectName);
+      } else {
+        // Project doesn't exist, create a new one
+        const { data, error } = await supabase.from('projects').insert({
+          project_name: actualProjectName.toLowerCase(),
+          project_tags: projectTags,
+          due_date: formattedDueDate,
+          project_ideas: [newIdea],
+        });
+
+        if (error) throw error;
+        projectData = data;
+        console.log('Created new project:', actualProjectName);
+      }
+
+      console.log('Operation completed successfully:', projectData);
     } catch (error) {
-      console.error('Error submitting project:', error);
+      console.error('Error during project operation:', error);
     }
   };
 

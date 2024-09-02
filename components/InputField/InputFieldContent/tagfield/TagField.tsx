@@ -35,11 +35,12 @@ export default function TagField({
         (project) =>
           project?.project_name?.toLowerCase() === selectedProject.toLowerCase()
       );
-      if (project && project.project_ideas) {
+
+      console.log('Selected project:', project);
+      if (project && project.project_tags) {
         // Get all unique tags from the selected project
-        const allTags = Array.from(
-          new Set(project.project_ideas.flatMap((idea) => idea.tags))
-        );
+        const allTags = project.project_tags;
+
         console.log('All tags for selected project:', allTags);
         setTagsMappingArray(allTags);
 
