@@ -22,6 +22,8 @@ export default function AddTagField({
   setTagName,
   tagsMappingArray,
   setTagsMappingArray,
+  selectedTags,
+  setSelectedTags,
 }: {
   state: boolean;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
@@ -34,8 +36,10 @@ export default function AddTagField({
   setNewTag: (newTag: boolean) => void;
   tagName: string;
   setTagName: (tagName: string) => void;
-  tagsMappingArray: string[];
+  tagsMappingArray: string[] | null;
   setTagsMappingArray: (tagsMappingArray: string[]) => void;
+  selectedTags: Set<string>;
+  setSelectedTags: React.Dispatch<React.SetStateAction<Set<string>>>;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -88,31 +92,45 @@ export default function AddTagField({
       });
     }
   }, []);
+
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setTagName(event.target.value);
   };
 
-  useEffect(() => {
-    console.log('tagName', tagName);
-  }, [tagName]);
-
   const addNewTag = useCallback(() => {
     if (newTag && !allTagsStore.includes(tagName)) {
       allTagsStore.push(tagName);
-      tagsMappingArray.push(tagName);
+      setProjectTags([...projectTags, tagName]);
+      if (tagsMappingArray) {
+        tagsMappingArray.push(tagName);
+      }
       setTagName('');
       setState(false);
+      setNewTag(!newTag);
     }
-  }, [newTag, allTagsStore, setAllTags, setProjectTags, setState]);
+  }, [newTag, allTagsStore, projectTags, setAllTags, setProjectTags, setState]);
 
   const handleSubmit = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    addNewTag();
-    setState(!state);
+    if (inputRef.current && inputRef.current.value === '') {
+      event.preventDefault();
+      wiggle();
+      return;
+    }
+
+    if (
+      newTag &&
+      !allTagsStore.includes(tagName) &&
+      inputRef.current &&
+      inputRef.current.value !== ''
+    ) {
+      setSelectedTags(new Set([...selectedTags, tagName]));
+      addNewTag();
+      setState(!state);
+    }
   };
 
   return (
-    <>
+    <div className={styles.InputTag}>
       <input
         value={tagName}
         onChange={handleInputChange}
@@ -122,6 +140,6 @@ export default function AddTagField({
       <div onClick={handleSubmit} className={styles.SubmitButton}>
         <p>add tag</p>
       </div>
-    </>
+    </div>
   );
 }

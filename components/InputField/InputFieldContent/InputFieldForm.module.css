@@ -190,6 +190,8 @@
 
 .Legend {
     width: fit-content;
+    display: flex;
+    gap: 1rem;
 }
 
 .LegendRow {
@@ -211,12 +213,12 @@
 }
 
 .LegendRow:nth-of-type(2) div {
-    background-color: var(--active-pink);
+    background-color: var(--active-blue);
 }
 
 
 .TagClicked {
-    background-color: var(--active-pink);
+    background-color: var(--active-blue);
 }
 
 .ButtonContainer {
@@ -227,7 +229,7 @@
 
 .SubmitButton {
     border: 1px solid black;
-    background-color: var(--active-pink);
+    background-color: var(--action-pink);
     display: flex;
     align-items: center;
     box-shadow: 1px 1px 1px black;
@@ -250,14 +252,15 @@
     padding: 0.5em 1em;
     width: fit-content;
     align-self: flex-end;
-    background-color: var(--active-pink);
+    background-color: var(--action-pink);
     border: 1px solid black;
     box-shadow: 1px 1px 1px black;
     font-size: 0.9rem;
 }
 
 
-.InputProject {
+.InputProject,
+.InputTag {
     background-color: white !important;
     border: none !important;
     display: flex;

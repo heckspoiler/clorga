@@ -9,8 +9,15 @@ const supabase = createClient(
 );
 
 export default function SubmitButton({ styles }: { styles: any }) {
-  const { projectName, projectTags, projectDueDate, projectIdeas } =
-    newProjectStore();
+  const {
+    projectName,
+    projectTags,
+    projectDueDate,
+    projectIdeas,
+    ideaTitle,
+    ideaAuthor,
+    ideaDescription,
+  } = newProjectStore();
 
   const handleSubmit = async (event: any) => {
     // event.preventDefault();
@@ -22,9 +29,10 @@ export default function SubmitButton({ styles }: { styles: any }) {
         project_ideas: [
           {
             tags: ['healthcare', 'AI', 'research'],
-            title: 'Idea 3',
-            created_at: '2023-08-27T09:30:00Z',
-            description: 'Description of idea 3',
+            title: ideaTitle,
+            created_at: new Date(),
+            description: ideaDescription,
+            author: ideaAuthor,
           },
           {
             tags: ['education', 'online-learning', 'EdTech'],

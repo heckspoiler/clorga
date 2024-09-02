@@ -25,18 +25,21 @@ export default function TagField({
 
   // useStates
   const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
-  const [tagsMappingArray, setTagsMappingArray] =
-    useState<string[]>(projectTags);
+  const [tagsMappingArray, setTagsMappingArray] = useState<any>(projectTags);
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    const selectedProjectTags =
-      projects.find(
-        (project) =>
-          project.project_name?.toLowerCase() === selectedProject.toLowerCase()
-      )?.project_tags || [];
-    setTagsMappingArray(selectedProjectTags.map((tag) => tag.toLowerCase()));
-  }, [selectedProject, projects]);
+    console.log(selectedProject);
+    if (selectedProject) {
+      const project = projects.find(
+        (project) => project.project_name === selectedProject
+      );
+      if (project) {
+        const tags = project.project_ideas.map((idea) => idea.tags);
+        setTagsMappingArray(tags);
+      }
+    }
+  }, [selectedProject]);
 
   // setting active State for tags that are being selected
   const handleTagClick = (tag: string) => {
@@ -68,7 +71,7 @@ export default function TagField({
               <Plussign height={'15px'} width={'15px'} />
             </div>
           </div>
-          {tagsMappingArray.map((tag, index) => (
+          {tagsMappingArray?.map((tag: string, index: number) => (
             <div
               className={`${styles.Tag} ${
                 selectedTags.has(tag) ? styles.TagClicked : ''
@@ -114,6 +117,8 @@ export default function TagField({
           setAllTags={function (value: React.SetStateAction<string[]>): void {
             throw new Error('Function not implemented.');
           }}
+          selectedTags={selectedTags}
+          setSelectedTags={setSelectedTags}
         />
       </div>
     </div>
