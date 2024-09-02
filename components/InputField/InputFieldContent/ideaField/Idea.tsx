@@ -15,10 +15,6 @@ export default function Idea({ styles }: { styles: any }) {
     setIdeaTitle(e.target.value);
   };
 
-  useEffect(() => {
-    console.log(ideaTitle);
-  }, [ideaTitle]);
-
   return (
     <div className={styles.FormCell}>
       <label htmlFor="idea">Idea Title:</label>

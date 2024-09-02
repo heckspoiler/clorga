@@ -1,7 +1,7 @@
 import { createClient } from '@/utils/supabase/server';
 import InputField from '@/components/InputField/InputField';
 
-import { formStore } from '@/utils/formstore';
+import styles from './page.module.css';
 
 type Idea = {
   id: number;
@@ -27,7 +27,7 @@ export default async function Index() {
   const { data: projects } = await supabase.from('projects').select('*');
 
   return (
-    <main>
+    <main className={styles.Main}>
       {projects && <InputField projects={projects} />}
 
       <div>

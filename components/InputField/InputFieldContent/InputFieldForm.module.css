@@ -57,6 +57,8 @@
     min-height: 6rem;
 }
 
+
+
 .TagsContainer {
     display: flex;
     flex-direction: column;
@@ -128,7 +130,7 @@
     padding: 0.5em 1em;
     box-shadow: 1px 1px 1px black;
     font-size: 0.7rem;
-
+    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
 }
 
 .Tag,
@@ -153,7 +155,8 @@
 .Project:hover,
 .AddTag:hover,
 .AddProject:hover,
-.SubmitButton:hover {
+.SubmitButton:hover,
+.Submit:hover {
     cursor: pointer;
     transform: scale(1.03);
     box-shadow: 1px 1px 1px black;
@@ -183,6 +186,32 @@
     box-shadow: 0px 0px 0px black;
     filter: brightness(1.1);
 
+}
+
+.Legend {
+    width: fit-content;
+}
+
+.LegendRow {
+    font-size: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.LegendRow div {
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+
+.LegendRow:first-of-type div {
+    background-color: var(--pastel-green);
+}
+
+.LegendRow:nth-of-type(2) div {
+    background-color: var(--active-pink);
 }
 
 

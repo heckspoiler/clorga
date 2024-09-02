@@ -24,6 +24,8 @@ export default function ProjectField({
 
   const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
 
+  const [projectsMappingArray, setProjectsMappingArray] = useState(projects);
+
   // setting active State for project that is being edited/created
 
   const handleProjectClick = (project: string) => {
@@ -52,7 +54,7 @@ export default function ProjectField({
               <Plussign height={'15px'} width={'15px'} />
             </div>
           </div>
-          {projects?.map(
+          {projectsMappingArray?.map(
             (project, index) =>
               project && (
                 <div
@@ -72,7 +74,16 @@ export default function ProjectField({
           )}
         </div>
       </div>
-
+      <div className={styles.Legend}>
+        <div className={styles.LegendRow}>
+          <div></div>
+          <p>not selected</p>
+        </div>
+        <div className={styles.LegendRow}>
+          <div></div>
+          <p>selected</p>
+        </div>
+      </div>
       <div
         className={`${styles.SubmitField} ${
           submitTagWindowIsOpen ? styles.SubmitFieldVisible : ''
@@ -87,6 +98,8 @@ export default function ProjectField({
           setNewProject={setNewProject}
           projectName={projectName}
           setProjectName={setProjectName}
+          projectsMappingArray={projectsMappingArray}
+          setProjectsMappingArray={setProjectsMappingArray}
         />
       </div>
     </div>

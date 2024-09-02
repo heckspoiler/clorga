@@ -1,36 +1,33 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { formStore } from '../../../../utils/formstore';
+import { newProjectStore } from '@/utils/newProjectStore';
 import AddTagField from './AddTagField';
-import { Project } from '../../../../app/page';
 import Plussign from '@/components/general/Plussign';
+import { Project } from '@/app/page';
+
+import { formStore } from '@/utils/formstore';
 
 export default function TagField({
   styles,
-  selectedProject,
   projects,
+  selectedProject,
 }: {
   styles: any;
-  selectedProject: string;
   projects: Project[];
+  selectedProject: string;
 }) {
-  const [newTag, setNewTag] = useState('');
-  const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
-  const [activeTags, setActiveTags] = useState(new Set<string>());
-  const [renderedTags, setRenderedTags] = useState<JSX.Element[]>([]);
+  // zustand stores
 
-  const toggleTag = (tag: string) => {
-    setActiveTags((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(tag)) {
-        newSet.delete(tag);
-      } else {
-        newSet.add(tag);
-      }
-      return newSet;
-    });
-  };
+  const { projectTags, setProjectTags } = newProjectStore();
+  const { newTag, setNewTag } = newProjectStore();
+  const { tagName, setTagName } = newProjectStore();
+
+  // useStates
+  const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
+  const [tagsMappingArray, setTagsMappingArray] =
+    useState<string[]>(projectTags);
+  const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const selectedProjectTags =
@@ -38,25 +35,21 @@ export default function TagField({
         (project) =>
           project.project_name?.toLowerCase() === selectedProject.toLowerCase()
       )?.project_tags || [];
+    setTagsMappingArray(selectedProjectTags.map((tag) => tag.toLowerCase()));
+  }, [selectedProject, projects]);
 
-    const newRenderedTags = selectedProjectTags.map(
-      (tag: string, index: number) => (
-        <p
-          className={`${styles.Tag} ${
-            activeTags.has(tag.toLowerCase()) ? styles.TagClicked : ''
-          }`}
-          key={index}
-          data-value={`${tag.toLowerCase()}`}
-          data-clickable="true"
-          onClick={() => toggleTag(tag.toLowerCase())}
-        >
-          {`${tag.toLowerCase()}`}
-        </p>
-      )
-    );
-
-    setRenderedTags(newRenderedTags);
-  }, [selectedProject, projects, activeTags, styles]); // Added activeTags to the dependency array
+  // setting active State for tags that are being selected
+  const handleTagClick = (tag: string) => {
+    setSelectedTags((prevSelectedTags) => {
+      const newSelectedTags = new Set(prevSelectedTags);
+      if (newSelectedTags.has(tag)) {
+        newSelectedTags.delete(tag);
+      } else {
+        newSelectedTags.add(tag);
+      }
+      return newSelectedTags;
+    });
+  };
 
   return (
     <div className={styles.TagsContainer}>
@@ -65,17 +58,41 @@ export default function TagField({
         <div className={styles.Tags}>
           <div
             className={styles.AddTag}
-            onClick={() => setSubmitTagWindowIsOpen(!submitTagWindowIsOpen)}
+            onClick={() => {
+              setSubmitTagWindowIsOpen(!submitTagWindowIsOpen);
+              setNewTag(!newTag);
+            }}
           >
             <p>{submitTagWindowIsOpen ? 'close' : 'new tag'}</p>
             <div className={styles.SvgContainer}>
               <Plussign height={'15px'} width={'15px'} />
             </div>
           </div>
-          {renderedTags}
+          {tagsMappingArray.map((tag, index) => (
+            <div
+              className={`${styles.Tag} ${
+                selectedTags.has(tag) ? styles.TagClicked : ''
+              }`}
+              key={index}
+              data-value={tag}
+              data-clickable="true"
+              onClick={() => handleTagClick(tag)}
+            >
+              {tag}
+            </div>
+          ))}
         </div>
       </div>
-
+      <div className={styles.Legend}>
+        <div className={styles.LegendRow}>
+          <div></div>
+          <p>not selected</p>
+        </div>
+        <div className={styles.LegendRow}>
+          <div></div>
+          <p>selected</p>
+        </div>
+      </div>
       <div
         className={`${styles.SubmitField} ${
           submitTagWindowIsOpen ? styles.SubmitFieldVisible : ''
@@ -85,10 +102,16 @@ export default function TagField({
           state={submitTagWindowIsOpen}
           setState={setSubmitTagWindowIsOpen}
           styles={styles}
+          projectTags={projectTags}
+          setProjectTags={setProjectTags}
           newTag={newTag}
           setNewTag={setNewTag}
+          tagName={tagName}
+          setTagName={setTagName}
+          tagsMappingArray={tagsMappingArray}
+          setTagsMappingArray={setTagsMappingArray}
           allTagsStore={[]}
-          setAllTags={function (value: any): void {
+          setAllTags={function (value: React.SetStateAction<string[]>): void {
             throw new Error('Function not implemented.');
           }}
         />

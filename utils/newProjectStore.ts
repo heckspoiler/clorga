@@ -15,6 +15,8 @@ type ProjectStore = {
   newProject: boolean;
   projectName: string;
   projectTimestamp: Date | string;
+  tagName: string;
+  newTag: boolean;
   projectTags: string[];
   projectDueDate: Date | string;
   projectIdeas: ProjectIdea[];
@@ -23,9 +25,11 @@ type ProjectStore = {
   setNewProject: (newProject: boolean) => void;
   setProjectName: (projectName: string) => void;
   setProjectTimestamp: (projectTimestamp: Date | string) => void;
+  setNewTag: (newTag: boolean) => void;
   setProjectTags: (projectTags: string[]) => void;
   setProjectDueDate: (projectDueDate: Date | string) => void;
   setProjectIdeas: (projectIdeas: ProjectIdea[]) => void;
+  setTagName: (tagName: string) => void;
 
   // Idea-level properties
   ideaTitle: string;
@@ -44,6 +48,8 @@ export const newProjectStore = create<ProjectStore>((set) => ({
   newProject: false,
   projectName: '',
   projectTimestamp: '',
+  newTag: false,
+  tagName: '',
   projectTags: [],
   projectDueDate: '',
   projectIdeas: [],
@@ -53,6 +59,8 @@ export const newProjectStore = create<ProjectStore>((set) => ({
   setProjectName: (projectName: string) => set({ projectName }),
   setProjectTimestamp: (projectTimestamp: Date | string) =>
     set({ projectTimestamp }),
+  setNewTag: (newTag: boolean) => set({ newTag }),
+  setTagName: (tagName: string) => set({ tagName }),
   setProjectTags: (projectTags: string[]) => set({ projectTags }),
   setProjectDueDate: (projectDueDate: Date | string) => set({ projectDueDate }),
   setProjectIdeas: (projectIdeas: ProjectIdea[]) => set({ projectIdeas }),
