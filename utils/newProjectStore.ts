@@ -20,6 +20,7 @@ type ProjectStore = {
   projectTags: string[];
   projectDueDate: Date | string;
   projectIdeas: ProjectIdea[];
+  selectedTagsForIdea: Set<string>;
 
   // Project-level setters
   setNewProject: (newProject: boolean) => void;
@@ -30,6 +31,7 @@ type ProjectStore = {
   setProjectDueDate: (projectDueDate: Date | string) => void;
   setProjectIdeas: (projectIdeas: ProjectIdea[]) => void;
   setTagName: (tagName: string) => void;
+  setSelectedTagsForIdea: (selectedTagsForIdea: Set<string>) => void;
 
   // Idea-level properties
   ideaTitle: string;
@@ -53,6 +55,7 @@ export const newProjectStore = create<ProjectStore>((set) => ({
   projectTags: [],
   projectDueDate: '',
   projectIdeas: [],
+  selectedTagsForIdea: new Set(),
 
   // Project-level setters
   setNewProject: (newProject: boolean) => set({ newProject }),
@@ -64,6 +67,8 @@ export const newProjectStore = create<ProjectStore>((set) => ({
   setProjectTags: (projectTags: string[]) => set({ projectTags }),
   setProjectDueDate: (projectDueDate: Date | string) => set({ projectDueDate }),
   setProjectIdeas: (projectIdeas: ProjectIdea[]) => set({ projectIdeas }),
+  setSelectedTagsForIdea: (selectedTagsForIdea: Set<string>) =>
+    set({ selectedTagsForIdea }),
 
   // Idea-level properties
   ideaTitle: '',

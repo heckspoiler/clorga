@@ -29,9 +29,7 @@ export default function ProjectField({
   // setting active State for project that is being edited/created
 
   const handleProjectClick = (project: string) => {
-    if (selectedProject === project) {
-      setSelectedProject('');
-    } else {
+    if (selectedProject !== project) {
       setSelectedProject(project);
     }
   };
@@ -100,6 +98,7 @@ export default function ProjectField({
           setProjectName={setProjectName}
           projectsMappingArray={projectsMappingArray}
           setProjectsMappingArray={setProjectsMappingArray}
+          setSelectedProject={setSelectedProject}
         />
       </div>
     </div>

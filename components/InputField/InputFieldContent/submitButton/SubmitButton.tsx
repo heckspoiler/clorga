@@ -17,6 +17,7 @@ export default function SubmitButton({ styles }: { styles: any }) {
     ideaTitle,
     ideaAuthor,
     ideaDescription,
+    selectedTagsForIdea,
   } = newProjectStore();
 
   const handleSubmit = async (event: any) => {
@@ -28,23 +29,11 @@ export default function SubmitButton({ styles }: { styles: any }) {
         due_date: projectDueDate,
         project_ideas: [
           {
-            tags: ['healthcare', 'AI', 'research'],
+            tags: selectedTagsForIdea ? Array.from(selectedTagsForIdea) : [],
             title: ideaTitle,
             created_at: new Date(),
             description: ideaDescription,
             author: ideaAuthor,
-          },
-          {
-            tags: ['education', 'online-learning', 'EdTech'],
-            title: 'Idea 4',
-            created_at: '2023-08-27T14:45:00Z',
-            description: 'Description of idea 4',
-          },
-          {
-            tags: ['finance', 'blockchain', 'cryptocurrency'],
-            title: 'Idea 5',
-            created_at: '2023-08-28T11:15:00Z',
-            description: 'Description of idea 5',
           },
         ],
       });

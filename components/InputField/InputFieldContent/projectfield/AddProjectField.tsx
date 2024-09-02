@@ -18,6 +18,7 @@ export default function AddProjectField({
   setProjectName,
   projectsMappingArray,
   setProjectsMappingArray,
+  setSelectedProject,
 }: {
   state: boolean;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
@@ -29,6 +30,7 @@ export default function AddProjectField({
   setProjectName: (projectName: string) => void;
   projectsMappingArray: (string | null)[];
   setProjectsMappingArray: (projectsMappingArray: (string | null)[]) => void;
+  setSelectedProject: React.Dispatch<React.SetStateAction<string>>;
 }) {
   // refs
   const inputRef = useRef<HTMLInputElement>(null);
@@ -112,6 +114,7 @@ export default function AddProjectField({
       ) {
         const updatedProjects = [...projectsStore, projectName];
         setProjects(updatedProjects);
+        setSelectedProject(projectName);
         setState(false);
         setProjectsMappingArray([...projectsMappingArray, projectName]);
         if (inputRef.current) {

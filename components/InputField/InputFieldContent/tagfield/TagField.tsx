@@ -22,6 +22,7 @@ export default function TagField({
   const { projectTags, setProjectTags } = newProjectStore();
   const { newTag, setNewTag } = newProjectStore();
   const { tagName, setTagName } = newProjectStore();
+  const { selectedTagsForIdea, setSelectedTagsForIdea } = newProjectStore();
 
   // useStates
   const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
@@ -29,17 +30,28 @@ export default function TagField({
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
 
   useEffect(() => {
-    console.log(selectedProject);
     if (selectedProject) {
       const project = projects.find(
-        (project) => project.project_name === selectedProject
+        (project) =>
+          project?.project_name?.toLowerCase() === selectedProject.toLowerCase()
       );
-      if (project) {
-        const tags = project.project_ideas.map((idea) => idea.tags);
-        setTagsMappingArray(tags);
+      if (project && project.project_ideas) {
+        // Get all unique tags from the selected project
+        const allTags = Array.from(
+          new Set(project.project_ideas.flatMap((idea) => idea.tags))
+        );
+        console.log('All tags for selected project:', allTags);
+        setTagsMappingArray(allTags);
+
+        // Reset selected tags when changing projects
+        setSelectedTags(new Set());
+      } else {
+        // If no project is found or it has no ideas, reset the tags
+        setTagsMappingArray([]);
+        setSelectedTags(new Set());
       }
     }
-  }, [selectedProject]);
+  }, [selectedProject, projects]);
 
   // setting active State for tags that are being selected
   const handleTagClick = (tag: string) => {
@@ -50,6 +62,7 @@ export default function TagField({
       } else {
         newSelectedTags.add(tag);
       }
+      setSelectedTagsForIdea(newSelectedTags);
       return newSelectedTags;
     });
   };
