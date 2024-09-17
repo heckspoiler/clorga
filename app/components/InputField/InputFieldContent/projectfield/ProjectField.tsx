@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import AddProjectField from './AddProjectField';
 import { newProjectStore } from '@/utils/newProjectStore';
 
-import Plussign from '@/components/general/Plussign';
+import Plussign from '@/app/components/general/Plussign';
 
 export default function ProjectField({
   styles,

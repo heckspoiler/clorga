@@ -1,9 +1,9 @@
 import { createClient } from '@/utils/supabase/server';
-import InputField from '@/components/InputField/InputField';
+import InputField from '@/app/components/InputField/InputField';
 
 import styles from './page.module.css';
 
-type Idea = {
+export type Idea = {
   id: number;
   title: string;
   created_at: string;
@@ -22,8 +22,6 @@ export type Project = {
 
 export default async function Index() {
   const supabase = createClient();
-  // const { data: ideas } = await supabase.from('ideas').select('*');
-
   const { data: projects } = await supabase.from('projects').select('*');
 
   return (

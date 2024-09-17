@@ -10,7 +10,7 @@ import gsap from 'gsap';
 import { Draggable } from 'gsap/all';
 import { useGSAP } from '@gsap/react';
 import InputFieldForm from './InputFieldContent/InputFieldForm';
-import { Project } from '../../app/page';
+import { Project } from '../../page';
 
 gsap.registerPlugin(Draggable, useGSAP);
 

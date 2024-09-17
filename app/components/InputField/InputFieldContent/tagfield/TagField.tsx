@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
 import AddTagField from './AddTagField';
-import Plussign from '@/components/general/Plussign';
+import Plussign from '@/app/components/general/Plussign';
 import { Project } from '@/app/page';
 
 import { formStore } from '@/utils/formstore';
