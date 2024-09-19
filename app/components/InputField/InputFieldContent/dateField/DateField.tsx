@@ -3,6 +3,7 @@
 import React, { useEffect } from 'react';
 
 import { newProjectStore } from '@/utils/newProjectStore';
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 export default function DateField({
   styles,
@@ -13,6 +14,13 @@ export default function DateField({
 }) {
   //zustand store
   const { projectDueDate, setProjectDueDate } = newProjectStore();
+  const { isSubmitted } = isSubmittedStore();
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setProjectDueDate('');
+    }
+  }, [isSubmitted, setProjectDueDate]);
 
   // handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -31,6 +39,7 @@ export default function DateField({
         type="date"
         data-clickable="true"
         onChange={handleInputChange}
+        value={projectDueDate.toString()}
       />
     </div>
   );

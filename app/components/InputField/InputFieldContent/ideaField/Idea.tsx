@@ -7,7 +7,7 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 export default function Idea({ styles }: { styles: any }) {
   // Zustand Store
   const { ideaTitle, setIdeaTitle } = newProjectStore();
-  const { isSubmitted, setIsSubmitted } = isSubmittedStore();
+  const { isSubmitted } = isSubmittedStore();
 
   useEffect(() => {
     if (isSubmitted) {

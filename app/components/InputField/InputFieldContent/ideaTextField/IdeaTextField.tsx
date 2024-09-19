@@ -1,12 +1,20 @@
 'use client';
 
 import React, { useEffect } from 'react';
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 import { newProjectStore } from '@/utils/newProjectStore';
 
 export default function IdeaTextField({ styles }: { styles: any }) {
   // zustand imports
   const { ideaDescription, setIdeaDescription } = newProjectStore();
+  const { isSubmitted } = isSubmittedStore();
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setIdeaDescription('');
+    }
+  }, [isSubmitted, setIdeaDescription]);
 
   // handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
