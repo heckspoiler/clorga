@@ -9,9 +9,9 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(SplitText, useGSAP);
 
 export default function LoginPage() {
-  //   if (process.env.NODE_ENV !== 'production') {
-  //     return null;
-  //   }
+  if (process.env.NODE_ENV !== 'production') {
+    return null;
+  }
   const textRef = useRef(null);
 
   useGSAP(() => {
