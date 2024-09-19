@@ -1,0 +1,19 @@
+.Main {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: white;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.Main h1 {
+    text-transform: uppercase;
+    font-size: 9rem;
+    letter-spacing: 20px;
+    animation: h1Animation 5s infinite;
+}

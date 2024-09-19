@@ -3,6 +3,7 @@ import InputField from '@/app/components/InputField/InputField';
 
 import styles from './page.module.css';
 import MapCanvas from './components/MapCanvas/MapCanvas';
+import LoginPage from './components/LoginPage/LoginPage';
 
 export type Idea = {
   id: number;
@@ -29,6 +30,7 @@ export default async function Index() {
     <main className={styles.Main}>
       {initialProjects && <InputField initialProjects={initialProjects} />}
       <MapCanvas initialProjects={initialProjects} />
+      <LoginPage />
     </main>
   );
 }
