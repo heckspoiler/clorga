@@ -2,6 +2,7 @@ import { createClient } from '@/utils/supabase/server';
 import InputField from '@/app/components/InputField/InputField';
 
 import styles from './page.module.css';
+import MapCanvas from './components/MapCanvas/MapCanvas';
 
 export type Idea = {
   id: number;
@@ -22,28 +23,12 @@ export type Project = {
 
 export default async function Index() {
   const supabase = createClient();
-  const { data: projects } = await supabase.from('projects').select('*');
+  const { data: initialProjects } = await supabase.from('projects').select('*');
 
   return (
     <main className={styles.Main}>
-      {projects && <InputField projects={projects} />}
-
-      <div>
-        {projects?.map((project: Project, index: number) => (
-          <div key={`${project.id} ${index}`}>
-            <h2>{project.project_name}</h2>
-            <div>
-              {project.project_ideas.map((idea: Idea, index: number) => (
-                <div key={index}>
-                  <h3>{idea.title}</h3>
-                  <p>{idea.description}</p>
-                  <p>{idea.tags?.join(', ')}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      {initialProjects && <InputField initialProjects={initialProjects} />}
+      <MapCanvas initialProjects={initialProjects} />
     </main>
   );
 }

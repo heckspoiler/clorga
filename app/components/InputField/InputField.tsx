@@ -14,7 +14,11 @@ import { Project } from '../../page';
 
 gsap.registerPlugin(Draggable, useGSAP);
 
-export default function InputField({ projects }: { projects: Project[] }) {
+export default function InputField({
+  initialProjects,
+}: {
+  initialProjects: Project[];
+}) {
   const draggableRef = useRef(null);
   const foldContainerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -28,10 +32,10 @@ export default function InputField({ projects }: { projects: Project[] }) {
   };
 
   useEffect(() => {
-    if (JSON.stringify(projectsStore) !== JSON.stringify(projects)) {
-      setProjects(projects);
+    if (JSON.stringify(projectsStore) !== JSON.stringify(initialProjects)) {
+      setProjects(initialProjects);
     }
-  }, [projects, projectsStore, setProjects]);
+  }, [initialProjects, projectsStore, setProjects]);
 
   const { allTagsStore, setAllTags } = formStore() as {
     allTagsStore: any;
@@ -41,9 +45,9 @@ export default function InputField({ projects }: { projects: Project[] }) {
   // Memoize tags calculation to avoid unnecessary recalculations
   const tags = useMemo(() => {
     const tagsUnjoined =
-      projects?.flatMap((project) => project.project_tags) || [];
+      initialProjects?.flatMap((project) => project.project_tags) || [];
     return [...new Set(tagsUnjoined)].sort();
-  }, [projects]);
+  }, [initialProjects]);
 
   // Update store only once when component mounts or when tags change
   useEffect(() => {
@@ -96,7 +100,7 @@ export default function InputField({ projects }: { projects: Project[] }) {
             isClosed ? styles.FormContainerClosed : ''
           }`}
         >
-          <InputFieldForm projects={projects} />
+          <InputFieldForm projects={initialProjects} />
         </div>
       </div>
     </div>

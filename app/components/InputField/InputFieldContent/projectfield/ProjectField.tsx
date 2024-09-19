@@ -29,8 +29,9 @@ export default function ProjectField({
   // setting active State for project that is being edited/created
 
   const handleProjectClick = (project: string) => {
-    if (selectedProject !== project) {
+    if (selectedProject !== project || selectedProject === '') {
       setSelectedProject(project);
+      setProjectName(selectedProject);
     }
   };
 

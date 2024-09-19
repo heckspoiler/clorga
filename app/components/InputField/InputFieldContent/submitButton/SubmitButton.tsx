@@ -1,8 +1,11 @@
-import React from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
+import { IsSubmittedStoreType } from '@/utils/isSubmittedStore';
 import { createClient } from '@supabase/supabase-js';
 
-// Initialize Supabase client
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''
@@ -19,8 +22,27 @@ export default function SubmitButton({ styles }: { styles: any }) {
     selectedTagsForIdea,
   } = newProjectStore();
 
+  const { isSubmitted, setIsSubmitted } =
+    isSubmittedStore() as IsSubmittedStoreType;
+
+  useEffect(() => {
+    setIsSubmitted(false);
+  }, [
+    projectName,
+    projectTags,
+    projectDueDate,
+    ideaTitle,
+    ideaAuthor,
+    ideaDescription,
+    selectedTagsForIdea,
+  ]);
+
   const handleSubmit = async (event: React.MouseEvent) => {
     event.preventDefault();
+
+    if (isSubmitted) {
+      return;
+    }
 
     if (projectName === '') {
       alert('Project name is required.');
@@ -74,7 +96,6 @@ export default function SubmitButton({ styles }: { styles: any }) {
         projectData = data;
         console.log('Added to existing project:', actualProjectName);
       } else {
-        // Project doesn't exist, create a new one
         const { data, error } = await supabase.from('projects').insert({
           project_name: actualProjectName.toLowerCase(),
           project_tags: projectTags,
@@ -88,6 +109,7 @@ export default function SubmitButton({ styles }: { styles: any }) {
       }
 
       console.log('Operation completed successfully:', projectData);
+      setIsSubmitted(true);
     } catch (error) {
       console.error('Error during project operation:', error);
     }

@@ -24,6 +24,8 @@ export default function AddTagField({
   setTagsMappingArray,
   selectedTags,
   setSelectedTags,
+  selectedTagsForIdea,
+  setSelectedTagsForIdea,
 }: {
   state: boolean;
   setState: React.Dispatch<React.SetStateAction<boolean>>;
@@ -40,6 +42,8 @@ export default function AddTagField({
   setTagsMappingArray: (tagsMappingArray: string[]) => void;
   selectedTags: Set<string>;
   setSelectedTags: React.Dispatch<React.SetStateAction<Set<string>>>;
+  selectedTagsForIdea: Set<string>;
+  setSelectedTagsForIdea: (selectedTagsForIdea: Set<string>) => void;
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -124,6 +128,8 @@ export default function AddTagField({
       inputRef.current.value !== ''
     ) {
       setSelectedTags(new Set([...selectedTags, tagName]));
+      setSelectedTagsForIdea(new Set([...selectedTagsForIdea, tagName]));
+      console.log(selectedTagsForIdea);
       addNewTag();
       setState(!state);
     }

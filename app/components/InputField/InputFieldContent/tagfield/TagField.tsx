@@ -133,6 +133,8 @@ export default function TagField({
           }}
           selectedTags={selectedTags}
           setSelectedTags={setSelectedTags}
+          selectedTagsForIdea={selectedTagsForIdea}
+          setSelectedTagsForIdea={setSelectedTagsForIdea}
         />
       </div>
     </div>
