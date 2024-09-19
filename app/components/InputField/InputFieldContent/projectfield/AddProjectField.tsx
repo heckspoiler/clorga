@@ -2,9 +2,8 @@
 
 import React, { useCallback, useEffect, useRef } from 'react';
 import { projectStore } from '@/utils/projectstore';
-
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
 import { gsap } from 'gsap';
-
 import { useGSAP } from '@gsap/react';
 
 export default function AddProjectField({
@@ -32,14 +31,22 @@ export default function AddProjectField({
   setProjectsMappingArray: (projectsMappingArray: (string | null)[]) => void;
   setSelectedProject: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  // refs
   const inputRef = useRef<HTMLInputElement>(null);
-
-  // zustand stores
   const { projectsStore, setProjects } = projectStore() as {
     projectsStore: any;
     setProjects: any;
   };
+  const { isSubmitted, setIsSubmitted } = isSubmittedStore();
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setProjectName('');
+      if (inputRef.current) {
+        inputRef.current.value = '';
+      }
+      setIsSubmitted(false); // Reset the submitted state
+    }
+  }, [isSubmitted, setProjectName, setIsSubmitted]);
 
   // gsap
 
@@ -139,6 +146,7 @@ export default function AddProjectField({
         onChange={handleInputChange}
         placeholder="Project Name"
         ref={inputRef}
+        value={projectName}
       />
       <div onClick={handleSubmit} className={styles.SubmitButton}>
         add project

@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
 import AddProjectField from './AddProjectField';
 import { newProjectStore } from '@/utils/newProjectStore';
 
 import Plussign from '@/app/components/general/Plussign';
+
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 export default function ProjectField({
   styles,
@@ -19,6 +23,7 @@ export default function ProjectField({
 
   const { newProject, setNewProject } = newProjectStore();
   const { projectName, setProjectName } = newProjectStore();
+  const { isSubmitted } = isSubmittedStore();
 
   // useStates
 
@@ -27,6 +32,12 @@ export default function ProjectField({
   const [projectsMappingArray, setProjectsMappingArray] = useState(projects);
 
   // setting active State for project that is being edited/created
+
+  useEffect(() => {
+    if (isSubmitted) {
+      setProjectName('');
+    }
+  }, [isSubmitted, setProjectName]);
 
   const handleProjectClick = (project: string) => {
     if (selectedProject !== project || selectedProject === '') {
