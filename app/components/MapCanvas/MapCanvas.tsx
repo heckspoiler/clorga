@@ -28,10 +28,6 @@ export default function MapCanvas({
 
   const { isSubmitted, setIsSubmitted } = isSubmittedStore();
 
-  useEffect(() => {
-    console.log('initilallalal', initialProjects);
-  }, []);
-
   const fetchProjects = useCallback(async () => {
     const { data, error } = await supabase.from('projects').select('*');
     if (error) console.log('error', error);

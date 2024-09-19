@@ -36,13 +36,15 @@ export default function ProjectField({
   useEffect(() => {
     if (isSubmitted) {
       setProjectName('');
+      setSelectedProject('');
     }
   }, [isSubmitted, setProjectName]);
 
   const handleProjectClick = (project: string) => {
     if (selectedProject !== project || selectedProject === '') {
       setSelectedProject(project);
-      setProjectName(selectedProject);
+      setProjectName(project);
+      console.log(projectName);
     }
   };
 

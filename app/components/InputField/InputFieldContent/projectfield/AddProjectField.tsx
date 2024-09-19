@@ -146,7 +146,6 @@ export default function AddProjectField({
         onChange={handleInputChange}
         placeholder="Project Name"
         ref={inputRef}
-        value={projectName}
       />
       <div onClick={handleSubmit} className={styles.SubmitButton}>
         add project
