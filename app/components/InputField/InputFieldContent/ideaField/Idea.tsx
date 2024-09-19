@@ -2,13 +2,18 @@
 
 import React, { useEffect, useState } from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 export default function Idea({ styles }: { styles: any }) {
   // Zustand Store
   const { ideaTitle, setIdeaTitle } = newProjectStore();
+  const { isSubmitted, setIsSubmitted } = isSubmittedStore();
 
-  // Local state for the input
-  const [ideaInput, setIdeaInput] = useState('');
+  useEffect(() => {
+    if (isSubmitted) {
+      setIdeaTitle('');
+    }
+  }, [isSubmitted, setIdeaTitle]);
 
   // Handle input change
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -19,7 +19,7 @@ export default function MapCanvas({
 }: {
   initialProjects: Project[] | any[] | null;
 }) {
-  if (process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV === 'production') {
     return null;
   }
   const [projects, setProjects] = useState<Project[] | any[] | null>(
@@ -27,6 +27,10 @@ export default function MapCanvas({
   );
 
   const { isSubmitted, setIsSubmitted } = isSubmittedStore();
+
+  useEffect(() => {
+    console.log('initilallalal', initialProjects);
+  }, []);
 
   const fetchProjects = useCallback(async () => {
     const { data, error } = await supabase.from('projects').select('*');
