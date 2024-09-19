@@ -9,9 +9,9 @@ import { useGSAP } from '@gsap/react';
 gsap.registerPlugin(SplitText, useGSAP);
 
 export default function LoginPage() {
-  if (process.env.NODE_ENV !== 'production') {
-    return null;
-  }
+  //   if (process.env.NODE_ENV !== 'production') {
+  //     return null;
+  //   }
   const textRef = useRef(null);
 
   useGSAP(() => {
@@ -20,18 +20,19 @@ export default function LoginPage() {
     gsap.fromTo(
       split.chars,
       {
-        opacity: 0, // Start with characters faded out
-        y: 20, // Start with a slight upward position
-        rotation: 0, // Start with no rotation
+        y: 20,
+        scale: 0.9, // Start with a slight scale down
+        rotation: 0,
       },
       {
-        x: () => Math.random() * 10 - 5, // Subtle random horizontal movement
-        y: () => Math.random() * 20 - 10, // Subtle random vertical movement
-        rotation: () => Math.random() * 10 - 5, // Slight rotation for natural effect
-        opacity: 1, // Fade to full visibility
-        duration: 2, // Smooth, longer duration
-        ease: 'power2.inOut', // Smooth easing
-        stagger: 0.05, // Stagger for wave-like animation
+        x: () => Math.random() * 8 - 4, // Subtle horizontal sway
+        y: () => Math.random() * 12 - 6, // Gentle vertical float
+        rotation: () => Math.random() * 6 - 3, // Slight rotation for organic motion
+        scale: 1, // Scale up slightly for a subtle "breath" effect
+        opacity: 1,
+        duration: 3, // Longer duration for smooth motion
+        ease: 'sine.inOut', // Smooth, natural easing
+        stagger: 0.1, // Small stagger for a flowing effect
         yoyo: true,
         repeat: -1,
       }
