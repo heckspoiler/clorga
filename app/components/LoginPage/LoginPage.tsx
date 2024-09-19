@@ -17,15 +17,25 @@ export default function LoginPage() {
   useGSAP(() => {
     const split = new SplitText(textRef.current, { type: 'words, chars' });
 
-    gsap.from(split.chars, {
-      x: () => Math.random() * 80 - 20,
-      y: () => Math.random() * 80 - 20,
-      duration: Math.random() * 4 * 0.5,
-      ease: 'power1.inOut',
-      stagger: Math.random() * 4 * 0.1,
-      yoyo: true,
-      repeat: -1,
-    });
+    gsap.fromTo(
+      split.chars,
+      {
+        opacity: 0, // Start with characters faded out
+        y: 20, // Start with a slight upward position
+        rotation: 0, // Start with no rotation
+      },
+      {
+        x: () => Math.random() * 10 - 5, // Subtle random horizontal movement
+        y: () => Math.random() * 20 - 10, // Subtle random vertical movement
+        rotation: () => Math.random() * 10 - 5, // Slight rotation for natural effect
+        opacity: 1, // Fade to full visibility
+        duration: 2, // Smooth, longer duration
+        ease: 'power2.inOut', // Smooth easing
+        stagger: 0.05, // Stagger for wave-like animation
+        yoyo: true,
+        repeat: -1,
+      }
+    );
 
     return () => {
       split.revert();
