@@ -8,6 +8,7 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 import { Project } from '@/app/page';
 import { Idea } from '@/app/page';
+import BringBackButton from '../general/BringBackButton';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
@@ -70,6 +71,7 @@ export default function MapCanvas({
           </div>
         </div>
       ))}
+      <BringBackButton />
     </div>
   );
 }

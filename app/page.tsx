@@ -4,6 +4,7 @@ import InputField from '@/app/components/InputField/InputField';
 import styles from './page.module.css';
 import MapCanvas from './components/MapCanvas/MapCanvas';
 import LoginPage from './components/LoginPage/LoginPage';
+import BringBackButton from './components/general/BringBackButton';
 
 export type Idea = {
   id: number;

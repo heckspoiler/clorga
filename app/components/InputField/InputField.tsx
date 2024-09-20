@@ -1,4 +1,5 @@
 'use client';
+
 import React, {
   useEffect,
   useRef,
@@ -39,43 +40,6 @@ export default function InputField({
   const [isClosed, setIsClosed] = useState(false);
 
   // zustand stores
-  const { isSubmitted, setIsSubmitted } = isSubmittedStore();
-  const { projectsStore, setProjects } = projectStore() as {
-    projectsStore: any;
-    setProjects: any;
-  };
-
-  const fetchProjects = useCallback(async () => {
-    const { data, error } = await supabase.from('projects').select('*');
-    if (error) console.log('error', error);
-    else setProjects(data);
-  }, [supabase]);
-
-  useEffect(() => {
-    fetchProjects();
-
-    const channel = supabase
-      .channel('public:projects')
-      .on(
-        'postgres_changes',
-        { event: '*', schema: 'public', table: 'projects' },
-        (payload) => {
-          console.log('Change received!', payload);
-          fetchProjects();
-        }
-      )
-      .subscribe();
-
-    return () => {
-      channel.unsubscribe();
-    };
-  }, [fetchProjects, isSubmitted]);
-
-  useEffect(() => {
-    if (JSON.stringify(projectsStore) !== JSON.stringify(initialProjects)) {
-      setProjects(initialProjects);
-    }
-  }, [initialProjects, projectsStore, setProjects]);
 
   const { allTagsStore, setAllTags } = formStore() as {
     allTagsStore: any;
@@ -120,14 +84,16 @@ export default function InputField({
       <div className={styles.FoldArrowContainer}>
         <h4>{isClosed ? 'Feed me' : 'Ideabox'}</h4>
         <div
-          className={styles.FoldArrow}
+          className={styles.FoldArrowDiv}
           onClick={() => setIsClosed(!isClosed)}
           data-clickable="true"
           style={{
             cursor: 'pointer',
             transform: isClosed ? 'rotate(0deg)' : 'rotate(180deg)',
           }}
-        />
+        >
+          <div className={styles.FoldArrow} />
+        </div>
       </div>
       <div
         className={`${styles.Container} ${

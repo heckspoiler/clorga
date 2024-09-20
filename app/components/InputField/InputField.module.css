@@ -24,7 +24,15 @@
     align-items: center;
     background-color: var(--yellow);
     box-shadow: 4px 4px 1px black;
+}
 
+.FoldArrowDiv {
+    height: 100%;
+    width: 2rem;
+    height: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .FoldArrow {
