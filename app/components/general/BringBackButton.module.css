@@ -2,6 +2,13 @@
     position: absolute;
     bottom: 3rem;
     right: 3rem;
+    transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transform: translateY(20vh);
+}
+
+.ContainerVisible {
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.455, 0.03, 0.515, 0.955)
 }
 
 .ButtonContainer {

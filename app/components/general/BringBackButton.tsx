@@ -7,13 +7,24 @@ import styles from './BringBackButton.module.css';
 import { forminViewportStore } from '@/utils/formInViewportStore';
 
 export default function BringBackButton() {
-  const { isInViewport } = forminViewportStore();
+  const { isInViewport, setShouldComeBack } = forminViewportStore();
+
+  const bringBackTheForm = () => {
+    setShouldComeBack(true);
+    setTimeout(() => {
+      setShouldComeBack(false);
+    }, 1000);
+  };
 
   return (
-    <div className={styles.Container}>
+    <div
+      className={`${styles.Container} ${
+        !isInViewport ? styles.ContainerVisible : null
+      }`}
+    >
       <div className={styles.ButtonContainer}>
         <div></div>
-        <button>Bring the Form back!</button>
+        <button onClick={bringBackTheForm}>Bring the Form back!</button>
       </div>
     </div>
   );

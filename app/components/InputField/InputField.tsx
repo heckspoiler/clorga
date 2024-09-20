@@ -11,10 +11,9 @@ import styles from './InputField.module.css';
 
 // zustand imports
 import { formStore } from '@/utils/formstore';
-import { projectStore } from '@/utils/projectstore';
+import { forminViewportStore } from '@/utils/formInViewportStore';
 
 import { createClient } from '@supabase/supabase-js';
-import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 import gsap from 'gsap';
 import { Draggable } from 'gsap/all';
@@ -40,7 +39,8 @@ export default function InputField({
   const [isClosed, setIsClosed] = useState(false);
 
   // zustand stores
-
+  const { isInViewport, setIsInViewport, shouldComeBack } =
+    forminViewportStore();
   const { allTagsStore, setAllTags } = formStore() as {
     allTagsStore: any;
     setAllTags: any;
@@ -60,6 +60,22 @@ export default function InputField({
     }
   }, [tags, allTagsStore, setAllTags]);
 
+  // Checker if in Viewport or not
+
+  const checkIfInViewport = useCallback(() => {
+    if (draggableRef?.current && isClosed) {
+      const rect = (
+        draggableRef.current as HTMLElement
+      ).getBoundingClientRect();
+      const isVisible =
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= window.innerHeight &&
+        rect.right <= window.innerWidth;
+      setIsInViewport(isVisible);
+    }
+  }, [setIsInViewport, isClosed]);
+
   // Draggable setup
   useGSAP(() => {
     Draggable.create(draggableRef.current, {
@@ -70,9 +86,27 @@ export default function InputField({
       autoScroll: 1,
       dragClickables: false,
       onDragStart: () => setIsDragging(true),
-      onDragEnd: () => setIsDragging(false),
+      onDrag: checkIfInViewport, // Check during drag
+      onDragEnd: () => {
+        setIsDragging(false);
+        checkIfInViewport(); // Check after drag ends
+      },
     });
-  }, []);
+  }, [checkIfInViewport]);
+
+  useEffect(() => {
+    if (shouldComeBack) {
+      gsap.to(draggableRef.current, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        onComplete: () => {
+          setIsClosed(false);
+          setIsInViewport(true);
+        },
+      });
+    }
+  }, [shouldComeBack, setIsInViewport]);
 
   return (
     <div
