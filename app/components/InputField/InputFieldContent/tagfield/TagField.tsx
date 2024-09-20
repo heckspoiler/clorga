@@ -6,8 +6,7 @@ import AddTagField from './AddTagField';
 import Plussign from '@/app/components/general/Plussign';
 import { Project } from '@/app/page';
 
-import { formStore } from '@/utils/formstore';
-
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
 export default function TagField({
   styles,
   projects,
@@ -18,16 +17,20 @@ export default function TagField({
   selectedProject: string;
 }) {
   // zustand stores
-
   const { projectTags, setProjectTags } = newProjectStore();
   const { newTag, setNewTag } = newProjectStore();
   const { tagName, setTagName } = newProjectStore();
   const { selectedTagsForIdea, setSelectedTagsForIdea } = newProjectStore();
+  const { isSubmitted } = isSubmittedStore();
 
   // useStates
   const [submitTagWindowIsOpen, setSubmitTagWindowIsOpen] = useState(false);
   const [tagsMappingArray, setTagsMappingArray] = useState<any>(projectTags);
   const [selectedTags, setSelectedTags] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    isSubmitted && setSelectedTags(new Set());
+  }, [isSubmitted]);
 
   useEffect(() => {
     if (selectedProject) {
@@ -38,7 +41,6 @@ export default function TagField({
 
       console.log('Selected project:', project);
       if (project && project.project_tags) {
-        // Get all unique tags from the selected project
         const allTags = project.project_tags;
 
         console.log('All tags for selected project:', allTags);
@@ -100,16 +102,6 @@ export default function TagField({
           ))}
         </div>
       </div>
-      <div className={styles.Legend}>
-        <div className={styles.LegendRow}>
-          <div></div>
-          <p>not selected</p>
-        </div>
-        <div className={styles.LegendRow}>
-          <div></div>
-          <p>selected</p>
-        </div>
-      </div>
       <div
         className={`${styles.SubmitField} ${
           submitTagWindowIsOpen ? styles.SubmitFieldVisible : ''
@@ -136,6 +128,16 @@ export default function TagField({
           selectedTagsForIdea={selectedTagsForIdea}
           setSelectedTagsForIdea={setSelectedTagsForIdea}
         />
+      </div>
+      <div className={styles.Legend}>
+        <div className={styles.LegendRow}>
+          <div></div>
+          <p>not selected</p>
+        </div>
+        <div className={styles.LegendRow}>
+          <div></div>
+          <p>selected</p>
+        </div>
       </div>
     </div>
   );

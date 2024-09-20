@@ -22,7 +22,7 @@
     width: fit-content;
     flex-direction: column;
     width: 100%;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 
 }
 
@@ -56,8 +56,6 @@
 .FormCell textarea {
     min-height: 4rem;
 }
-
-
 
 .TagsContainer {
     display: flex;
@@ -192,6 +190,7 @@
     width: fit-content;
     display: flex;
     gap: 1rem;
+    padding: 0.5rem 0;
 }
 
 .LegendRow {
@@ -257,7 +256,7 @@
     background-color: white !important;
     border: none !important;
     display: flex;
-    padding-bottom: 1rem !important;
+    padding-bottom: 0rem !important;
     gap: 1em;
 
 }

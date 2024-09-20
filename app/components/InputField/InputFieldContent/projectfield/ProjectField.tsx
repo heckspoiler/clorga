@@ -84,16 +84,6 @@ export default function ProjectField({
           )}
         </div>
       </div>
-      <div className={styles.Legend}>
-        <div className={styles.LegendRow}>
-          <div></div>
-          <p>not selected</p>
-        </div>
-        <div className={styles.LegendRow}>
-          <div></div>
-          <p>selected</p>
-        </div>
-      </div>
       <div
         className={`${styles.SubmitField} ${
           submitTagWindowIsOpen ? styles.SubmitFieldVisible : ''
@@ -112,6 +102,16 @@ export default function ProjectField({
           setProjectsMappingArray={setProjectsMappingArray}
           setSelectedProject={setSelectedProject}
         />
+      </div>
+      <div className={styles.Legend}>
+        <div className={styles.LegendRow}>
+          <div></div>
+          <p>not selected</p>
+        </div>
+        <div className={styles.LegendRow}>
+          <div></div>
+          <p>selected</p>
+        </div>
       </div>
     </div>
   );

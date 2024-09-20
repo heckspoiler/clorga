@@ -1,10 +1,19 @@
 'use client';
-import React, { useEffect, useRef, useState, useMemo } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+  useMemo,
+  useCallback,
+} from 'react';
 import styles from './InputField.module.css';
 
 // zustand imports
 import { formStore } from '@/utils/formstore';
 import { projectStore } from '@/utils/projectstore';
+
+import { createClient } from '@supabase/supabase-js';
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 import gsap from 'gsap';
 import { Draggable } from 'gsap/all';
@@ -13,6 +22,11 @@ import InputFieldForm from './InputFieldContent/InputFieldForm';
 import { Project } from '../../page';
 
 gsap.registerPlugin(Draggable, useGSAP);
+
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL as string,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
+);
 
 export default function InputField({
   initialProjects,
@@ -25,11 +39,37 @@ export default function InputField({
   const [isClosed, setIsClosed] = useState(false);
 
   // zustand stores
-
+  const { isSubmitted, setIsSubmitted } = isSubmittedStore();
   const { projectsStore, setProjects } = projectStore() as {
     projectsStore: any;
     setProjects: any;
   };
+
+  const fetchProjects = useCallback(async () => {
+    const { data, error } = await supabase.from('projects').select('*');
+    if (error) console.log('error', error);
+    else setProjects(data);
+  }, [supabase]);
+
+  useEffect(() => {
+    fetchProjects();
+
+    const channel = supabase
+      .channel('public:projects')
+      .on(
+        'postgres_changes',
+        { event: '*', schema: 'public', table: 'projects' },
+        (payload) => {
+          console.log('Change received!', payload);
+          fetchProjects();
+        }
+      )
+      .subscribe();
+
+    return () => {
+      channel.unsubscribe();
+    };
+  }, [fetchProjects, isSubmitted]);
 
   useEffect(() => {
     if (JSON.stringify(projectsStore) !== JSON.stringify(initialProjects)) {
