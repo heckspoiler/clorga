@@ -54,7 +54,7 @@
 
 
 .FormCell textarea {
-    min-height: 6rem;
+    min-height: 4rem;
 }
 
 
@@ -240,13 +240,6 @@
     cursor: pointer;
 }
 
-/* .Tag {
-    background-color: rgb(192, 255, 200);
-}
-
-.Project {
-    background-color: rgb(127, 223, 255);
-} */
 
 .Submit {
     padding: 0.5em 1em;

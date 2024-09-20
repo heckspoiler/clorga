@@ -31,8 +31,6 @@ export default function ProjectField({
 
   const [projectsMappingArray, setProjectsMappingArray] = useState(projects);
 
-  // setting active State for project that is being edited/created
-
   useEffect(() => {
     if (isSubmitted) {
       setProjectName('');

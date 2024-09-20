@@ -25,6 +25,9 @@ export type Idea = {
 };
 
 export default function InputFieldForm({ projects }: { projects: Project[] }) {
+  if (process.env.NODE_ENV === 'production') {
+    return null;
+  }
   const projectProp = projects.map((project) => project.project_name);
 
   // Zustand Stores
