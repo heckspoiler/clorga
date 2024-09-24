@@ -13,7 +13,7 @@ gsap.registerPlugin(SplitText, useGSAP);
 
 export default function LoginPageContent() {
   const [workingOnIt, setWorkingOnIt] = useState(true);
-  const [showLogin, setShowLogin] = useState(false);
+  const [showLogin, setShowLogin] = useState(true);
 
   if (process.env.NODE_ENV !== 'production' && !workingOnIt) {
     return null;
