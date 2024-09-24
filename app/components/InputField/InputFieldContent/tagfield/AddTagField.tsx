@@ -1,12 +1,10 @@
 'use client';
 
-import React, { useCallback, useEffect, useRef } from 'react';
+import React, { useCallback, useRef } from 'react';
 
-import PlusSign from '@/public/svg/plussign.svg';
-
-import { gsap } from 'gsap';
-
-import { useGSAP } from '@gsap/react';
+// helper imports
+import { wiggleElement } from '@/utils/helpers/wiggleAnimation';
+import { handleInputChange } from '@/utils/helpers/handleInputChange';
 
 export default function AddTagField({
   state,
@@ -47,60 +45,6 @@ export default function AddTagField({
 }) {
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const wiggle = useCallback(() => {
-    if (inputRef.current) {
-      gsap.to(inputRef.current, {
-        keyframes: [
-          {
-            x: 3,
-            y: -2,
-            rotation: -1,
-            scale: 1.02,
-            backgroundColor: 'rgba(255, 255, 200, 0.5)',
-            duration: 0.1,
-          },
-          {
-            x: -3,
-            y: 2,
-            rotation: 1,
-            scale: 1.02,
-            backgroundColor: 'rgba(255, 255, 200, 0.5)',
-            duration: 0.1,
-          },
-          {
-            x: 3,
-            y: -1,
-            rotation: -0.5,
-            scale: 1.01,
-            backgroundColor: 'rgba(255, 255, 200, 0.3)',
-            duration: 0.1,
-          },
-          {
-            x: -3,
-            y: 1,
-            rotation: 0.5,
-            scale: 1.01,
-            backgroundColor: 'rgba(255, 255, 200, 0.3)',
-            duration: 0.1,
-          },
-          {
-            x: 0,
-            y: 0,
-            rotation: 0,
-            scale: 1,
-            backgroundColor: 'transparent',
-            duration: 0.1,
-          },
-        ],
-        ease: 'power2.inOut',
-      });
-    }
-  }, []);
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setTagName(event.target.value);
-  };
-
   const addNewTag = useCallback(() => {
     if (newTag && !allTagsStore.includes(tagName)) {
       allTagsStore.push(tagName);
@@ -117,7 +61,7 @@ export default function AddTagField({
   const handleSubmit = (event: React.MouseEvent<HTMLDivElement>) => {
     if (inputRef.current && inputRef.current.value === '') {
       event.preventDefault();
-      wiggle();
+      wiggleElement(inputRef.current);
       return;
     }
 
@@ -139,7 +83,7 @@ export default function AddTagField({
     <div className={styles.InputTag}>
       <input
         value={tagName}
-        onChange={handleInputChange}
+        onChange={(e) => handleInputChange(e, setTagName)}
         placeholder="Enter new tag"
         ref={inputRef}
       />

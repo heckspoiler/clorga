@@ -3,6 +3,7 @@
 import React, { useEffect, useRef } from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
+import { handleInputChange } from '@/utils/helpers/handleInputChange';
 
 export default function By({ styles }: { styles: any }) {
   //zustand store
@@ -15,10 +16,6 @@ export default function By({ styles }: { styles: any }) {
     }
   }, [isSubmitted, setIdeaAuthor]);
 
-  // handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIdeaAuthor(e.target.value);
-  };
   return (
     <div className={styles.FormCell}>
       <label htmlFor="name">By:</label>
@@ -27,7 +24,7 @@ export default function By({ styles }: { styles: any }) {
         type="text"
         placeholder="Enter Name"
         data-clickable="true"
-        onChange={handleInputChange}
+        onChange={(e) => handleInputChange(e, setIdeaAuthor)}
         value={ideaAuthor}
       />
     </div>

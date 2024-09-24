@@ -5,8 +5,12 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 import { newProjectStore } from '@/utils/newProjectStore';
 
+// helper imports
+
+import { handleInputChange } from '@/utils/helpers/handleInputChange';
+
 export default function IdeaTextField({ styles }: { styles: any }) {
-  // zustand imports
+  // zustand stores
   const { ideaDescription, setIdeaDescription } = newProjectStore();
   const { isSubmitted } = isSubmittedStore();
 
@@ -15,11 +19,6 @@ export default function IdeaTextField({ styles }: { styles: any }) {
       setIdeaDescription('');
     }
   }, [isSubmitted, setIdeaDescription]);
-
-  // handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setIdeaDescription(e.target.value);
-  };
 
   return (
     <div className={styles.FormCell}>
@@ -32,7 +31,7 @@ export default function IdeaTextField({ styles }: { styles: any }) {
         aria-label="Idea description"
         data-clickable="true"
         value={ideaDescription}
-        onChange={handleInputChange}
+        onChange={(e) => handleInputChange(e, setIdeaDescription)}
       ></textarea>
     </div>
   );
