@@ -46,7 +46,11 @@
 
 
 .Title p span {
-    border-bottom: 5px solid var(--pastel-green);
+    border-bottom: 5px solid;
+    border-image: linear-gradient(to right,
+            var(--pastel-green) 0 33%,
+            var(--active-blue) 33% 66%,
+            var(--action-pink) 66% 100%) 1;
     text-transform: uppercase;
     font-weight: 700;
     transform-origin: center;
@@ -118,6 +122,12 @@
     border: 1px solid black;
     box-shadow: 2px 2px 1px black;
     width: fit-content;
+    transition: scale 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+}
+
+.Buttons button:hover {
+    scale: 1.03;
+    filter: brightness(1.2)
 }
 
 .Buttons button:nth-of-type(1) {
