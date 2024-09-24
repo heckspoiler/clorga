@@ -123,7 +123,7 @@ export default function InputField({
           data-clickable="true"
           style={{
             cursor: 'pointer',
-            transform: isClosed ? 'rotate(0deg)' : 'rotate(180deg)',
+            transform: isClosed ? 'rotate(180deg)' : 'rotate(0deg)',
           }}
         >
           <div className={styles.FoldArrow} />
