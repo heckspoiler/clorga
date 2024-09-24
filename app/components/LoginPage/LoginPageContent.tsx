@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import styles from './LoginPage.module.css';
 
 import LoginField from './LoginField';
@@ -15,11 +15,16 @@ export default function LoginPageContent() {
   const [workingOnIt, setWorkingOnIt] = useState(true);
   const [showLogin, setShowLogin] = useState(true);
 
-  if (process.env.NODE_ENV === 'production') {
-    setWorkingOnIt(false);
-    setShowLogin(false);
-    return null;
-  }
+  useEffect(() => {
+    if (process.env.NODE_ENV === 'production') {
+      setWorkingOnIt(false);
+      setShowLogin(false);
+      return () => {
+        // Cleanup function goes here if needed
+      };
+    }
+  }, []);
+
   const textRef = useRef(null);
 
   useGSAP(() => {
