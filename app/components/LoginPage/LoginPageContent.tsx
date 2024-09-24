@@ -1,15 +1,21 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import styles from './LoginPage.module.css';
+
+import LoginField from './LoginField';
 
 import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { useGSAP } from '@gsap/react';
+
 gsap.registerPlugin(SplitText, useGSAP);
 
-export default function LoginPage() {
-  if (process.env.NODE_ENV !== 'production') {
+export default function LoginPageContent() {
+  const [workingOnIt, setWorkingOnIt] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
+
+  if (process.env.NODE_ENV !== 'production' && !workingOnIt) {
     return null;
   }
   const textRef = useRef(null);
@@ -21,7 +27,7 @@ export default function LoginPage() {
       split.chars,
       {
         y: 20,
-        scale: 0.9, // Start with a slight scale down
+        scale: 0.9,
         rotation: 0,
       },
       {
@@ -45,8 +51,14 @@ export default function LoginPage() {
 
   return (
     <div className={styles.Main}>
-      <h1 ref={textRef}>Clorga</h1>
-      <h3>coming soong</h3>
+      {showLogin ? (
+        <LoginField styles={styles} />
+      ) : (
+        <>
+          <h1 ref={textRef}>Clorga</h1>
+          <h3>coming soong</h3>
+        </>
+      )}
     </div>
   );
 }

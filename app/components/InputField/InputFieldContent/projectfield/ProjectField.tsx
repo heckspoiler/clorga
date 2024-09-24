@@ -7,6 +7,9 @@ import { newProjectStore } from '@/utils/newProjectStore';
 import Plussign from '@/app/components/general/Plussign';
 
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
+
+// helper functions
+
 import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
 
 export default function ProjectField({
