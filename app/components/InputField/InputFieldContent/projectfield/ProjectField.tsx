@@ -65,7 +65,7 @@ export default function ProjectField({
           >
             <p>{submitTagWindowIsOpen ? 'close' : 'new project'}</p>
             <div className={styles.SvgContainer}>
-              <Plussign height={'15px'} width={'15px'} />
+              <Plussign height={'15px'} width={'15px'} fill={''} />
             </div>
           </div>
           {projectsMappingArray?.map(

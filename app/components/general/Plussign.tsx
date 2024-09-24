@@ -1,6 +1,14 @@
 import React from 'react';
 
-const Plussign = ({ width, height }: { width: string; height: string }) => {
+const Plussign = ({
+  width,
+  height,
+  fill,
+}: {
+  width: string;
+  height: string;
+  fill: string | null;
+}) => {
   return (
     <svg
       width={width}
@@ -9,7 +17,14 @@ const Plussign = ({ width, height }: { width: string; height: string }) => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <rect x="1" y="1" width="38" height="38" rx="19" fill="#FFE600" />
+      <rect
+        x="1"
+        y="1"
+        width="38"
+        height="38"
+        rx="19"
+        fill={`${fill === '' ? '#FFE600' : fill}`}
+      />
       <rect
         x="1"
         y="1"

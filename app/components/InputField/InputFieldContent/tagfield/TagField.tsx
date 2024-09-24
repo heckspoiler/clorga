@@ -84,7 +84,7 @@ export default function TagField({
           >
             <p>{submitTagWindowIsOpen ? 'close' : 'new tag'}</p>
             <div className={styles.SvgContainer}>
-              <Plussign height={'15px'} width={'15px'} />
+              <Plussign height={'15px'} width={'15px'} fill={''} />
             </div>
           </div>
           {tagsMappingArray?.map((tag: string, index: number) => (
