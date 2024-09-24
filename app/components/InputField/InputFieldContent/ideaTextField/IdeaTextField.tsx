@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 import { newProjectStore } from '@/utils/newProjectStore';
@@ -8,17 +8,14 @@ import { newProjectStore } from '@/utils/newProjectStore';
 // helper imports
 
 import { handleInputChange } from '@/utils/helpers/handleInputChange';
+import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
 
 export default function IdeaTextField({ styles }: { styles: any }) {
   // zustand stores
   const { ideaDescription, setIdeaDescription } = newProjectStore();
   const { isSubmitted } = isSubmittedStore();
 
-  useEffect(() => {
-    if (isSubmitted) {
-      setIdeaDescription('');
-    }
-  }, [isSubmitted, setIdeaDescription]);
+  useResetOnSubmit(isSubmitted, () => setIdeaDescription(''), []);
 
   return (
     <div className={styles.FormCell}>

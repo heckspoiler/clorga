@@ -7,6 +7,7 @@ import { newProjectStore } from '@/utils/newProjectStore';
 import Plussign from '@/app/components/general/Plussign';
 
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
+import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
 
 export default function ProjectField({
   styles,
@@ -33,16 +34,16 @@ export default function ProjectField({
 
   useEffect(() => {
     if (isSubmitted) {
-      setProjectName('');
       setSelectedProject('');
     }
-  }, [isSubmitted, setProjectName]);
+  }, [isSubmitted]);
+
+  useResetOnSubmit(isSubmitted, () => setProjectName(''), []);
 
   const handleProjectClick = (project: string) => {
     if (selectedProject !== project || selectedProject === '') {
       setSelectedProject(project);
       setProjectName(project);
-      console.log(projectName);
     }
   };
 

@@ -7,6 +7,7 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 // helper imports
 import { handleInputChange } from '@/utils/helpers/handleInputChange';
+import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
 
 // component starts here
 
@@ -21,11 +22,7 @@ export default function DateField({
   const { projectDueDate, setProjectDueDate } = newProjectStore();
   const { isSubmitted } = isSubmittedStore();
 
-  useEffect(() => {
-    if (isSubmitted) {
-      setProjectDueDate('');
-    }
-  }, [isSubmitted, setProjectDueDate]);
+  useResetOnSubmit(isSubmitted, () => setProjectDueDate(''), []);
 
   return (
     <div

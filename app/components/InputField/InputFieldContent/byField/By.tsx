@@ -1,20 +1,17 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
 import { handleInputChange } from '@/utils/helpers/handleInputChange';
+import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
 
 export default function By({ styles }: { styles: any }) {
   //zustand store
   const { ideaAuthor, setIdeaAuthor } = newProjectStore();
-  const { isSubmitted, setIsSubmitted } = isSubmittedStore();
+  const { isSubmitted } = isSubmittedStore();
 
-  useEffect(() => {
-    if (isSubmitted) {
-      setIdeaAuthor('');
-    }
-  }, [isSubmitted, setIdeaAuthor]);
+  useResetOnSubmit(isSubmitted, () => setIdeaAuthor(''), []);
 
   return (
     <div className={styles.FormCell}>
