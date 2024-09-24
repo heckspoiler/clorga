@@ -4,6 +4,10 @@ import React, { useEffect, useState } from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
+// helper imports
+
+import { handleInputChange } from '@/utils/helpers/handleInputChange';
+
 export default function Idea({ styles }: { styles: any }) {
   // Zustand Store
   const { ideaTitle, setIdeaTitle } = newProjectStore();
@@ -15,11 +19,6 @@ export default function Idea({ styles }: { styles: any }) {
     }
   }, [isSubmitted, setIdeaTitle]);
 
-  // Handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIdeaTitle(e.target.value);
-  };
-
   return (
     <div className={styles.FormCell}>
       <label htmlFor="idea">Idea Title:</label>
@@ -27,7 +26,7 @@ export default function Idea({ styles }: { styles: any }) {
         id="idea"
         type="text"
         value={ideaTitle}
-        onChange={handleInputChange}
+        onChange={(e) => handleInputChange(e, setIdeaTitle)}
         placeholder="Enter Idea"
         data-clickable="true"
       />

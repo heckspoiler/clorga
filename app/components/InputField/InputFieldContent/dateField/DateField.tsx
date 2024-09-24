@@ -5,6 +5,11 @@ import React, { useEffect } from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
+// helper imports
+import { handleInputChange } from '@/utils/helpers/handleInputChange';
+
+// component starts here
+
 export default function DateField({
   styles,
   newProject,
@@ -22,11 +27,6 @@ export default function DateField({
     }
   }, [isSubmitted, setProjectDueDate]);
 
-  // handle input change
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProjectDueDate(e.target.value);
-  };
-
   return (
     <div
       className={`${styles.FormCellDate} ${
@@ -38,7 +38,7 @@ export default function DateField({
         id="idea-title"
         type="date"
         data-clickable="true"
-        onChange={handleInputChange}
+        onChange={(e) => handleInputChange(e, setProjectDueDate)}
         value={projectDueDate.toString()}
       />
     </div>
