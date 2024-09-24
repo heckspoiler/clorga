@@ -15,7 +15,9 @@ export default function LoginPageContent() {
   const [workingOnIt, setWorkingOnIt] = useState(true);
   const [showLogin, setShowLogin] = useState(true);
 
-  if (process.env.NODE_ENV !== 'production' && !workingOnIt) {
+  if (process.env.NODE_ENV === 'production') {
+    setWorkingOnIt(false);
+    setShowLogin(false);
     return null;
   }
   const textRef = useRef(null);
