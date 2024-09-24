@@ -63,11 +63,8 @@ export default function LoginPageContent() {
       ) : (
         <>
           <h1 ref={textRef}>Clorga</h1>
-          <h2>coming soon</h2>
-          <h2>coming soon</h2>
-          <h2>coming soon</h2>
-          <h2>coming soon</h2>
-          <h2>coming soon</h2>
+          <h3>coming soon</h3>
+          <h5>yes something's cooking</h5>
         </>
       )}
     </div>
