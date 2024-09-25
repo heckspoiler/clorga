@@ -1,8 +1,6 @@
-'use client';
-
 import React from 'react';
 
-import { login, signup } from '@/app/login/action';
+import { login, signup } from '@/app/login/actions';
 
 import Plussign from '../general/Plussign';
 
