@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Space_Mono } from 'next/font/google';
 import './globals.css';
 import { GeistMono } from 'geist/font/mono';
+import Topbar from './components/topbar/Topbar';
 
 const spacemono = Space_Mono({
   subsets: ['latin'],
@@ -37,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={spacemono.className}>
+        <Topbar />
         <main>{children}</main>
       </body>
     </html>
