@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     background-color: transparent;
-    transform: translateY(-4.1rem);
+    transform: translateY(-3rem);
     transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     display: flex;
     flex-direction: column;
@@ -19,12 +19,13 @@
 .TopbarContainer {
     width: 100vw;
     height: 3rem;
-    padding: 2rem;
-
+    padding: 0rem 3rem;
     border-bottom: 1px solid black;
     display: flex;
     align-items: center;
     background-color: white;
+    display: flex;
+    justify-content: space-between;
 }
 
 .ArrowDown {
@@ -34,4 +35,75 @@
 
 .Fill {
     transition: fill 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+}
+
+.Navbar {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.NavbarItems {
+    display: flex;
+    height: 100%;
+}
+
+.NavbarItems li {
+    list-style-type: none;
+    font-size: 0.7rem;
+    position: relative;
+    border-right: 1px solid black;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+}
+
+.NavbarItems li::before {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--yellow);
+    transform: translateY(-100%);
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+}
+
+.NavbarItems li::after {
+    content: "";
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--yellow);
+    transform: translateY(100%);
+    transition: transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition-delay: 0.2s
+}
+
+.NavbarItems li:hover::before {
+    background-color: var(--yellow);
+    transform: translateY(0);
+
+}
+
+.NavbarItems li:hover::after {
+    background-color: var(--yellow);
+    transform: translateY(0);
+}
+
+.NavbarItems li:nth-of-type(1) {
+    border-left: 1px solid black;
+}
+
+.NavbarItems li a {
+    text-transform: uppercase;
+    text-align: center;
+    margin: auto;
+    height: 100%;
+    padding: 0rem 4rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
 }
