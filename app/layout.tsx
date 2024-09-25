@@ -38,7 +38,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={spacemono.className}>
-        <Topbar />
         <main>{children}</main>
       </body>
     </html>

@@ -34,7 +34,7 @@ export default function Topbar() {
     if (!isHovered && isVisible) {
       timer = setTimeout(() => {
         setIsVisible(false);
-      }, 1000);
+      }, 2000);
     }
     return () => clearTimeout(timer);
   }, [isHovered, isVisible]);
@@ -48,12 +48,12 @@ export default function Topbar() {
       className={`${styles.Topbar} ${isVisible ? styles.TopbarVisible : ''}`}
       onMouseLeave={handleMouseLeave}
     >
-      <div className={styles.TopbarContainer}>
+      <div className={styles.TopbarContainer} onMouseEnter={handleMouseEnter}>
         <div>
           <h2>CLORGA</h2>
         </div>
         <Navigation styles={styles} />
-        <div>
+        <div className={styles.UserIconContainer}>
           <UserIcon width={64 / 3} height={77 / 3} strokeWidth={4} />
         </div>
       </div>

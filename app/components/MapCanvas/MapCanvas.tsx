@@ -9,6 +9,7 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 import { Project } from '@/app/page';
 import { Idea } from '@/app/page';
 import BringBackButton from '../general/BringBackButton';
+import Topbar from '../topbar/Topbar';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
@@ -57,6 +58,7 @@ export default function MapCanvas({
 
   return (
     <div>
+      <Topbar />
       {projects?.map((project: Project, index: number) => (
         <div key={`${project.id} ${index}`}>
           <h2>{project.project_name}</h2>

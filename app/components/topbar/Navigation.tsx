@@ -1,5 +1,4 @@
 import React from 'react';
-import UserIcon from '../general/UserIcon';
 
 export default function Navigation({ styles }: { styles: any }) {
   return (

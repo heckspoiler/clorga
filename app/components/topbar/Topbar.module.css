@@ -19,7 +19,7 @@
 .TopbarContainer {
     width: 100vw;
     height: 3rem;
-    padding: 0rem 3rem;
+    padding: 0.5rem 3rem;
     border-bottom: 1px solid black;
     display: flex;
     align-items: center;
@@ -106,4 +106,8 @@
     align-items: center;
     justify-content: center;
     z-index: 10;
+}
+
+.UserIconContainer:hover {
+    cursor: pointer;
 }
