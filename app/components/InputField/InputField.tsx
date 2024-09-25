@@ -69,9 +69,9 @@ export default function InputField({
       ).getBoundingClientRect();
       const isVisible =
         rect.top >= 0 &&
-        rect.left >= 0 &&
+        rect.left >= -400 &&
         rect.bottom <= window.innerHeight &&
-        rect.right <= window.innerWidth;
+        rect.right >= -400;
       setIsInViewport(isVisible);
     }
   }, [setIsInViewport, isClosed]);
@@ -81,7 +81,7 @@ export default function InputField({
     Draggable.create(draggableRef.current, {
       type: 'x,y',
       edgeResistance: 0,
-      zIndexBoost: true,
+      zIndex: 9,
       inertia: true,
       autoScroll: 1,
       dragClickables: false,

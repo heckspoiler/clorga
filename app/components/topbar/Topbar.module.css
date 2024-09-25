@@ -8,6 +8,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 100;
+
 }
 
 
@@ -30,7 +32,6 @@
 
 .ArrowDown {
     transform: translateY(-1.5px);
-    z-index: 10;
 }
 
 .Fill {
@@ -108,6 +109,52 @@
     z-index: 10;
 }
 
-.UserIconContainer:hover {
+.UserIconContainer {
+    position: relative;
     cursor: pointer;
+}
+
+.TooltipContent {
+    position: absolute;
+    background-color: white;
+    border: 1px solid black;
+    top: 100%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 1rem;
+    min-width: 15rem;
+    font-size: 0.8rem;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, transform 0.3s ease-out, opacity 0.3s ease-out;
+    max-height: 0;
+    transform: scaleY(0);
+    opacity: 0;
+    transform-origin: top;
+}
+
+.TooltipContent p {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid black;
+}
+
+.TooltipVisible {
+    max-height: 400px;
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+.TooltipContent button {
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid black;
+    background-color: var(--active-blue);
+    transition: filter 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+}
+
+.TooltipContent button:hover {
+    filter: brightness(1.1)
 }
