@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import UserIcon from '../general/UserIcon';
 import IconTooltip from './IconTooltip';
 
@@ -17,12 +17,12 @@ export default function UserSpaceIcon({
 }) {
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleClick = useCallback(() => {
+    setIsHovered(isHovered ? false : true);
+  }, [isHovered]);
+
   return (
-    <div
-      className={styles.UserIconContainer}
-      onMouseEnter={() => setIsHovered(!isHovered)}
-      onMouseLeave={() => setIsHovered(!isHovered)}
-    >
+    <div className={styles.UserIconContainer} onClick={handleClick}>
       <UserIcon
         width={width}
         height={height}

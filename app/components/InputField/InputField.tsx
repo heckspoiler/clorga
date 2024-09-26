@@ -33,7 +33,7 @@ export default function InputField({
 }: {
   initialProjects: Project[];
 }) {
-  const draggableRef = useRef(null);
+  const draggableRef = useRef<HTMLDivElement>(null);
   const foldContainerRef = useRef(null);
   const [isDragging, setIsDragging] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
@@ -68,28 +68,38 @@ export default function InputField({
         draggableRef.current as HTMLElement
       ).getBoundingClientRect();
       const isVisible =
-        rect.top >= 0 &&
-        rect.left >= -400 &&
-        rect.bottom <= window.innerHeight + 500 &&
-        rect.right >= -400;
+        rect.top >= -rect.height &&
+        rect.left >= -rect.width &&
+        rect.bottom <= window.innerHeight + rect.height &&
+        rect.right <= window.innerWidth + rect.width;
       setIsInViewport(isVisible);
     }
   }, [setIsInViewport, isClosed]);
 
   // Draggable setup
   useGSAP(() => {
-    Draggable.create(draggableRef.current, {
+    const draggableElement = draggableRef.current;
+
+    Draggable.create(draggableElement, {
       type: 'x,y',
       edgeResistance: 0,
-      zIndex: 9,
+      zIndex: 1,
       inertia: true,
       autoScroll: 1,
       dragClickables: false,
-      onDragStart: () => setIsDragging(true),
-      onDrag: checkIfInViewport, // Check during drag
+      onDragStart: () => {
+        setIsDragging(true);
+        if (draggableElement) {
+          draggableElement.style.zIndex = '10';
+        }
+      },
+      onDrag: checkIfInViewport,
       onDragEnd: () => {
         setIsDragging(false);
-        checkIfInViewport(); // Check after drag ends
+        if (draggableElement) {
+          draggableElement.style.zIndex = '1';
+        }
+        checkIfInViewport();
       },
     });
   }, [checkIfInViewport]);
@@ -129,18 +139,20 @@ export default function InputField({
           <div className={styles.FoldArrow} />
         </div>
       </div>
-      <div
-        className={`${styles.Container} ${
-          isClosed ? styles.FormContainerClosed : ''
-        }`}
-        ref={foldContainerRef}
-      >
+      <div>
         <div
-          className={`${styles.FormContainer} ${
+          className={`${styles.Container} ${
             isClosed ? styles.FormContainerClosed : ''
           }`}
+          ref={foldContainerRef}
         >
-          <InputFieldForm projects={initialProjects} />
+          <div
+            className={`${styles.FormContainer} ${
+              isClosed ? styles.FormContainerClosed : ''
+            }`}
+          >
+            <InputFieldForm projects={initialProjects} />
+          </div>
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 .Main {
     display: flex;
     flex-direction: column;
-    bottom: 2rem;
+    bottom: 40rem;
     right: 2rem;
     position: absolute;
 
@@ -13,6 +13,7 @@
     border: 1px solid black;
     background-color: white;
     box-shadow: 4px 4px 1px black;
+    position: absolute;
 
 }
 
@@ -24,6 +25,7 @@
     align-items: center;
     background-color: var(--yellow);
     box-shadow: 4px 4px 1px black;
+    width: 25rem;
 }
 
 .FoldArrowDiv {
@@ -49,6 +51,7 @@
     transform-origin: top;
     overflow: hidden;
     border-top: none;
+    transition-delay: display 0.2s;
     transition: transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1)
 }
 
@@ -56,7 +59,7 @@
     transform: scaleY(0);
 }
 
-.isDragging {}
+
 
 
 /* Enable hover only on non-touch devices */

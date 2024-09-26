@@ -13,32 +13,32 @@ export default function Topbar() {
   const [color, setColor] = useState('white');
   const [longestStrokeColor, setLongestStrokeColor] = useState('white');
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setIsVisible(false);
-  //   }, 3000);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsVisible(false);
+    }, 3000);
 
-  //   return () => clearTimeout(timer);
-  // }, []);
+    return () => clearTimeout(timer);
+  }, []);
 
-  // const handleMouseEnter = useCallback(() => {
-  //   setIsHovered(true);
-  //   setIsVisible(true);
-  // }, []);
+  const handleMouseEnter = useCallback(() => {
+    setIsHovered(true);
+    setIsVisible(true);
+  }, []);
 
-  // const handleMouseLeave = useCallback(() => {
-  //   setIsHovered(false);
-  // }, []);
+  const handleMouseLeave = useCallback(() => {
+    setIsHovered(false);
+  }, []);
 
-  // useEffect(() => {
-  //   let timer: NodeJS.Timeout;
-  //   if (!isHovered && isVisible) {
-  //     timer = setTimeout(() => {
-  //       setIsVisible(false);
-  //     }, 2000);
-  //   }
-  //   return () => clearTimeout(timer);
-  // }, [isHovered, isVisible]);
+  useEffect(() => {
+    let timer: NodeJS.Timeout;
+    if (!isHovered && isVisible) {
+      timer = setTimeout(() => {
+        setIsVisible(false);
+      }, 2000);
+    }
+    return () => clearTimeout(timer);
+  }, [isHovered, isVisible]);
 
   useEffect(() => {
     setColor(isVisible ? 'white' : 'rgb(255, 229, 0)');
@@ -47,9 +47,9 @@ export default function Topbar() {
   return (
     <header
       className={`${styles.Topbar} ${isVisible ? styles.TopbarVisible : ''}`}
-      // onMouseLeave={handleMouseLeave}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className={styles.TopbarContainer}>
+      <div className={styles.TopbarContainer} onMouseEnter={handleMouseEnter}>
         <div>
           <h2>CLORGA</h2>
         </div>
@@ -61,7 +61,7 @@ export default function Topbar() {
           styles={styles}
         />
       </div>
-      <div className={styles.ArrowDown}>
+      <div className={styles.ArrowDown} onMouseEnter={handleMouseEnter}>
         <Triangle
           color={color}
           height={66 / 4.4}
