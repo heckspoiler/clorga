@@ -70,7 +70,7 @@ export default function InputField({
       const isVisible =
         rect.top >= 0 &&
         rect.left >= -400 &&
-        rect.bottom <= window.innerHeight &&
+        rect.bottom <= window.innerHeight + 500 &&
         rect.right >= -400;
       setIsInViewport(isVisible);
     }
