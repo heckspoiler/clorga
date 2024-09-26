@@ -58,7 +58,6 @@ export default function MapCanvas({
 
   return (
     <div>
-      <Topbar />
       {projects?.map((project: Project, index: number) => (
         <div key={`${project.id} ${index}`}>
           <h2>{project.project_name}</h2>
