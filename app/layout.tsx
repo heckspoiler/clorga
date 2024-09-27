@@ -3,6 +3,7 @@ import { Space_Mono } from 'next/font/google';
 import './globals.css';
 import { GeistMono } from 'geist/font/mono';
 import Topbar from './components/topbar/Topbar';
+import FixedBackground from './components/fixedBackground/FixedBackground';
 
 const spacemono = Space_Mono({
   subsets: ['latin'],
@@ -38,6 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={spacemono.className}>
+        <FixedBackground />
         <Topbar />
         <main>{children}</main>
       </body>
