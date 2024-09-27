@@ -5,12 +5,18 @@ import styles from './page.module.css';
 //component imports
 
 import Header from './components/Header/Header';
+import FirstSection from './components/FirstSection/FirstSection';
 
 export default function page() {
   return (
     <main className={styles.Main}>
       <Header />
-      <div></div>
+      <section className={styles.SectionContainer}>
+        <FirstSection />
+      </section>
+      <section className={styles.SectionContainer}>
+        <FirstSection />
+      </section>
     </main>
   );
 }

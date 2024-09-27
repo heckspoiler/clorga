@@ -59,20 +59,22 @@ export default function MapCanvas({
 
   return (
     <div className={styles.Main}>
-      {projects?.map((project: Project, index: number) => (
-        <div key={`${project.id} ${index}`}>
-          <h2>{project.project_name}</h2>
-          <div>
-            {project.project_ideas.map((idea: Idea, index: number) => (
-              <div key={index}>
-                <h3>{idea.title}</h3>
-                <p>{idea.description}</p>
-                <p>{idea.tags?.join(', ')}</p>
-              </div>
-            ))}
+      <div className={styles.CanvasContainer}>
+        {projects?.map((project: Project, index: number) => (
+          <div key={`${project.id} ${index}`}>
+            <h2>{project.project_name}</h2>
+            <div>
+              {project.project_ideas.map((idea: Idea, index: number) => (
+                <div key={index}>
+                  <h3>{idea.title}</h3>
+                  <p>{idea.description}</p>
+                  <p>{idea.tags?.join(', ')}</p>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
       <BringBackButton />
     </div>
   );

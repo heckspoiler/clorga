@@ -43,7 +43,7 @@ export default function LoginField({ styles }: { styles: any }) {
         <div className={styles.ButtonContainer}>
           <div className={styles.Buttons}>
             <button formAction={login}>Log in</button>
-            <button formAction={signup}>Sign up</button>
+            {/* <button formAction={signup}>Sign up</button> */}
           </div>
           <div className={styles.ForgotPassword}>
             <a>Forgot Password...?</a>

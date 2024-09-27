@@ -1,7 +1,5 @@
 .Main {
-    background: white;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3) .01em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, 0.3) .01em, transparent .1em);
-    background-size: 5vw 5vw;
+
     height: 100vh;
     display: flex;
     align-items: center;
