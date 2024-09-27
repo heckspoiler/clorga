@@ -21,9 +21,6 @@ export default function MapCanvas({
 }: {
   initialProjects: Project[] | any[] | null;
 }) {
-  if (process.env.NODE_ENV === 'production') {
-    return null;
-  }
   const [projects, setProjects] = useState<Project[] | any[] | null>(
     initialProjects
   );
