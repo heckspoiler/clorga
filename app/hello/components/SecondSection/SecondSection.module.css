@@ -16,7 +16,7 @@
 }
 
 .Card {
-    border: 1px solid black;
+    border: var(--border);
     height: 100%;
     width: 100%;
     display: flex;
@@ -120,7 +120,7 @@
 
 .LinkContainer a {
     padding: 0.5rem 0.75rem;
-    border: 1px solid black;
+    border: var(--border);
     background-color: var(--yellow);
     box-shadow: 1px 1px 1px black;
 }

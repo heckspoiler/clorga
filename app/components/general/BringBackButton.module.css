@@ -14,7 +14,7 @@
 .ButtonContainer {
     position: relative;
     background-color: var(--action-pink);
-    border: 1px solid black;
+    border: var(--border);
     box-shadow: 1px 1px 1px black;
 }
 

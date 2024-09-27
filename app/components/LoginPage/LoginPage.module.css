@@ -14,7 +14,7 @@
 
 .FormContainer {
     background-color: white;
-    border: 1px solid black;
+    border: var(--border);
     box-shadow: 4px 4px 1px black;
     height: 25rem;
     width: 50rem;
@@ -46,7 +46,7 @@
 
 
 .Title p span {
-    border-bottom: 5px solid;
+    border-bottom: 5px dotted;
     border-image: linear-gradient(to right,
             var(--pastel-green) 0 33%,
             var(--active-blue) 33% 66%,
@@ -119,7 +119,7 @@
 
 .Buttons button {
     padding: 0.5rem 1rem;
-    border: 1px solid black;
+    border: var(--border);
     box-shadow: 2px 2px 1px black;
     width: fit-content;
     transition: scale 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
@@ -141,7 +141,7 @@
 .ForgotPassword {
     font-size: 0.6rem;
     letter-spacing: normal;
-    border-bottom: 1px dotted black;
+    border-bottom: var(--border);
     cursor: pointer;
 }
 

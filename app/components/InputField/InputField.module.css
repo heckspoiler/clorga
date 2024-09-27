@@ -10,7 +10,7 @@
 .Container {
     width: 25rem;
     resize: both;
-    border: 1px solid black;
+    border: var(--border);
     background-color: white;
     box-shadow: 4px 4px 1px black;
     position: absolute;
@@ -19,7 +19,7 @@
 
 .FoldArrowContainer {
     padding: 1em;
-    border: 1px solid black;
+    border: var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;

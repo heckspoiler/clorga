@@ -98,7 +98,7 @@
 }
 
 .SubmitField div {
-    border: 1px solid black;
+    border: var(--border);
     padding: 0.5em 1em;
 }
 
@@ -122,7 +122,7 @@
 .Project,
 .AddTag,
 .AddProject {
-    border: 1px solid black;
+    border: var(--border);
     width: fit-content;
     padding: 0.5em 1em;
     box-shadow: 1px 1px 1px black;
@@ -203,7 +203,7 @@
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    border: 1px solid black;
+    border: var(--border);
 }
 
 .LegendRow:first-of-type div {
@@ -226,7 +226,7 @@
 }
 
 .SubmitButton {
-    border: 1px solid black;
+    border: var(--border);
     background-color: var(--action-pink);
     display: flex;
     align-items: center;
@@ -244,7 +244,7 @@
     width: fit-content;
     align-self: flex-end;
     background-color: var(--action-pink);
-    border: 1px solid black;
+    border: var(--border);
     box-shadow: 1px 1px 1px black;
     font-size: 0.9rem;
 }

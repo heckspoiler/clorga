@@ -4,6 +4,7 @@
   --yellow-lower-opacity: rgba(255, 229, 0, 0.1);
   --action-pink: #FFA6F6;
   --active-blue: #00F0FF;
+  --border: 1px dashed black;
 }
 
 
@@ -61,7 +62,7 @@ label {
 
 input,
 textarea {
-  border: 1px solid black;
+  border: var(--border);
   padding: 0.5rem;
   font-size: 0.7rem;
   font-family: inherit;
