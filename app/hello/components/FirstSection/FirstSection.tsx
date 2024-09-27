@@ -11,7 +11,7 @@ export default function FirstSection() {
         <TextContentSection />
       </div>
       <div className={styles.Subsection}>
-        <Image src="/images/thingy.png" height={600} width={600} alt="Thingy" />
+        <Image src="/images/thingy.png" height={650} width={650} alt="Thingy" />
       </div>
     </div>
   );

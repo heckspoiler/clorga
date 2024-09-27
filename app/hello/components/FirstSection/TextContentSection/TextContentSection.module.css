@@ -1,50 +1,59 @@
 .TextContentSection {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
     align-items: center;
     justify-content: center;
-
+    gap: 3rem;
 }
 
-.TextContentSection h1 {
+.TitleContainer {
+    width: 80%;
+}
+
+.TitleContainer h1 {
     font-size: 2.5rem;
-    max-width: 80%;
+    max-width: 100%;
     line-height: 1.5;
     font-weight: 500;
+    overflow: hidden;
+
 }
 
-.TextContentSection p {
-    max-width: 80%;
-    line-height: 1.5;
-    font-size: 1.1rem;
-}
-
-.TextContentSection h1 span:nth-of-type(1) {
-    text-transform: uppercase;
-    font-size: 3rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-weight: 700;
-}
-
-.TextContentSection h1 span:nth-of-type(2) {
-
+.TitleContainer h1:nth-of-type(1) {
     border-bottom: 10px solid;
     border-image: linear-gradient(to right,
             var(--pastel-green) 0 33%,
             var(--active-blue) 33% 66%,
             var(--action-pink) 66% 100%) 1;
+}
+
+.TextContentSection p {
+    padding: 1rem 0;
+    max-width: 80%;
+    line-height: 1.5;
+    font-size: 1rem;
+}
+
+.TitleContainer h1 span:nth-of-type(1) {
+    text-transform: uppercase;
+    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+}
+
+.Creativity {
+
+
     text-transform: uppercase;
     font-weight: 700;
     transform-origin: center;
     font-size: 3rem;
+    width: fit-content;
 }
 
 .FindOutMoreLink {
     height: fit-content;
-    padding: 1rem 0 0 0;
     width: 80%;
 }
 
