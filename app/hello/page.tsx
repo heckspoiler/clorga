@@ -6,6 +6,7 @@ import styles from './page.module.css';
 
 import Header from './components/Header/Header';
 import FirstSection from './components/FirstSection/FirstSection';
+import SecondSection from './components/SecondSection/SecondSection';
 
 export default function page() {
   return (
@@ -15,7 +16,7 @@ export default function page() {
         <FirstSection />
       </section>
       <section className={styles.SectionContainer}>
-        <FirstSection />
+        <SecondSection />
       </section>
     </main>
   );
