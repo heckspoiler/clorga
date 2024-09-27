@@ -1,40 +1,44 @@
 export const cardData = [
   {
     id: 1,
-    title: 'Card 1',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. ',
-    imageSrc: '/images/thingy.png',
-    imageAlt: 'Thingy',
-    linkText: 'Hello',
-    link: '/card1',
+    title: 'Intuitive Design',
+    description:
+      'Streamline your workflow with our user-friendly interface. No learning curve, just pure creativity.',
+    imageSrc: '/images/intuitive_design.png',
+    imageAlt: 'Intuitive Design Icon',
+    linkText: 'Explore Features',
+    link: '/features',
   },
   {
     id: 2,
-    title: 'Card 2',
-    description: 'Praesent eu nulla vel augue venenatis tincidunt. ',
+    title: 'Versatile Collaboration',
+    description:
+      'From solo projects to large teams, adapt to any creative scenario. Music, film, or design - we have got you covered.',
     imageSrc: '/images/thingy.png',
-    imageAlt: 'Thingy',
-    link: '/card2',
-    linkText: 'Hello',
+    imageAlt: 'Collaboration Icon',
+    link: '/use-cases',
+    linkText: 'View Use Cases',
   },
   {
     id: 3,
-    title: 'Card 3',
+    title: 'Smart Organization',
     description:
-      'Fusce quis justo vel nunc lacinia tincidunt. Sed vitae nunc vitae nunc tincidunt tincidunt. ',
+      'Effortlessly categorize and find your ideas. Let your creativity flow while we handle the structure.',
     imageSrc: '/images/thingy.png',
-    imageAlt: 'Thingy',
-    link: '/card3',
-    linkText: 'Hello',
+    imageAlt: 'Organization Icon',
+    link: '/organization',
+    linkText: 'Learn More',
   },
+
   {
     id: 4,
-    title: 'Card 4',
+    title: 'Inspiring Insights',
     description:
-      'Donec euismod, nisl eget ultricies ultricies, nisl nunc tincidunt nunc, nec tincidunt nunc nunc id nunc. ',
+      'Gain new perspectives on your work. Our analytics help you understand and improve your creative process.',
     imageSrc: '/images/thingy.png',
-    imageAlt: 'Thingy',
-    link: '/card4',
-    linkText: 'Hello',
+
+    imageAlt: 'Insights Icon',
+    link: '/insights',
+    linkText: 'Discover Insights',
   },
 ];

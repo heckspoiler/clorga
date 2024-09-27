@@ -9,8 +9,8 @@ export default function SecondSection() {
   return (
     <section className={styles.SecondSectionContainer}>
       <div className={styles.CardGrid}>
-        {cardData.map((card) => (
-          <div className={styles.Card}>
+        {cardData.map((card, index) => (
+          <div className={styles.Card} key={index}>
             <div className={styles.CardText}>
               <h2>{card.title}</h2>
               <p>{card.description}</p>
@@ -18,12 +18,14 @@ export default function SecondSection() {
                 <a href={card.link}>{card.linkText}</a>
               </div>
             </div>
-            <Image
-              src={card.imageSrc}
-              height={220}
-              width={220}
-              alt={card.imageAlt}
-            />
+            <div className={styles.CardImage}>
+              <Image
+                src={card.imageSrc}
+                height={220}
+                width={220}
+                alt={card.imageAlt}
+              />
+            </div>
           </div>
         ))}
       </div>
