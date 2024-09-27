@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
-
 // type imports
 
 import { Project } from '@/app/page';
