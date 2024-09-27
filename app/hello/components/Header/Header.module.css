@@ -1,0 +1,40 @@
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 4rem;
+    display: flex;
+    align-items: center;
+}
+
+.Container {
+    width: 33%;
+}
+
+.LogoContainer {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.LogoContainer h2 {
+    font-size: 2rem;
+}
+
+.LogoSvgContainer {
+    display: flex;
+    align-items: center;
+    animation: spin 20s linear infinite
+}
+
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}

@@ -72,6 +72,10 @@ textarea:focus {
 
 }
 
+li {
+  list-style-type: none;
+}
+
 /* Enable hover only on non-touch devices */
 @media (hover: hover) and (pointer: fine) {}
 
