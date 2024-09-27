@@ -21,8 +21,8 @@ export default function SecondSection() {
             <div className={styles.CardImage}>
               <Image
                 src={card.imageSrc}
-                height={220}
-                width={220}
+                height={200}
+                width={200}
                 alt={card.imageAlt}
               />
             </div>

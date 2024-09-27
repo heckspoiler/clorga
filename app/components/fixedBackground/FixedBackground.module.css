@@ -2,10 +2,33 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    inset: 0;
     height: 100%;
-    z-index: -1;
-    background: white;
-    /* background-image: linear-gradient(rgba(0, 0, 0, 0.2) .01em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, 0.2) .01em, transparent .1em);
-    background-size: 10vw 10vw; */
+    width: 100%;
+    background:
+        linear-gradient(45deg,
+            rgba(184, 255, 159, 0.1) 0%,
+            rgba(255, 255, 255, 0.1) 25%,
+            rgba(255, 229, 0, 0.1) 50%,
+            rgba(255, 166, 246, 0.1) 75%,
+            rgba(0, 240, 255, 0.1) 100%),
+        linear-gradient(135deg,
+            white 0%,
+            white 100%);
+    background-size: 400% 400%, 100% 100%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%, 0% 0%;
+    }
+
+    50% {
+        background-position: 100% 50%, 0% 0%;
+    }
+
+    100% {
+        background-position: 0% 50%, 0% 0%;
+    }
 }
