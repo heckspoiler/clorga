@@ -9,7 +9,8 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 import { Project } from '@/app/page';
 import { Idea } from '@/app/page';
 import BringBackButton from '../general/BringBackButton';
-import Topbar from '../topbar/Topbar';
+
+import styles from './MapCanvas.module.css';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
@@ -57,7 +58,7 @@ export default function MapCanvas({
   }, [fetchProjects, isSubmitted]);
 
   return (
-    <div>
+    <div className={styles.Main}>
       {projects?.map((project: Project, index: number) => (
         <div key={`${project.id} ${index}`}>
           <h2>{project.project_name}</h2>

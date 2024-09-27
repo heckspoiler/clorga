@@ -2,4 +2,33 @@
     display: flex;
     align-items: center;
     justify-content: right;
+    gap: 2rem;
+}
+
+.LoginSection a {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.7rem;
+    border: 1px solid black;
+    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    box-shadow: 1px 1px 1px black;
+}
+
+.LoginSection a:hover {
+    filter: brightness(1.1);
+    scale: 1.02
+}
+
+.LoginSection a:active {
+    filter: brightness(1.1);
+    scale: 1;
+    box-shadow: 0px 0px 0px black;
+
+}
+
+.LoginSection a:nth-of-type(1) {
+    background-color: var(--yellow);
+}
+
+.LoginSection a:nth-of-type(2) {
+    background-color: var(--pastel-green);
 }
