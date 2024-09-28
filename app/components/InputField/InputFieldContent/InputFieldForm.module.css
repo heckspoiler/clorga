@@ -125,7 +125,7 @@
     border: var(--border);
     width: fit-content;
     padding: 0.5em 1em;
-    box-shadow: 1px 1px 1px var(--black);
+    box-shadow: var(--boxshadow-small);
     font-size: 0.7rem;
     transition: transform 0.2s var(--bezier)
 }
@@ -156,7 +156,7 @@
 .Submit:hover {
     cursor: pointer;
     transform: scale(1.03);
-    box-shadow: 1px 1px 1px var(--black);
+    box-shadow: var(--boxshadow-small);
     filter: brightness(1.1);
 }
 
@@ -230,7 +230,7 @@
     background-color: var(--action-pink);
     display: flex;
     align-items: center;
-    box-shadow: 1px 1px 1px var(--black);
+    box-shadow: var(--boxshadow-small);
     font-size: 0.7rem;
 }
 
@@ -245,7 +245,7 @@
     align-self: flex-end;
     background-color: var(--action-pink);
     border: var(--border);
-    box-shadow: 1px 1px 1px var(--black);
+    box-shadow: var(--boxshadow-small);
     font-size: 0.9rem;
 }
 

@@ -118,7 +118,7 @@
     position: absolute;
     background-color: white;
     border: var(--border);
-    box-shadow: 2px 2px 1px var(--black);
+    box-shadow: var(--boxshadow-large);
     top: 100%;
     right: 0;
     display: flex;
@@ -181,7 +181,7 @@
     border: var(--border);
     background-color: var(--action-pink);
     transition: filter 0.2s var(--bezier);
-    box-shadow: 1px 1px 1px var(--black);
+    box-shadow: var(--boxshadow-small);
     font-size: 0.7rem;
 }
 

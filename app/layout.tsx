@@ -1,11 +1,26 @@
 import type { Metadata, Viewport } from 'next';
-import { Space_Mono } from 'next/font/google';
+import {
+  Space_Mono,
+  Noto_Sans,
+  Azeret_Mono,
+  Chivo_Mono,
+} from 'next/font/google';
 import './globals.css';
 import { GeistMono } from 'geist/font/mono';
 import Topbar from './components/topbar/Topbar';
 import FixedBackground from './components/fixedBackground/FixedBackground';
 
 const spacemono = Space_Mono({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
+
+const noto = Noto_Sans({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+});
+
+const azeret = Chivo_Mono({
   subsets: ['latin'],
   weight: ['400', '700'],
 });
@@ -38,7 +53,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={spacemono.className}>
+      <body className={azeret.className}>
         <FixedBackground />
         <Topbar />
         <main>{children}</main>

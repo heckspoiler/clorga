@@ -10,7 +10,7 @@
     font-size: 0.7rem;
     border: var(--border);
     transition: all 0.2s var(--bezier);
-    box-shadow: 1px 1px 1px var(--black)
+    box-shadow: var(--boxshadow-small);
 }
 
 .LoginSection a:hover {

@@ -15,7 +15,7 @@
 .FormContainer {
     background-color: white;
     border: var(--border);
-    box-shadow: 4px 4px 1px var(--black);
+    box-shadow: var(--boxshadow-large);
     height: 25rem;
     width: 50rem;
     display: flex;
@@ -52,7 +52,7 @@
             var(--active-blue) 33% 66%,
             var(--action-pink) 66% 100%) 1;
     text-transform: uppercase;
-    font-weight: 700;
+    font-weight: 500;
     transform-origin: center;
 }
 
@@ -120,7 +120,7 @@
 .Buttons button {
     padding: 0.5rem 1rem;
     border: var(--border);
-    box-shadow: 2px 2px 1px var(--black);
+    box-shadow: var(--boxshadow-large);
     width: fit-content;
     transition: scale 0.2s var(--bezier), filter 0.2s var(--bezier)
 }

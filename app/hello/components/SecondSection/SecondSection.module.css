@@ -23,7 +23,7 @@
     align-items: center;
     padding: 2rem;
     background-color: white;
-    box-shadow: 3px 3px 1px var(--black);
+    box-shadow: var(--boxshadow-large);
     background-image: linear-gradient(rgba(0, 0, 0, 0.1) .01em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, 0.1) .01em, transparent .1em);
     background-size: 2vw 2vw;
 }
@@ -125,7 +125,7 @@
     padding: 0.5rem 0.75rem;
     border: var(--border);
     background-color: white;
-    box-shadow: 1px 1px 1px var(--black);
+    box-shadow: var(--boxshadow-small);
 }
 
 .LinkContainer a:hover {

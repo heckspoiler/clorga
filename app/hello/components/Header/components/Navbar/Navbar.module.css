@@ -65,7 +65,5 @@
 }
 
 .NavbarList li:hover::before {
-
     transform: translateY(calc(0% + 5px));
-
 }

@@ -1,12 +1,21 @@
 :root {
+
   --pastel-green: rgb(184, 255, 159);
   --yellow: rgb(255, 229, 0);
   --yellow-lower-opacity: rgba(255, 229, 0, 0.1);
   --action-pink: #FFA6F6;
   --active-blue: #00F0FF;
   --black: rgb(67, 67, 67);
-  --border: 2px groove var(--black);
+  --border-image: linear-gradient(to right,
+      var(--pastel-green) 0 33%,
+      var(--active-blue) 33% 66%,
+      var(--action-pink) 66% 100%) 1;
+  --border: 0.5px groove var(--black);
   --bezier: cubic-bezier(0.47, 0, 0.75, 1);
+  --boxshadow-large: 3px 3px 1px transparent;
+
+  --boxshadow-small: 1px 1px 1px transparent,
+
 
 }
 
@@ -36,9 +45,14 @@ body {
   position: relative;
 }
 
+h1 {
+  font-weight: 500;
+}
+
 h2,
 h4 {
   text-transform: uppercase;
+  font-weight: 500;
 }
 
 
@@ -59,7 +73,7 @@ button:hover {
 }
 
 label {
-  font-weight: 600;
+  font-weight: 500;
   text-transform: uppercase;
   font-size: 0.8rem;
 }
