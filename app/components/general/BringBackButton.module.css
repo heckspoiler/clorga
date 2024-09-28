@@ -2,20 +2,20 @@
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    transition: transform 0.6s var(--bezier);
     transform: translateY(20vh);
 }
 
 .ContainerVisible {
     transform: translateY(0);
-    transition: transform 0.6s cubic-bezier(0.455, 0.03, 0.515, 0.955)
+    transition: transform 0.6s var(--bezier)
 }
 
 .ButtonContainer {
     position: relative;
     background-color: var(--action-pink);
     border: var(--border);
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 1px 1px 1px var(--black);
 }
 
 .ButtonContainer button {

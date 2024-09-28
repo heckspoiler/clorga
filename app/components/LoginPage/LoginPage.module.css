@@ -15,7 +15,7 @@
 .FormContainer {
     background-color: white;
     border: var(--border);
-    box-shadow: 4px 4px 1px black;
+    box-shadow: 4px 4px 1px var(--black);
     height: 25rem;
     width: 50rem;
     display: flex;
@@ -29,7 +29,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border-right: 1px dashed black;
+    border-right: 1px dashed var(--black);
     width: 50%;
     gap: 2rem;
 }
@@ -84,12 +84,12 @@
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    border-bottom: 1px dashed black;
+    border-bottom: 1px dashed var(--black);
     padding-bottom: 1rem;
 }
 
 .EmailContainer {
-    border-top: 1px dashed black;
+    border-top: 1px dashed var(--black);
     padding-top: 1rem;
 }
 
@@ -120,9 +120,9 @@
 .Buttons button {
     padding: 0.5rem 1rem;
     border: var(--border);
-    box-shadow: 2px 2px 1px black;
+    box-shadow: 2px 2px 1px var(--black);
     width: fit-content;
-    transition: scale 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    transition: scale 0.2s var(--bezier), filter 0.2s var(--bezier)
 }
 
 .Buttons button:hover {

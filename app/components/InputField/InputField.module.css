@@ -12,7 +12,7 @@
     resize: both;
     border: var(--border);
     background-color: white;
-    box-shadow: 4px 4px 1px black;
+    box-shadow: 4px 4px 1px var(--black);
     position: absolute;
 
 }
@@ -24,7 +24,7 @@
     justify-content: space-between;
     align-items: center;
     background-color: var(--yellow);
-    box-shadow: 4px 4px 1px black;
+    box-shadow: 4px 4px 1px var(--black);
     width: 25rem;
 }
 
@@ -40,8 +40,8 @@
 .FoldArrow {
     height: 0.6em;
     width: 0.6em;
-    border-left: 2px solid black;
-    border-bottom: 2px solid black;
+    border-left: 2px solid var(--black);
+    border-bottom: 2px solid var(--black);
     rotate: 135deg;
 }
 
@@ -52,7 +52,7 @@
     overflow: hidden;
     border-top: none;
     transition-delay: display 0.2s;
-    transition: transform 0.3s cubic-bezier(0.215, 0.610, 0.355, 1)
+    transition: transform 0.3s var(--bezier)
 }
 
 .FormContainerClosed {

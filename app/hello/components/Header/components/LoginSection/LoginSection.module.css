@@ -9,8 +9,8 @@
     padding: 0.5rem 0.75rem;
     font-size: 0.7rem;
     border: var(--border);
-    transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    box-shadow: 1px 1px 1px black;
+    transition: all 0.2s var(--bezier);
+    box-shadow: 1px 1px 1px var(--black)
 }
 
 .LoginSection a:hover {
@@ -21,8 +21,7 @@
 .LoginSection a:active {
     filter: brightness(1.1);
     scale: 1;
-    box-shadow: 0px 0px 0px black;
-
+    box-shadow: 0px 0px 0px var(--black);
 }
 
 .LoginSection a:nth-of-type(1) {
@@ -30,7 +29,6 @@
 }
 
 .LoginSection a:nth-of-type(2) {
-    background-color: black;
-    color: white;
-    border: 1px dashed white;
+    background-color: var(--pastel-green);
+    border: var(--border);
 }

@@ -34,7 +34,7 @@
     max-height: 0px;
     transform: scaleY(0);
     opacity: 0;
-    transition: max-height 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1), opacity 0.1s cubic-bezier(0.165, 0.84, 0.44, 1)
+    transition: max-height 0.4s var(--bezier), transform 0.2s var(--bezier), opacity 0.1s var(--bezier)
 }
 
 .DateFieldIsVisible {
@@ -125,9 +125,9 @@
     border: var(--border);
     width: fit-content;
     padding: 0.5em 1em;
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 1px 1px 1px var(--black);
     font-size: 0.7rem;
-    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+    transition: transform 0.2s var(--bezier)
 }
 
 .Tag,
@@ -145,7 +145,7 @@
     gap: 0.5rem;
     position: relative;
     font-size: 0.7rem;
-    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+    transition: transform 0.2s var(--bezier)
 }
 
 .Tag:hover,
@@ -156,12 +156,12 @@
 .Submit:hover {
     cursor: pointer;
     transform: scale(1.03);
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 1px 1px 1px var(--black);
     filter: brightness(1.1);
 }
 
 .SvgContainer {
-    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: transform 0.2s var(--bezier);
     height: fit-content;
     width: fit-content;
     display: flex;
@@ -180,7 +180,7 @@
 .SubmitButton:active {
     cursor: pointer;
     transform: scale(1.03);
-    box-shadow: 0px 0px 0px black;
+    box-shadow: 0px 0px 0px var(--black);
     filter: brightness(1.1);
 
 }
@@ -203,7 +203,7 @@
     height: 10px;
     width: 10px;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid var(--black);
 }
 
 .LegendRow:first-of-type div {
@@ -230,7 +230,7 @@
     background-color: var(--action-pink);
     display: flex;
     align-items: center;
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 1px 1px 1px var(--black);
     font-size: 0.7rem;
 }
 
@@ -245,7 +245,7 @@
     align-self: flex-end;
     background-color: var(--action-pink);
     border: var(--border);
-    box-shadow: 1px 1px 1px black;
+    box-shadow: 1px 1px 1px var(--black);
     font-size: 0.9rem;
 }
 

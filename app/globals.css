@@ -4,7 +4,10 @@
   --yellow-lower-opacity: rgba(255, 229, 0, 0.1);
   --action-pink: #FFA6F6;
   --active-blue: #00F0FF;
-  --border: 1px dashed black;
+  --black: rgb(67, 67, 67);
+  --border: 2px groove var(--black);
+  --bezier: cubic-bezier(0.47, 0, 0.75, 1);
+
 }
 
 
@@ -13,6 +16,7 @@
   padding: 0;
   margin: 0;
   line-height: 1.2;
+  color: var(--black)
 }
 
 html {
@@ -66,7 +70,7 @@ textarea {
   padding: 0.5rem;
   font-size: 0.7rem;
   font-family: inherit;
-  transition: background-color 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+  transition: background-color 0.2s var(--bezier);
 }
 
 input:focus,

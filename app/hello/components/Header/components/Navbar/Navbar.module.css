@@ -12,7 +12,7 @@
 }
 
 .NavbarList li {
-    background-color: white;
+
     position: relative;
     overflow: hidden;
     z-index: 1;
@@ -23,18 +23,17 @@
     position: relative;
     z-index: 2;
     padding: 0.5rem 0.75rem;
-    font-size: 0.7rem;
-    border: var(--border);
+    font-size: 0.9rem;
 }
 
-.NavbarList li::before {
+/* .NavbarList li::before {
     content: "";
     height: 100%;
     width: 100%;
     position: absolute;
     background-color: var(--yellow);
     transform: translateY(-100%);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    transition: transform 0.3s var(--bezier)
 }
 
 .NavbarList li::after {
@@ -44,7 +43,7 @@
     position: absolute;
     background-color: var(--yellow);
     transform: translateY(100%);
-    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transition: transform 0.3s var(--bezier);
     transition-delay: 0.2s
 }
 
@@ -52,4 +51,21 @@
 .NavbarList li:hover:after {
     background-color: var(--yellow);
     transform: translateY(0);
+} */
+
+.NavbarList li::before {
+    content: "";
+    height: 5%;
+    width: 100%;
+    position: absolute;
+    background-color: var(--black);
+    transform: translateY(calc(100% + 10px));
+    transition: transform 0.2s var(--bezier);
+    bottom: 5px;
+}
+
+.NavbarList li:hover::before {
+
+    transform: translateY(calc(0% + 5px));
+
 }
