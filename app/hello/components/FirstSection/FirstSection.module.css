@@ -11,10 +11,11 @@
     align-items: center;
     justify-content: center;
     padding: 3rem 3rem 0 3rem;
+    position: relative;
 }
 
 .LottieContainer {
-
+    transform: translateY(30px) translateX(30px);
     scale: 1.1;
 }
 

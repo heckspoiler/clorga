@@ -21,8 +21,9 @@
     width: 100%;
     display: flex;
     align-items: center;
-    padding: 2rem;
-    background-color: white;
+    justify-content: space-evenly;
+    padding: 1rem;
+    background-color: var(--lightestblue);
     box-shadow: var(--boxshadow-large);
 
 }
@@ -104,6 +105,7 @@
 }
 
 .CardText {
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -128,22 +130,24 @@
 }
 
 .LinkContainer a:hover {
-    filter: brightness(1.05)
+    filter: brightness(1.1);
+    scale: 1.03
 }
 
 .CardImage {
-    width: 50%;
+    width: fit-content;
     display: flex;
     align-items: center;
     justify-content: center;
     object-fit: contain;
-    max-height: 16rem;
+    height: 12rem;
     position: relative;
 }
 
 .CardImage img {
-    scale: 0.8;
+    scale: 0.9;
     width: auto;
+    height: 100%;
     object-fit: contain;
 
 }

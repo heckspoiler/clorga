@@ -14,7 +14,7 @@ export const cardData = [
     title: 'Versatile Collaboration',
     description:
       'From solo projects to large teams, adapt to any creative scenario. Music, film, or design - we have got you covered.',
-    imageSrc: '/images/thingy.png',
+    imageSrc: '/images/versatile_collaborations.png',
     imageAlt: 'Collaboration Icon',
     link: '/use-cases',
     linkText: 'View Use Cases',
@@ -24,7 +24,7 @@ export const cardData = [
     title: 'Smart Organization',
     description:
       'Effortlessly categorize and find your ideas. Let your creativity flow while we handle the structure.',
-    imageSrc: '/images/thingy.png',
+    imageSrc: '/images/smart.png',
     imageAlt: 'Organization Icon',
     link: '/organization',
     linkText: 'Learn More',
@@ -35,8 +35,7 @@ export const cardData = [
     title: 'Inspiring Insights',
     description:
       'Gain new perspectives on your work. Our analytics help you understand and improve your creative process.',
-    imageSrc: '/images/thingy.png',
-
+    imageSrc: '/images/intuitive_design.png',
     imageAlt: 'Insights Icon',
     link: '/insights',
     linkText: 'Discover Insights',
