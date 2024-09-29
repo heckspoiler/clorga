@@ -5,18 +5,26 @@
   --yellow-lower-opacity: rgba(255, 229, 0, 0.1);
   --action-pink: #FFA6F6;
   --active-blue: #00F0FF;
+
   --black: rgb(67, 67, 67);
   --border-image: linear-gradient(to right,
       var(--pastel-green) 0 33%,
       var(--active-blue) 33% 66%,
       var(--action-pink) 66% 100%) 1;
-  --border: 0.5px groove var(--black);
+  --border: 0.5px groove var(--darkerblue);
   --bezier: cubic-bezier(0.47, 0, 0.75, 1);
-  --boxshadow-large: 3px 3px 1px transparent;
+  --boxshadow-large: 4px 4px 1px var(--fontblue);
 
-  --boxshadow-small: 1px 1px 1px transparent,
+  --boxshadow-small: 2px 2px 1px var(--fontblue);
 
 
+  /* monochrome blue color scheme */
+  --lightestblue: #f3f8fd;
+  --lightblue: #deecfb;
+  --lighterblue: #bedaf7;
+  --accentblue: #7ab3ef;
+  --darkerblue: #368ce7;
+  --fontblue: #1666ba;
 }
 
 
@@ -25,7 +33,7 @@
   padding: 0;
   margin: 0;
   line-height: 1.2;
-  color: var(--black)
+  color: var(--fontblue)
 }
 
 html {
@@ -90,7 +98,7 @@ textarea {
 input:focus,
 textarea:focus {
   outline: none;
-  background-color: var(--yellow-lower-opacity);
+  background-color: var(--lightestblue);
 
 }
 

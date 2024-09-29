@@ -1,5 +1,5 @@
 .Main {
-
+    z-index: 1;
     height: 100vh;
     display: flex;
     align-items: center;

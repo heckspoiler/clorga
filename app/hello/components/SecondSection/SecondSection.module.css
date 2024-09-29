@@ -24,8 +24,7 @@
     padding: 2rem;
     background-color: white;
     box-shadow: var(--boxshadow-large);
-    background-image: linear-gradient(rgba(0, 0, 0, 0.1) .01em, transparent .1em), linear-gradient(90deg, rgba(0, 0, 0, 0.1) .01em, transparent .1em);
-    background-size: 2vw 2vw;
+
 }
 
 .Card:nth-of-type(even) {
@@ -84,10 +83,10 @@
     width: 100%;
     left: 0;
     background: linear-gradient(to right,
-            var(--pastel-green) 0%,
-            var(--active-blue) 33%,
-            var(--action-pink) 66%,
-            var(--pastel-green) 100%);
+            var(--lightblue) 0%,
+            var(--lighterblue) 33%,
+            var(--lighterblue) 66%,
+            var(--lightblue) 100%);
     background-size: 200% 100%;
 }
 

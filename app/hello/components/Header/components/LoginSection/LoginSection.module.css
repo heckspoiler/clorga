@@ -9,13 +9,13 @@
     padding: 0.5rem 0.75rem;
     font-size: 0.7rem;
     border: var(--border);
-    transition: all 0.2s var(--bezier);
+    transition: filter 0.2s var(--bezier);
     box-shadow: var(--boxshadow-small);
 }
 
 .LoginSection a:hover {
     filter: brightness(1.1);
-    scale: 1.02
+    scale: 1.03
 }
 
 .LoginSection a:active {
@@ -29,6 +29,6 @@
 }
 
 .LoginSection a:nth-of-type(2) {
-    background-color: var(--pastel-green);
+    background-color: var(--lightestblue);
     border: var(--border);
 }

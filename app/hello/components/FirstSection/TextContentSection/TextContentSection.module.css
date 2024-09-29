@@ -22,9 +22,9 @@
 .TitleContainer h1:nth-of-type(1) {
     border-bottom: 10px solid;
     border-image: linear-gradient(to right,
-            var(--pastel-green) 0 33%,
-            var(--active-blue) 33% 66%,
-            var(--action-pink) 66% 100%) 1;
+            var(--lighterblue) 0 33%,
+            var(--accentblue) 33% 66%,
+            var(--darkerblue) 66% 100%) 1;
 }
 
 .TextContentSection p {
@@ -65,12 +65,9 @@
     border: var(--border);
     background-color: white;
     box-shadow: var(--boxshadow-large);
-    transition: scale 0.2s var(--bezier);
-
+    cursor: pointer;
 }
 
 .FindOutMoreLink:hover a {
     scale: 1.02;
-    filter: brightness(1.04);
-    cursor: pointer;
 }

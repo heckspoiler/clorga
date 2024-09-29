@@ -132,7 +132,7 @@
 
 .Tag,
 .Project {
-    background-color: var(--pastel-green);
+    background-color: var(--accentblue);
     border-radius: 30px;
 
 }
@@ -207,7 +207,7 @@
 }
 
 .LegendRow:first-of-type div {
-    background-color: var(--pastel-green);
+    background-color: var(--accentblue);
 }
 
 .LegendRow:nth-of-type(2) div {

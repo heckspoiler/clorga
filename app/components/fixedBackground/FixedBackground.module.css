@@ -7,16 +7,17 @@
     width: 100%;
     background:
         linear-gradient(45deg,
-            rgba(184, 255, 159, 0.1) 0%,
-            rgba(255, 255, 255, 0.1) 25%,
-            rgba(255, 229, 0, 0.1) 50%,
-            rgba(255, 166, 246, 0.1) 75%,
-            rgba(0, 240, 255, 0.1) 100%),
+            rgba(222, 236, 251, 0.1) 0%,
+            rgba(190, 218, 247, 0.1) 25%,
+            rgba(122, 179, 239, 0.1) 50%,
+            rgba(54, 140, 231, 0.1) 75%,
+            rgba(22, 102, 186, 0.1) 100%),
         linear-gradient(135deg,
             white 0%,
             white 100%);
     background-size: 400% 400%, 100% 100%;
     animation: gradientShift 15s ease infinite;
+    z-index: -1;
 }
 
 @keyframes gradientShift {
@@ -31,4 +32,40 @@
     100% {
         background-position: 0% 50%, 0% 0%;
     }
+}
+
+
+.DecorContainer {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+}
+
+.DecorOne {
+    position: absolute;
+    height: 100vh;
+    width: 50vw;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    opacity: 0.8;
+    background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px);
+    background-size: 10px 10px;
+}
+
+.DecorTwo {
+    position: fixed;
+    top: 0;
+    right: -20px;
+    transform-origin: right;
+    scale: 1.1;
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+}
+
+.DecorTwo canvas {
+    height: fit-content;
+    width: fit-content;
+    rotate: 90deg;
 }
