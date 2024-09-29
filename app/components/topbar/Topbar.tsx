@@ -40,7 +40,7 @@ export default function Topbar() {
   }, [isHovered, isVisible, pathname]);
 
   useEffect(() => {
-    setColor(isVisible ? 'white' : 'rgb(255, 229, 0)');
+    setColor(isVisible ? 'white' : '#bedaf7');
   }, [isVisible]);
 
   return (

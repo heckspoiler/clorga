@@ -3,15 +3,29 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1.5rem 4rem 0 4rem;
+    padding: 1.5rem 4rem 1.5rem 4rem;
     display: flex;
     align-items: center;
-    transition: transform 0.2s var(--bezier);
+    transition: transform 0.4s var(--bezier);
     z-index: 10;
 }
 
+.Header:hover {
+    background:
+        linear-gradient(90deg,
+            rgba(222, 236, 251, 0.1) 0%,
+            rgba(190, 218, 247, 0.1) 25%,
+            rgba(122, 179, 239, 0.1) 50%,
+            rgba(54, 140, 231, 0.1) 75%,
+            rgba(22, 102, 186, 0.1) 100%),
+        linear-gradient(180deg,
+            white 0%,
+            white 100%);
+}
+
 .HeaderHidden {
-    transform: translateY(-100%)
+    transform: translateY(-100%);
+
 }
 
 .Container {

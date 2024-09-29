@@ -26,33 +26,6 @@
     font-size: 0.9rem;
 }
 
-/* .NavbarList li::before {
-    content: "";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color: var(--yellow);
-    transform: translateY(-100%);
-    transition: transform 0.3s var(--bezier)
-}
-
-.NavbarList li::after {
-    content: "";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color: var(--yellow);
-    transform: translateY(100%);
-    transition: transform 0.3s var(--bezier);
-    transition-delay: 0.2s
-}
-
-.NavbarList li:hover:before,
-.NavbarList li:hover:after {
-    background-color: var(--yellow);
-    transform: translateY(0);
-} */
-
 .NavbarList li::before {
     content: "";
     height: 5%;

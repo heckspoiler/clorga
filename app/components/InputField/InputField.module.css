@@ -23,7 +23,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--yellow);
+    background-color: var(--lighterblue);
     box-shadow: var(--boxshadow-large);
     width: 25rem;
 }
@@ -40,8 +40,8 @@
 .FoldArrow {
     height: 0.6em;
     width: 0.6em;
-    border-left: 2px solid #1666ba;
-    border-bottom: 2px solid #1666ba;
+    border-left: 2px solid var(--darkerblue);
+    border-bottom: 2px solid var(--darkerblue);
     rotate: 135deg;
 }
 
