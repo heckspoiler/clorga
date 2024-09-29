@@ -2,12 +2,12 @@
     display: flex;
     align-items: center;
     justify-content: right;
-    gap: 2rem;
+    gap: 1rem;
 }
 
 .LoginSection a {
     padding: 0.5rem 0.75rem;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     border: var(--border);
     transition: filter 0.2s var(--bezier);
     box-shadow: var(--boxshadow-small);
