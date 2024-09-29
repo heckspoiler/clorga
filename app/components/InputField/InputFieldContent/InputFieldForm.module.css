@@ -126,13 +126,13 @@
     width: fit-content;
     padding: 0.5em 1em;
     box-shadow: var(--boxshadow-small);
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     transition: transform 0.2s var(--bezier)
 }
 
 .Tag,
 .Project {
-    background-color: var(--accentblue);
+    background-color: var(--lightestblue);
     border-radius: 30px;
 
 }
@@ -206,16 +206,17 @@
 }
 
 .LegendRow:first-of-type div {
-    background-color: var(--accentblue);
+    background-color: var(--lightestblue);
 }
 
 .LegendRow:nth-of-type(2) div {
-    background-color: var(--active-blue);
+    background-color: var(--accentblue);
 }
 
 
 .TagClicked {
-    background-color: var(--active-blue);
+    background-color: var(--accentblue);
+    color: var(--lightblue)
 }
 
 .ButtonContainer {

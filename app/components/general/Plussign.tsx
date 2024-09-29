@@ -25,7 +25,7 @@ const Plussign = ({
         width="38"
         height="38"
         rx="19"
-        fill={`${fill === '' ? '#FFE600' : fill}`}
+        fill={`${fill === '' ? 'transparent' : fill}`}
       />
       <rect
         x="1"
