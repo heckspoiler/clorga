@@ -49,6 +49,7 @@ export default function UserTypeForm({
               type="text"
               value={companyName}
               onChange={(e) => updateFields({ companyName: e.target.value })}
+              required={isCompany ? true : false}
             />
           </div>
           <div className={styles.FormRow}>
