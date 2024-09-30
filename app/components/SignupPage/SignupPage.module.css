@@ -1,0 +1,190 @@
+.Main {
+    background-color: white;
+    height: fit-content;
+    min-height: 25rem;
+    width: fit-content;
+    display: flex;
+    position: relative;
+    align-items: center;
+    border: var(--border);
+    box-shadow: var(--boxshadow-large);
+    padding: 2rem;
+}
+
+
+/* Signup Form Stuff */
+
+
+.FormContainer,
+.TitleContainer {
+    width: 30rem;
+    padding: 2rem;
+}
+
+.TitleContainer {
+    height: max-content;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px dashed var(--fontblue);
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.Title {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.Title h2 {
+    font-size: 4rem;
+}
+
+.Title p {
+    padding-left: 1rem;
+}
+
+
+.Title p span {
+    border-bottom: 5px dotted;
+    border-image: linear-gradient(to right,
+            var(--lighterblue) 0 33%,
+            var(--darkerblue) 33% 66%,
+            var(--fontblue) 66% 100%) 1;
+    text-transform: uppercase;
+    font-weight: 500;
+    transform-origin: center;
+}
+
+.Logo {
+    animation: spin 20s linear infinite;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.Form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 0 2rem;
+    width: 50%;
+}
+
+.Container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: 1px dashed var(--fontblue);
+    padding-bottom: 1rem;
+}
+
+.Container:nth-of-type(1) {
+    border-top: 1px dashed var(--fontblue);
+    padding-top: 1rem;
+}
+
+.Container label {
+    min-width: 10rem;
+}
+
+.Container input {
+    min-width: 14rem;
+}
+
+.Container input {
+    min-width: 14rem;
+}
+
+.Container:has(button) {
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1rem;
+    flex-direction: column;
+    border-bottom: none;
+}
+
+.RadioGroup {
+    display: flex;
+    gap: 1rem;
+    width: fit-content;
+    min-width: 14rem;
+}
+
+.RadioGroup div {
+    display: flex;
+    gap: 0.5rem;
+    width: fit-content;
+}
+
+.RadioGroup div input,
+.RadioGroup div label {
+    min-width: 0;
+}
+
+.RadioInput {
+    margin: 0;
+
+}
+
+.Buttons {
+    display: flex;
+    gap: 1rem;
+}
+
+.Buttons button {
+    padding: 0.5rem 1rem;
+    border: var(--border);
+    box-shadow: var(--boxshadow-small);
+    width: fit-content;
+    transition: filter 0.2s var(--bezier)
+}
+
+.Buttons button:hover {
+    scale: 1.03;
+    filter: brightness(1.2)
+}
+
+.Buttons button:nth-of-type(1) {
+    background-color: white;
+}
+
+.Buttons button:nth-of-type(2) {
+    background-color: var(--pastel-green);
+}
+
+.ForgotPassword {
+    font-size: 0.6rem;
+    letter-spacing: normal;
+    border-bottom: var(--border);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+/* Enable hover only on non-touch devices */
+@media (hover: hover) and (pointer: fine) {}
+
+
+
+/* Mobile */
+@media (max-width: 768px) {}
+
+/* Tablet and Smaller Desktop */
+@media (min-width: 768px) and (max-width: 1120px) {}

@@ -15,9 +15,8 @@
         linear-gradient(135deg,
             white 0%,
             white 100%);
-    background-size: 400% 400%, 100% 100%;
-    animation: gradientShift 15s ease infinite;
     z-index: -1;
+    rotate: 180deg;
 }
 
 @keyframes gradientShift {
@@ -44,13 +43,13 @@
 .DecorOne {
     position: absolute;
     height: 100vh;
-    width: 50vw;
+    width: 60vw;
     top: 0;
     left: 0;
     background-color: transparent;
-    opacity: 0.8;
+    opacity: 0.6;
     background-image: radial-gradient(#444cf7 0.5px, transparent 0.5px);
-    background-size: 10px 10px;
+    background-size: 15px 15px;
 }
 
 .DecorTwo {

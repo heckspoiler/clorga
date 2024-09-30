@@ -7,7 +7,7 @@ import Navigation from './Navigation';
 import UserSpaceIcon from './UserSpaceIcon';
 import { usePathname } from 'next/navigation';
 
-const noRenderPaths = ['login', 'logout', 'hello'];
+const noRenderPaths = ['login', 'logout', 'hello', 'signup'];
 
 const TOOLTIP_HIDE_DELAY = 3000;
 

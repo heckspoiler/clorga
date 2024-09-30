@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { login, signup } from '@/app/login/actions';
+import { login } from '@/app/login/actions';
 
 import Plussign from '../general/Plussign';
 
@@ -43,7 +43,6 @@ export default function LoginField({ styles }: { styles: any }) {
         <div className={styles.ButtonContainer}>
           <div className={styles.Buttons}>
             <button formAction={login}>Log in</button>
-            {/* <button formAction={signup}>Sign up</button> */}
           </div>
           <div className={styles.ForgotPassword}>
             <a>Forgot Password...?</a>

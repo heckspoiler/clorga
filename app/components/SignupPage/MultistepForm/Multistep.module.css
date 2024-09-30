@@ -1,0 +1,88 @@
+.Form {
+    position: relative;
+    background-color: white;
+    min-height: 30rem;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 2rem 0;
+}
+
+.Form h5 {
+    font-weight: 100;
+}
+
+
+
+.Form form {
+    min-height: 25rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+.Form form h2 {
+    align-self: flex-start;
+    justify-self: baseline;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0 1rem;
+    align-items: center;
+    justify-content: center;
+    height: 25rem;
+    width: 100%;
+}
+
+.StepContainer {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 0.6rem;
+}
+
+.FormRow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+}
+
+.ButtonContainer {
+    display: flex;
+    padding-top: 1rem;
+    justify-content: space-between;
+}
+
+.ButtonContainerFirst {
+    gap: 1rem;
+    display: flex;
+}
+
+.ButtonContainer button,
+.ButtonContainerFirst button {
+    padding: 0.5rem 1rem;
+    border: var(--border);
+    box-shadow: var(--boxshadow-small)
+}
+
+.ButtonContainerFirst button {
+    font-size: 0.8rem;
+}
+
+.ButtonContainer button:hover {
+    padding: 0.5rem 1rem;
+    border: var(--border);
+    box-shadow: var(--boxshadow-small)
+}
+
+.ButtonContainerFirst button.active {
+    background-color: var(--lightblue)
+}
+
+.ButtonDisabled {
+    visibility: hidden;
+}
