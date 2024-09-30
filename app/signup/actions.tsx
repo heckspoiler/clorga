@@ -2,22 +2,37 @@
 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-
 import { createClient } from '@/utils/supabase/server';
 
-export async function signup(formData: FormData) {
+type SignupData = {
+  email: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  isCompany: boolean;
+  companyName?: string;
+  tier?: number;
+};
+
+export async function signup(data: SignupData) {
   const supabase = createClient();
 
-  // type-casting here for convenience
-  // in practice, you should validate your inputs
-  const data = {
-    email: formData.get('email') as string,
-    password: formData.get('password') as string,
-  };
-
-  const { error } = await supabase.auth.signUp(data);
+  const { error } = await supabase.auth.signUp({
+    email: data.email,
+    password: data.password,
+    options: {
+      data: {
+        first_name: data.firstName,
+        last_name: data.lastName,
+        is_company: data.isCompany,
+        company_name: data.companyName,
+        tier: data.tier,
+      },
+    },
+  });
 
   if (error) {
+    console.error('Signup error:', error);
     redirect('/error');
   }
 

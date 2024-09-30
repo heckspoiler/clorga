@@ -63,15 +63,14 @@
 }
 
 .ButtonContainer button,
-.ButtonContainerFirst button {
+.ButtonContainerFirst button,
+.ButtonContainerFirst div {
     padding: 0.5rem 1rem;
     border: var(--border);
-    box-shadow: var(--boxshadow-small)
-}
-
-.ButtonContainerFirst button {
+    box-shadow: var(--boxshadow-small);
     font-size: 0.8rem;
 }
+
 
 .ButtonContainer button:hover {
     padding: 0.5rem 1rem;
@@ -79,7 +78,11 @@
     box-shadow: var(--boxshadow-small)
 }
 
-.ButtonContainerFirst button.active {
+.ButtonContainerFirst div:hover {
+    cursor: pointer;
+}
+
+.ButtonContainerFirst div.active {
     background-color: var(--lightblue)
 }
 
