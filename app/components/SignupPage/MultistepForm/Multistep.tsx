@@ -1,6 +1,6 @@
 'use client';
 
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useEffect, useState } from 'react';
 import styles from './Multistep.module.css';
 import useMultistepForm from './useMultistepForm';
 import UserTypeForm from './UserTypeForm';
@@ -28,7 +28,7 @@ const INITIAL_DATA: FormData = {
   confirmPassword: '',
   isCompany: false,
   companyName: '',
-  tier: 1,
+  tier: 0,
 };
 
 export default function Multistep() {
@@ -53,6 +53,10 @@ export default function Multistep() {
       }
     }
   }
+
+  useEffect(() => {
+    !data.isCompany ? updateFields({ tier: 0 }) : null;
+  }, [data.isCompany]);
 
   function handleNext(e: React.MouseEvent) {
     e.preventDefault();
