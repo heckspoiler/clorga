@@ -127,7 +127,6 @@
     padding: 0.5em 1em;
     box-shadow: var(--boxshadow-small);
     font-size: 0.8rem;
-    transition: transform 0.2s var(--bezier)
 }
 
 .Tag,
@@ -145,7 +144,6 @@
     gap: 0.5rem;
     position: relative;
     font-size: 0.7rem;
-    transition: transform 0.2s var(--bezier)
 }
 
 .Tag:hover,
@@ -227,7 +225,7 @@
 
 .SubmitButton {
     border: var(--border);
-    background-color: var(--darkerblue);
+    background-color: var(--lightblue);
     display: flex;
     align-items: center;
     box-shadow: var(--boxshadow-small);
@@ -236,6 +234,7 @@
 
 .SubmitButton:hover {
     cursor: pointer;
+    scale: 1.02
 }
 
 
