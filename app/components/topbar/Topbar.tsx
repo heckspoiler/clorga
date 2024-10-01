@@ -7,7 +7,7 @@ import Navigation from './Navigation';
 import UserSpaceIcon from './UserSpaceIcon';
 import { usePathname } from 'next/navigation';
 
-const noRenderPaths = ['login', 'logout', 'hello', 'signup', '/', ''];
+const noRenderPaths = ['login', 'logout', 'hello', 'signup', 'error'];
 
 const TOOLTIP_HIDE_DELAY = 3000;
 
@@ -57,7 +57,9 @@ export default function Topbar() {
             onMouseEnter={handleMouseEnter}
           >
             <div>
-              <h2>CLORGA</h2>
+              <a href="/hello">
+                <h2>CLORGA</h2>
+              </a>
             </div>
             <Navigation styles={styles} />
             <UserSpaceIcon
@@ -72,7 +74,7 @@ export default function Topbar() {
               color={color}
               height={66 / 4.4}
               width={145 / 4.4}
-              strokeWidth={4}
+              strokeWidth={2}
               longestStrokeColor={longestStrokeColor}
               styles={styles}
             />

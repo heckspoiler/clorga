@@ -7,9 +7,9 @@ import { createClient } from '@/utils/supabase/server';
 type SignupData = {
   email: string;
   password: string;
-  firstName: string;
-  lastName: string;
-  isCompany: boolean;
+  firstName?: string;
+  lastName?: string;
+  isCompany?: boolean;
   companyName?: string;
   tier?: number;
 };
@@ -24,7 +24,7 @@ export async function signup(data: SignupData) {
       data: {
         first_name: data.firstName,
         last_name: data.lastName,
-        is_company: data.isCompany,
+        is_company: data.isCompany?.toString(),
         company_name: data.companyName,
         tier: data.tier,
       },

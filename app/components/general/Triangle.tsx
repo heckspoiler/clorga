@@ -35,7 +35,7 @@ const Triangle = ({
         y1="0.499998"
         x2="72.5"
         y2="65.3231"
-        stroke={strokeColor ?? '#1666ba'}
+        stroke={strokeColor ?? '#368ce7'}
         strokeWidth={strokeWidth ?? 1}
       />
       <line
@@ -43,7 +43,7 @@ const Triangle = ({
         y1="65.3231"
         x2="143.524"
         y2="0.499986"
-        stroke={strokeColor ?? '#1666ba'}
+        stroke={strokeColor ?? '#368ce7'}
         strokeWidth={strokeWidth ?? 1}
       />
       <line

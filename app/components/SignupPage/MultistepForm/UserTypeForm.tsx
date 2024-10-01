@@ -74,6 +74,7 @@ export default function UserTypeForm({
                 10+
               </div>
             </div>
+            <p className={styles.ChangeLater}>you can change this later</p>
           </div>
         </>
       )}

@@ -51,6 +51,10 @@
     width: 100%;
 }
 
+.ChangeLater {
+    font-size: 0.6rem;
+}
+
 .ButtonContainer {
     display: flex;
     padding-top: 1rem;
