@@ -1,7 +1,7 @@
+'use client';
+
 import React from 'react';
-
 import { login } from '@/app/login/actions';
-
 import Plussign from '../general/Plussign';
 
 export default function LoginField({ styles }: { styles: any }) {
@@ -18,7 +18,7 @@ export default function LoginField({ styles }: { styles: any }) {
           <Plussign height={'50'} width={'50'} fill={'transparent'} />
         </div>
       </div>
-      <form className={styles.Form}>
+      <form action={login} className={styles.Form}>
         <h3>Enter your credentials: </h3>
         <div className={styles.EmailContainer}>
           <label htmlFor="email">Email:</label>
@@ -27,7 +27,7 @@ export default function LoginField({ styles }: { styles: any }) {
             name="email"
             type="email"
             required
-            placeholder="ligma_balls@company.xyz"
+            placeholder="your_email@example.com"
           />
         </div>
         <div className={styles.PasswordContainer}>
@@ -42,10 +42,10 @@ export default function LoginField({ styles }: { styles: any }) {
         </div>
         <div className={styles.ButtonContainer}>
           <div className={styles.Buttons}>
-            <button formAction={login}>Log in</button>
+            <button type="submit">Log in</button>
           </div>
           <div className={styles.ForgotPassword}>
-            <a>Forgot Password...?</a>
+            <a href="/forgot-password">Forgot Password...?</a>
           </div>
         </div>
       </form>
