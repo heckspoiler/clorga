@@ -1,15 +1,28 @@
 import { redirect } from 'next/navigation';
-
 import { createClient } from '@/utils/supabase/server';
+import ClientDashboard from './ClientDashboard';
 
 export default async function PrivatePage() {
   const supabase = createClient();
 
   const { data, error } = await supabase.auth.getUser();
-  console.log(data);
+
   if (error || !data?.user) {
     redirect('/login');
+    return null;
   }
 
-  return <p>Hello {data.user.email}</p>;
+  const { data: userData, error: userError } = await supabase
+    .from('users')
+    .select('*')
+    .eq('email', data.user.email);
+
+  if (userError || !userData?.[0]) {
+    redirect('/login');
+    return null;
+  }
+
+  const user = userData[0];
+
+  return <ClientDashboard user={user} />;
 }

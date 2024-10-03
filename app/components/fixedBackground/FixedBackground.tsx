@@ -3,7 +3,7 @@
 import React from 'react';
 
 import styles from './FixedBackground.module.css';
-
+import { userStore } from '@/utils/userStore';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 export default function FixedBackground() {

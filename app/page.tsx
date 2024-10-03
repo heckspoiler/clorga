@@ -3,6 +3,8 @@ import InputField from '@/app/components/InputField/InputField';
 
 import styles from './page.module.css';
 import MapCanvas from './components/MapCanvas/MapCanvas';
+import { UserProvider } from '@/utils/context';
+import { User } from 'lucide-react';
 
 export type Idea = {
   id: number;

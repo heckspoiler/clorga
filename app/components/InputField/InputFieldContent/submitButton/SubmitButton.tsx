@@ -1,10 +1,11 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
 import { IsSubmittedStoreType } from '@/utils/isSubmittedStore';
 import { handleProjectSubmit } from '@/utils/helpers/handleFormSubmit';
+import { userStore } from '@/utils/userStore';
 
 export default function SubmitButton({ styles }: { styles: any }) {
   const {
@@ -15,10 +16,18 @@ export default function SubmitButton({ styles }: { styles: any }) {
     ideaAuthor,
     ideaDescription,
     selectedTagsForIdea,
+    setIdeaAuthor,
   } = newProjectStore();
 
   const { isSubmitted, setIsSubmitted } =
     isSubmittedStore() as IsSubmittedStoreType;
+  const [userName, setUserName] = useState('');
+
+  const name = userStore((state) => state.firstName) as string;
+
+  useEffect(() => {
+    setIdeaAuthor(name);
+  }, [name]);
 
   useEffect(() => {
     setIsSubmitted(false);

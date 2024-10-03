@@ -25,7 +25,7 @@ export default function Topbar() {
   const [longestStrokeColor, setLongestStrokeColor] = useState('white');
   const pathname = usePathname();
 
-  const [first, second, third] = pathname.split('/').slice(1);
+  const [first] = pathname.split('/').slice(1);
 
   const handleMouseEnter = useCallback(() => {
     setIsHovered(true);
@@ -44,7 +44,7 @@ export default function Topbar() {
       }, TOOLTIP_HIDE_DELAY);
     }
     return () => clearTimeout(timer);
-  }, [isHovered, isVisible, pathname]);
+  }, [isHovered, isVisible, first]);
 
   useEffect(() => {
     setColor(isVisible ? 'white' : '#bedaf7');
@@ -52,7 +52,7 @@ export default function Topbar() {
 
   return (
     <>
-      {noRenderPaths.includes(first) ? null : (
+      {!noRenderPaths.includes(first) && (
         <header
           className={`${styles.Topbar} ${
             isVisible ? styles.TopbarVisible : ''

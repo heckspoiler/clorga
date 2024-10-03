@@ -6,7 +6,6 @@ import TagField from './tagfield/TagField';
 import ProjectField from './projectfield/ProjectField';
 
 import { newProjectStore } from '@/utils/newProjectStore';
-import By from './byField/By';
 
 import Idea from './ideaField/Idea';
 
@@ -44,7 +43,6 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
           setSelectedProject={setSelectedProject}
         />
         <DateField styles={styles} newProject={newProject} />
-        <By styles={styles} />
         <Idea styles={styles} />
         <IdeaTextField styles={styles} />
         <TagField

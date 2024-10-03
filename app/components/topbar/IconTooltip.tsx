@@ -1,26 +1,25 @@
-import React from 'react';
+'use client';
+
+import React, { memo, useEffect, useState } from 'react';
 import SingoutButton from './SingoutButton';
+import { elements } from './TooltipElements';
+import { userStore } from '@/utils/userStore';
 
-const elements = [
-  { name: 'Dashboard', link: '/dashboard' },
-  { name: 'Projects', link: '/projects' },
-  { name: 'Team', link: '/team' },
-  { name: 'Analytics', link: '/analytics' },
-  { name: 'Calendar', link: '/calendar' },
-  { name: 'Messages', link: '/messages' },
-  { name: 'Documents', link: '/documents' },
-  { name: 'Tasks', link: '/tasks' },
-  { name: 'Settings', link: '/settings' },
-  { name: 'Help Center', link: '/help' },
-];
-
-export default function IconTooltip({
+function IconTooltip({
   styles,
   isHovered,
 }: {
   styles?: any;
   isHovered: boolean;
 }) {
+  const [userName, setUserName] = useState('');
+
+  const name = userStore((state) => state.firstName) as string;
+
+  useEffect(() => {
+    setUserName(name);
+  }, [name]);
+
   return (
     <div
       className={`${styles.TooltipContent} ${
@@ -28,7 +27,7 @@ export default function IconTooltip({
       }`}
     >
       <div className={styles.TooltipLink}>
-        <h4>Welcome, User</h4>
+        <h4>Welcome, {userName}</h4>
       </div>
       {elements.map((element, index) => (
         <div key={index} className={styles.TooltipLink}>
@@ -42,3 +41,5 @@ export default function IconTooltip({
     </div>
   );
 }
+
+export default memo(IconTooltip);
