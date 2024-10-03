@@ -27,7 +27,7 @@ function IconTooltip({
       }`}
     >
       <div className={styles.TooltipLink}>
-        <h4>Welcome, {userName}</h4>
+        <h4>Hey there, {userName}</h4>
       </div>
       {elements.map((element, index) => (
         <div key={index} className={styles.TooltipLink}>

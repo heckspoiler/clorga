@@ -48,5 +48,5 @@ export async function signup(data: SignupData) {
   }
 
   revalidatePath('/');
-  redirect('/');
+  redirect('/stripe');
 }
