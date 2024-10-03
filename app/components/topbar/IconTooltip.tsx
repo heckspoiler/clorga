@@ -5,12 +5,12 @@ import SingoutButton from './SingoutButton';
 import { elements } from './TooltipElements';
 import { userStore } from '@/utils/userStore';
 
-function IconTooltip({
+function TopbarTooltip({
   styles,
-  isHovered,
+  isClicked,
 }: {
   styles?: any;
-  isHovered: boolean;
+  isClicked: boolean;
 }) {
   const [userName, setUserName] = useState('');
 
@@ -23,7 +23,7 @@ function IconTooltip({
   return (
     <div
       className={`${styles.TooltipContent} ${
-        isHovered ? styles.TooltipVisible : null
+        isClicked ? styles.TooltipVisible : null
       }`}
     >
       <div className={styles.TooltipLink}>
@@ -42,4 +42,4 @@ function IconTooltip({
   );
 }
 
-export default memo(IconTooltip);
+export default memo(TopbarTooltip);

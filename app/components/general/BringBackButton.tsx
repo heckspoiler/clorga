@@ -11,9 +11,12 @@ export default function BringBackButton() {
 
   const bringBackTheForm = () => {
     setShouldComeBack(true);
-    setTimeout(() => {
+
+    const timeoutId = setTimeout(() => {
       setShouldComeBack(false);
     }, 1000);
+
+    return () => clearTimeout(timeoutId);
   };
 
   return (

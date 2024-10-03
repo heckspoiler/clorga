@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserIcon from '../general/UserIcon';
-import IconTooltip from './IconTooltip';
+import TopbarTooltip from './IconTooltip';
 
 export default function UserSpaceIcon({
   styles,
@@ -15,11 +15,29 @@ export default function UserSpaceIcon({
   height?: number | undefined;
   strokeWidth?: number | undefined;
 }) {
-  const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
-  const handleClick = useCallback(() => {
-    setIsHovered(isHovered ? false : true);
-  }, [isHovered]);
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setIsClicked((prevState) => !prevState);
+    console.log(isClicked);
+  };
+
+  useEffect(() => {
+    const handleBodyClick = () => {
+      setIsClicked(false);
+    };
+
+    if (isClicked) {
+      document.body.addEventListener('click', handleBodyClick);
+    }
+
+    console.log('fasdffds', isClicked);
+
+    return () => {
+      document.body.removeEventListener('click', handleBodyClick);
+    };
+  }, [isClicked]);
 
   return (
     <div className={styles.UserIconContainer} onClick={handleClick}>
@@ -29,7 +47,7 @@ export default function UserSpaceIcon({
         strokeWidth={strokeWidth}
         data-tooltip-id="user-tooltip"
       />
-      <IconTooltip styles={styles} isHovered={isHovered} />
+      <TopbarTooltip styles={styles} isClicked={isClicked} />
     </div>
   );
 }
