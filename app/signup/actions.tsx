@@ -7,35 +7,48 @@ import { createClient } from '@/utils/supabase/server';
 type SignupData = {
   email: string;
   password: string;
-  firstName?: string;
-  lastName?: string;
-  isCompany?: boolean;
-  companyName?: string;
-  tier?: number;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  address: string;
 };
 
 export async function signup(data: SignupData) {
   const supabase = createClient();
 
-  const { error } = await supabase.auth.signUp({
+  // Step 1: Sign up the user via Supabase Auth
+  const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email: data.email,
     password: data.password,
-    options: {
-      data: {
-        first_name: data.firstName,
-        last_name: data.lastName,
-        is_company: data.isCompany?.toString(),
-        company_name: data.companyName,
-        tier: data.tier,
-      },
-    },
   });
 
-  if (error) {
-    console.error('Signup error:', error);
+  if (signUpError) {
+    console.error('Signup error:', signUpError);
     redirect('/error');
   }
 
-  revalidatePath('/', 'layout');
+  const userId = signUpData?.user?.id;
+
+  console.log(userId, signUpData?.user);
+
+  if (userId) {
+    const { error: insertError } = await supabase.from('users').insert([
+      {
+        id: userId,
+        first_name: data.firstName,
+        last_name: data.lastName,
+        phone: data.phone,
+        address: data.address,
+        email: data.email,
+      },
+    ]);
+
+    if (insertError) {
+      console.error('Error inserting user profile:', insertError);
+      redirect('/error');
+    }
+  }
+
+  revalidatePath('/');
   redirect('/');
 }

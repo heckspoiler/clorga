@@ -23,7 +23,9 @@ export default function UserTypeForm({
   return (
     <Formwrapper title={'Hello there!'}>
       <div className={styles.FormRow}>
-        <h5>Are you an organization?</h5>
+        <h5>
+          Do you want to set up a team to collaborate with multiple users?
+        </h5>
         <div className={styles.ButtonContainerFirst}>
           <div
             onClick={(e) => updateFields({ isCompany: true })}
@@ -40,44 +42,46 @@ export default function UserTypeForm({
         </div>
       </div>
 
-      {isCompany && (
-        <>
-          {' '}
-          <div className={styles.FormRow}>
-            <h5>What's your companie's name?</h5>
-            <input
-              type="text"
-              value={companyName}
-              onChange={(e) => updateFields({ companyName: e.target.value })}
-              required={isCompany ? true : false}
-            />
-          </div>
-          <div className={styles.FormRow}>
-            <h5>How many users will be registered?</h5>
-            <div className={styles.ButtonContainerFirst}>
-              <div
-                onClick={(e) => updateFields({ tier: 1 })}
-                className={tier === 1 ? styles.active : ''}
-              >
-                2-5
-              </div>
-              <div
-                onClick={(e) => updateFields({ tier: 2 })}
-                className={tier === 2 ? styles.active : ''}
-              >
-                6-10
-              </div>
-              <div
-                onClick={(e) => updateFields({ tier: 3 })}
-                className={tier === 3 ? styles.active : ''}
-              >
-                10+
-              </div>
+      <div className={styles.IsCompanyContainer}>
+        <div
+          className={`${styles.CoverContainer} ${
+            isCompany ? styles.CoverContainerHidden : null
+          }`}
+        ></div>
+        <div className={styles.FormRow}>
+          <h5>What's your team's name?</h5>
+          <input
+            type="text"
+            value={companyName}
+            onChange={(e) => updateFields({ companyName: e.target.value })}
+            required={isCompany ? true : false}
+          />
+        </div>
+        <div className={styles.FormRow}>
+          <h5>How many users will be collaborating?</h5>
+          <div className={styles.ButtonContainerFirst}>
+            <div
+              onClick={(e) => updateFields({ tier: 1 })}
+              className={tier === 1 ? styles.active : ''}
+            >
+              2-5
             </div>
-            <p className={styles.ChangeLater}>you can change this later</p>
+            <div
+              onClick={(e) => updateFields({ tier: 2 })}
+              className={tier === 2 ? styles.active : ''}
+            >
+              6-10
+            </div>
+            <div
+              onClick={(e) => updateFields({ tier: 3 })}
+              className={tier === 3 ? styles.active : ''}
+            >
+              10+
+            </div>
           </div>
-        </>
-      )}
+          <p className={styles.ChangeLater}>you can change this later</p>
+        </div>
+      </div>
     </Formwrapper>
   );
 }

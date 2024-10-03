@@ -49,7 +49,42 @@
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
+    position: relative;
 }
+
+.IsCompanyContainer {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.CoverContainer {
+    position: absolute;
+    background-color: white;
+    top: 0;
+    left: 0;
+    height: 10rem;
+    width: 35rem;
+    z-index: 2;
+    opacity: 1;
+    pointer-events: none;
+}
+
+.CoverContainerHidden {
+    opacity: 0;
+}
+
+
+.SameLineContainer {
+    display: flex;
+    gap: 1rem;
+    justify-content: space-between;
+    width: 100%;
+}
+
 
 .ChangeLater {
     font-size: 0.6rem;
@@ -75,11 +110,10 @@
     font-size: 0.8rem;
 }
 
-
 .ButtonContainer button:hover {
     padding: 0.5rem 1rem;
     border: var(--border);
-    box-shadow: var(--boxshadow-small)
+    box-shadow: var(--boxshadow-small);
 }
 
 .ButtonContainerFirst div:hover {
@@ -87,9 +121,25 @@
 }
 
 .ButtonContainerFirst div.active {
-    background-color: var(--lightblue)
+    background-color: var(--lightblue);
 }
 
 .ButtonDisabled {
-    visibility: hidden;
+    opacity: 0.4;
+    box-shadow: none !important;
+}
+
+.ErrorInput {
+    border: 1px solid rgb(191, 41, 41);
+}
+
+.ErrorText {
+    color: rgb(191, 41, 41);
+    font-size: 0.6em;
+    position: absolute;
+    bottom: -1rem;
+    left: 0;
+    height: 1rem;
+    margin: 0;
+    line-height: 1rem;
 }

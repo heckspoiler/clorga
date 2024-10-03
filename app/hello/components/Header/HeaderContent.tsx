@@ -7,13 +7,7 @@ import Logo from './components/Logo';
 import Navbar from './components/Navbar/Navbar';
 import LoginSection from './components/LoginSection/LoginSection';
 
-const onlyLogoPaths = [
-  '/login',
-  '/signup',
-  '/forgotpassword',
-  '/logout',
-  '/dashboard',
-];
+const onlyLogoPaths = ['/login', '/signup', '/forgotpassword', '/dashboard'];
 
 export function HeaderContent({ user }: { user: any }) {
   const pathname = usePathname();

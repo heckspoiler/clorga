@@ -1,7 +1,8 @@
+'use client';
+
 import React, { useState } from 'react';
-import Formwrapper from './Formwrapper';
+import Formwrapper from '../MultistepForm/Formwrapper';
 import styles from './Multistep.module.css';
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 type UserDetailData = {
   firstName: string;
@@ -37,18 +38,11 @@ export default function UserDetailForm({
     address: '',
   });
 
-  const validatePhoneNumber = (phone: string) => {
-    const phoneNumber = parsePhoneNumberFromString(phone);
-    if (!phoneNumber || !phoneNumber.isValid()) {
-      return 'Enter a valid phone number';
-    }
-    return '';
-  };
-
   // Basic email and phone validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   const phoneRegex = /^[0-9]{10}$/; // Assumes a 10-digit phone number
 
+  // Function to handle validation when the user submits the form or changes inputs
   const validateFields = () => {
     let formErrors = {
       firstName: '',
@@ -82,13 +76,6 @@ export default function UserDetailForm({
       isValid = false;
     }
 
-    // Validate phone using libphonenumber-js
-    const phoneError = validatePhoneNumber(phone);
-    if (phoneError) {
-      formErrors.phone = phoneError;
-      isValid = false;
-    }
-
     // Validate password
     if (!password.trim()) {
       formErrors.password = 'Password is required';
@@ -101,6 +88,15 @@ export default function UserDetailForm({
     // Validate confirm password
     if (confirmPassword !== password) {
       formErrors.confirmPassword = 'Passwords do not match';
+      isValid = false;
+    }
+
+    // Validate phone number
+    if (!phone.trim()) {
+      formErrors.phone = 'Phone number is required';
+      isValid = false;
+    } else if (!phoneRegex.test(phone)) {
+      formErrors.phone = 'Enter a valid 10-digit phone number';
       isValid = false;
     }
 

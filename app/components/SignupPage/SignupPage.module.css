@@ -17,8 +17,16 @@
 
 .FormContainer,
 .TitleContainer {
-    width: 30rem;
     padding: 2rem;
+}
+
+.TitleContainer {
+    width: 25rem;
+
+}
+
+.FormContainer {
+    width: 40rem;
 }
 
 .TitleContainer {
@@ -29,7 +37,6 @@
     justify-content: center;
     border-right: 1px dashed var(--fontblue);
     gap: 2rem;
-    padding: 2rem;
 }
 
 .Title {
@@ -37,6 +44,12 @@
     align-items: center;
     gap: 0.5rem;
     height: 100%;
+    justify-content: center;
+}
+
+.Title {
+    display: flex;
+    flex-direction: column;
 }
 
 .Title h2 {

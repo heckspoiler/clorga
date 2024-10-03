@@ -3,7 +3,8 @@ import React from 'react';
 import { signup } from '@/app/signup/actions';
 
 import Plussign from '../general/Plussign';
-import Multistep from './MultistepForm/Multistep';
+import SignUpFieldContent from './SignUpFieldContent/SignUpFieldContent';
+import SignUpForm from './MultistepForm/Multistep';
 
 export default function SignupField({ styles }: { styles: any }) {
   return (
@@ -20,7 +21,7 @@ export default function SignupField({ styles }: { styles: any }) {
         </div>
       </div>
       <div className={styles.FormContainer}>
-        <Multistep />
+        <SignUpForm />
       </div>
     </>
   );
