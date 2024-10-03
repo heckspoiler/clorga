@@ -40,7 +40,6 @@ export default function SignupForm() {
     if (!isValid) return;
 
     try {
-      console.log('Signup data:', data);
       await signup(data); // Call signup function to create user
     } catch (error) {
       console.error('Signup error:', error);

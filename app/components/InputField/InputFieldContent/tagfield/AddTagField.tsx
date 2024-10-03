@@ -73,7 +73,6 @@ export default function AddTagField({
     ) {
       setSelectedTags(new Set([...selectedTags, tagName]));
       setSelectedTagsForIdea(new Set([...selectedTagsForIdea, tagName]));
-      console.log(selectedTagsForIdea);
       addNewTag();
       setState(!state);
     }

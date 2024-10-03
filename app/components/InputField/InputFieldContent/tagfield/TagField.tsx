@@ -39,11 +39,9 @@ export default function TagField({
           project?.project_name?.toLowerCase() === selectedProject.toLowerCase()
       );
 
-      console.log('Selected project:', project);
       if (project && project.project_tags) {
         const allTags = project.project_tags;
 
-        console.log('All tags for selected project:', allTags);
         setTagsMappingArray(allTags);
 
         // Reset selected tags when changing projects

@@ -29,8 +29,6 @@ export async function signup(data: SignupData) {
 
   const userId = signUpData?.user?.id;
 
-  console.log(userId, signUpData?.user);
-
   if (userId) {
     const { error: insertError } = await supabase.from('users').insert([
       {

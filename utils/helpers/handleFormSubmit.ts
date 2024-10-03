@@ -75,7 +75,6 @@ export const handleProjectSubmit = async ({
 
       if (error) throw error;
       projectData = data;
-      console.log('Added to existing project:', actualProjectName);
     } else {
       const { data, error } = await supabase.from('projects').insert({
         project_name: actualProjectName.toLowerCase(),
@@ -86,10 +85,8 @@ export const handleProjectSubmit = async ({
 
       if (error) throw error;
       projectData = data;
-      console.log('Created new project:', actualProjectName);
     }
 
-    console.log('Operation completed successfully:', projectData);
     setIsSubmitted(true);
   } catch (error) {
     console.error('Error during project operation:', error);
