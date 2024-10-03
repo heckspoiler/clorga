@@ -3,6 +3,7 @@
 import React from 'react';
 import { login } from '@/app/login/actions';
 import Plussign from '../general/Plussign';
+import Link from 'next/link';
 
 export default function LoginField({ styles }: { styles: any }) {
   return (
@@ -45,7 +46,7 @@ export default function LoginField({ styles }: { styles: any }) {
             <button type="submit">Log in</button>
           </div>
           <div className={styles.ForgotPassword}>
-            <a href="/forgot-password">Forgot Password...?</a>
+            <Link href="/forgot-password">Forgot Password...?</Link>
           </div>
         </div>
       </form>

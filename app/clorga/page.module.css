@@ -1,14 +1,8 @@
 .Main {
+    margin: 0;
+    padding: 0;
+    width: 100%;
     min-height: 100vh;
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    overflow-y: scroll;
-}
-
-.SectionContainer {
-    min-height: 100vh;
-    padding: 2rem 4rem;
 }
 
 

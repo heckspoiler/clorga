@@ -1,10 +1,7 @@
-import { createClient } from '@/utils/supabase/server';
-import InputField from '@/app/components/InputField/InputField';
-
 import styles from './page.module.css';
-import MapCanvas from './components/MapCanvas/MapCanvas';
-import { UserProvider } from '@/utils/context';
-import { User } from 'lucide-react';
+
+import FirstSection from './components/FirstSection/FirstSection';
+import SecondSection from './components/SecondSection/SecondSection';
 
 export type Idea = {
   id: number;
@@ -24,13 +21,16 @@ export type Project = {
 };
 
 export default async function Index() {
-  const supabase = createClient();
-  const { data: initialProjects } = await supabase.from('projects').select('*');
-
   return (
-    <main className={styles.Main}>
-      {initialProjects && <InputField initialProjects={initialProjects} />}
-      <MapCanvas initialProjects={initialProjects} />
-    </main>
+    <>
+      <main className={styles.Main}>
+        <section className={styles.SectionContainer}>
+          <FirstSection />
+        </section>
+        <section className={styles.SectionContainer}>
+          <SecondSection />
+        </section>
+      </main>
+    </>
   );
 }

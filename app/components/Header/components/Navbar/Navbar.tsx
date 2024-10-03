@@ -1,6 +1,7 @@
 import React from 'react';
 
 import styles from './Navbar.module.css';
+import Link from 'next/link';
 
 const navbarItems = [
   { name: 'About Clorga', path: '/about' },
@@ -15,9 +16,9 @@ export default function Navbar() {
       <ul className={styles.NavbarList}>
         {navbarItems.map((item, index) => (
           <li key={index}>
-            <a href={item.path} className={styles.Link}>
+            <Link href={item.path} className={styles.Link}>
               {item.name}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

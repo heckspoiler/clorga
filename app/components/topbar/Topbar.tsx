@@ -6,15 +6,16 @@ import Triangle from '../general/Triangle';
 import Navigation from './Navigation';
 import UserSpaceIcon from './UserSpaceIcon';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
-const noRenderPaths = [
-  'login',
-  'logout',
-  'hello',
-  'signup',
-  'error',
-  'dashboard',
-];
+// const noRenderPaths = [
+//   'login',
+//   'logout',
+//   'hello',
+//   'signup',
+//   'error',
+//   'dashboard',
+// ];
 
 const TOOLTIP_HIDE_DELAY = 3000;
 
@@ -38,7 +39,7 @@ export default function Topbar() {
 
   useEffect(() => {
     let timer: NodeJS.Timeout;
-    if (!isHovered && isVisible && !noRenderPaths.includes(first)) {
+    if (!isHovered && isVisible) {
       timer = setTimeout(() => {
         setIsVisible(false);
       }, TOOLTIP_HIDE_DELAY);
@@ -51,43 +52,34 @@ export default function Topbar() {
   }, [isVisible]);
 
   return (
-    <>
-      {!noRenderPaths.includes(first) && (
-        <header
-          className={`${styles.Topbar} ${
-            isVisible ? styles.TopbarVisible : ''
-          }`}
-          onMouseLeave={handleMouseLeave}
-        >
-          <div
-            className={styles.TopbarContainer}
-            onMouseEnter={handleMouseEnter}
-          >
-            <div>
-              <a href="/hello">
-                <h2>CLORGA</h2>
-              </a>
-            </div>
-            <Navigation styles={styles} />
-            <UserSpaceIcon
-              width={64 / 3}
-              height={77 / 3}
-              strokeWidth={4}
-              styles={styles}
-            />
-          </div>
-          <div className={styles.ArrowDown} onMouseEnter={handleMouseEnter}>
-            <Triangle
-              color={color}
-              height={66 / 4.4}
-              width={145 / 4.4}
-              strokeWidth={2}
-              longestStrokeColor={longestStrokeColor}
-              styles={styles}
-            />
-          </div>
-        </header>
-      )}
-    </>
+    <div
+      className={`${styles.Topbar} ${isVisible ? styles.TopbarVisible : ''}`}
+      onMouseLeave={handleMouseLeave}
+    >
+      <div className={styles.TopbarContainer} onMouseEnter={handleMouseEnter}>
+        <div>
+          <Link href="/">
+            <h2>CLORGA</h2>
+          </Link>
+        </div>
+        <Navigation styles={styles} />
+        <UserSpaceIcon
+          width={64 / 3}
+          height={77 / 3}
+          strokeWidth={4}
+          styles={styles}
+        />
+      </div>
+      <div className={styles.ArrowDown} onMouseEnter={handleMouseEnter}>
+        <Triangle
+          color={color}
+          height={66 / 4.4}
+          width={145 / 4.4}
+          strokeWidth={2}
+          longestStrokeColor={longestStrokeColor}
+          styles={styles}
+        />
+      </div>
+    </div>
   );
 }

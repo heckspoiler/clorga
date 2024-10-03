@@ -1,20 +1,21 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Navigation({ styles }: { styles: any }) {
   return (
     <nav className={styles.Navbar}>
       <ul className={styles.NavbarItems}>
         <li>
-          <a href="">Documents</a>
+          <Link href="/clorga">Your Clorga</Link>
         </li>
         <li>
-          <a href="">This</a>
+          <Link href="">Documents</Link>
         </li>
         <li>
-          <a href="">That</a>
+          <Link href="">That</Link>
         </li>
         <li>
-          <a href="">Thut</a>
+          <Link href="">Thut</Link>
         </li>
       </ul>
     </nav>

@@ -1,0 +1,46 @@
+.logoutContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.messageBox {
+    padding: 2rem;
+    background-color: white;
+    border: var(--border);
+    box-shadow: var(--boxshadow-large);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    height: 20rem;
+}
+
+.Container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+}
+
+.message {
+    font-size: 1.5rem;
+    color: var(--fontblue);
+    margin-bottom: 20px;
+}
+
+.homeLink {
+    font-size: 1rem;
+    text-decoration: none;
+    border: var(--border);
+    padding: 0.5rem 1rem;
+    box-shadow: var(--boxshadow-small);
+    width: fit-content;
+}
+
+.homeLink:hover {
+    scale: 1.02;
+}

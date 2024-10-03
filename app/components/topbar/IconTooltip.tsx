@@ -4,6 +4,7 @@ import React, { memo, useEffect, useState } from 'react';
 import SingoutButton from './SingoutButton';
 import { elements } from './TooltipElements';
 import { userStore } from '@/utils/userStore';
+import Link from 'next/link';
 
 function TopbarTooltip({
   styles,
@@ -32,7 +33,7 @@ function TopbarTooltip({
       {elements.map((element, index) => (
         <div key={index} className={styles.TooltipLink}>
           <p>{index < 9 ? '0' + (index + 1) : index + 1}</p>
-          <a href={element.link}>{element.name}</a>
+          <Link href={element.link}>{element.name}</Link>
         </div>
       ))}
       <div className={styles.TooltipLink}>

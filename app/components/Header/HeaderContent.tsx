@@ -7,7 +7,13 @@ import Logo from './components/Logo';
 import Navbar from './components/Navbar/Navbar';
 import LoginSection from './components/LoginSection/LoginSection';
 
-const onlyLogoPaths = ['/login', '/signup', '/forgotpassword', '/dashboard'];
+const onlyLogoPaths = [
+  '/logout',
+  '/login',
+  '/signup',
+  '/forgotpassword',
+  '/dashboard',
+];
 
 export function HeaderContent({ user }: { user: any }) {
   const pathname = usePathname();
@@ -50,20 +56,24 @@ export function HeaderContent({ user }: { user: any }) {
   }`;
 
   return (
-    <header className={headerClasses} ref={headerRef}>
-      <div className={styles.Container}>
-        <Logo styles={styles} />
-      </div>
-      {!onlyLogoPaths.includes(pathname) && (
-        <>
+    <>
+      {pathname.includes('/clorga') ? null : (
+        <header className={headerClasses} ref={headerRef}>
           <div className={styles.Container}>
-            <Navbar />
+            <Logo styles={styles} />
           </div>
-          <div className={styles.Container}>
-            <LoginSection user={user} />
-          </div>
-        </>
+          {!onlyLogoPaths.includes(pathname) && (
+            <>
+              <div className={styles.Container}>
+                <Navbar />
+              </div>
+              <div className={styles.Container}>
+                <LoginSection user={user} />
+              </div>
+            </>
+          )}
+        </header>
       )}
-    </header>
+    </>
   );
 }

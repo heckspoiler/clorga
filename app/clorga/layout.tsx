@@ -1,3 +1,5 @@
+'use client';
+
 import type { Metadata, Viewport } from 'next';
 import {
   Space_Mono,
@@ -5,9 +7,9 @@ import {
   Azeret_Mono,
   Chivo_Mono,
 } from 'next/font/google';
-import './globals.css';
-import FixedBackground from './components/fixedBackground/FixedBackground';
-import { Header } from './components/Header/Header';
+import '../globals.css';
+import Topbar from '../components/topbar/Topbar';
+import FixedBackground from '../components/fixedBackground/FixedBackground';
 
 const spacemono = Space_Mono({
   subsets: ['latin'],
@@ -28,17 +30,6 @@ const defaultUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : 'http://localhost:3000';
 
-export const metadata: Metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: 'OZELOT CLORGA',
-  description: 'The fastest way to build apps with Next.js and Supabase',
-  manifest: '/manifest.json',
-  // icons: [
-  //   { rel: 'apple-touch-icon', url: '/icon-192x192.png' },
-  //   { rel: 'icon', url: '/favicon.ico' },
-  // ],
-};
-
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
@@ -51,12 +42,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={spacemono.className}>
-        <FixedBackground />
-        <Header />
-        <main>{children}</main>
-      </body>
-    </html>
+    <section className={spacemono.className}>
+      <FixedBackground />
+      <Topbar />
+      <main>{children}</main>
+    </section>
   );
 }

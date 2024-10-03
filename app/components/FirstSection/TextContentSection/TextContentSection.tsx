@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import styles from './TextContentSection.module.css';
 import TitleContainer from './TitleContainer';
+import Link from 'next/link';
 
 export default function TextContentSection() {
   return (
@@ -14,7 +15,7 @@ export default function TextContentSection() {
         the way to handle static assets like images has changed.
       </p>
       <div className={styles.FindOutMoreLink}>
-        <a href="/about">Find out more</a>
+        <Link href="/about">Find out more</Link>
       </div>
     </div>
   );

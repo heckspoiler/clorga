@@ -38,13 +38,13 @@ export async function updateSession(request: NextRequest) {
   } = await supabase.auth.getUser();
 
   // List of public routes that don't require authentication
-  const publicRoutes = ['/hello', '/login', '/signup', '/auth', '/about'];
+  const publicRoutes = ['/', '/login', '/signup', '/auth', '/about'];
 
   if (
     !user &&
     !publicRoutes.some((route) => request.nextUrl.pathname.startsWith(route))
   ) {
-    const redirectUrl = new URL('/hello', request.nextUrl.origin);
+    const redirectUrl = new URL('/', request.nextUrl.origin);
     return NextResponse.redirect(redirectUrl);
   }
 

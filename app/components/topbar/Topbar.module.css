@@ -54,7 +54,7 @@
     font-size: 0.7rem;
     position: relative;
     border-right: var(--border);
-    width: 100%;
+    min-width: 4rem;
     height: 100%;
     display: flex;
     overflow: hidden;
@@ -81,13 +81,14 @@
     transition-delay: 0.2s
 }
 
-.NavbarItems li:hover::before {
+.NavbarItems li:hover::before,
+.NavbarItems li.active::before {
     background-color: var(--lightestblue);
     transform: translateY(0);
-
 }
 
-.NavbarItems li:hover::after {
+.NavbarItems li:hover::after,
+.NavbarItems li.active::after {
     background-color: var(--lightestblue);
     transform: translateY(0);
 }

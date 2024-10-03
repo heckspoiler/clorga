@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { cardData } from './CardsObject';
 
 import styles from './SecondSection.module.css';
+import Link from 'next/link';
 
 export default function SecondSection() {
   return (
@@ -15,7 +16,7 @@ export default function SecondSection() {
               <h2>{card.title}</h2>
               <p>{card.description}</p>
               <div className={styles.LinkContainer}>
-                <a href={card.link}>{card.linkText}</a>
+                <Link href={card.link}>{card.linkText}</Link>
               </div>
             </div>
             <div className={styles.CardImage}>
