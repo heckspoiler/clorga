@@ -19,11 +19,11 @@ export default function SubmitButton({ styles }: { styles: any }) {
     setIdeaAuthor,
   } = newProjectStore();
 
+  const name = userStore((state) => state.firstName) as string;
+
   const { isSubmitted, setIsSubmitted } =
     isSubmittedStore() as IsSubmittedStoreType;
   const [userName, setUserName] = useState('');
-
-  const name = userStore((state) => state.firstName) as string;
 
   useEffect(() => {
     setIdeaAuthor(name);
