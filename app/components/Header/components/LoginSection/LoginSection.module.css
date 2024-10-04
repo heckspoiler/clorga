@@ -13,9 +13,6 @@
 
 }
 
-.LoginSection a:hover {
-    scale: 1.03
-}
 
 .LoginSection a:active {
     scale: 1;

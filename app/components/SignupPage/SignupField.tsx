@@ -16,9 +16,6 @@ export default function SignupField({ styles }: { styles: any }) {
             organize your <span>creativity</span>
           </p>
         </div>
-        <div className={styles.Logo}>
-          <Plussign height={'50'} width={'50'} fill={'transparent'} />
-        </div>
       </div>
       <div className={styles.FormContainer}>
         <SignUpForm />

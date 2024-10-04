@@ -9,8 +9,8 @@
 
   --black: rgb(67, 67, 67);
   --bezier: cubic-bezier(0.47, 0, 0.75, 1);
-  --boxshadow-large: 4px 4px 1px var(--black);
-  --boxshadow-small: 2px 2px 1px var(--black);
+  /* --boxshadow-large: 4px 4px 1px var(--black);
+  --boxshadow-small: 2px 2px 1px var(--black); */
   --border: 0.5px groove var(--black);
   --accentgreen: #E1FF11
 }

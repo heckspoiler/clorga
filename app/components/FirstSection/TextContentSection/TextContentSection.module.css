@@ -60,7 +60,3 @@
     font-variation-settings: "wdth" 200, "wght" 200;
     text-transform: uppercase
 }
-
-.FindOutMoreLink:hover a {
-    scale: 1.02;
-}

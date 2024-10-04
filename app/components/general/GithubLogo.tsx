@@ -11,7 +11,7 @@ export default function GithubLogo({
 }) {
   return (
     <svg
-      fill="#1666ba"
+      fill="black"
       height={height}
       width={width}
       viewBox="0 0 512 512" // Static viewBox to maintain the correct aspect ratio

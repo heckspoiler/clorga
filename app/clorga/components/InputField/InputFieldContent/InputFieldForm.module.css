@@ -153,9 +153,7 @@
 .SubmitButton:hover,
 .Submit:hover {
     cursor: pointer;
-    transform: scale(1.03);
     box-shadow: var(--boxshadow-small);
-    filter: brightness(1.1);
 }
 
 .SvgContainer {

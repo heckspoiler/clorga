@@ -15,7 +15,7 @@
 
 .Card {
     height: 20rem;
-    width: 100%;
+    width: 50vw;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
@@ -85,15 +85,9 @@
 .LinkContainer a {
     padding: 0.5rem 0.75rem;
     border: var(--border);
-    background-color: white;
     box-shadow: var(--boxshadow-small);
     font-variation-settings: "wdth" 200, "wght" 100;
 
-}
-
-.LinkContainer a:hover {
-    filter: brightness(1.1);
-    scale: 1.03
 }
 
 .CardImage {
@@ -111,5 +105,4 @@
     width: auto;
     height: 100%;
     object-fit: contain;
-
 }
