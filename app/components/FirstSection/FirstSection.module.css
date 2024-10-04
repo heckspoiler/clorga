@@ -4,24 +4,19 @@
     min-height: 100vh;
 }
 
+
 .Subsection {
-    width: 50%;
+    width: 50vw;
     height: calc(100vh);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 3rem 0 0;
+    padding: 4rem;
     position: relative;
-
 }
 
 .Subsection:nth-of-type(1) {
     border-right: var(--border)
-}
-
-.LottieContainer {
-    transform: translateY(30px) translateX(30px);
-    scale: 1.1;
 }
 
 

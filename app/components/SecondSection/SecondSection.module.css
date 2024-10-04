@@ -14,7 +14,6 @@
 }
 
 .Card {
-
     height: 20rem;
     width: 100%;
     display: flex;
@@ -41,6 +40,12 @@
 
 }
 
+.Card p {
+    width: fit-content;
+}
+
+
+
 @keyframes movingGradient {
     0% {
         background-position: 0% 50%;
@@ -55,55 +60,7 @@
     position: relative;
 }
 
-@keyframes movingGradient {
-    0% {
-        background-position: 0% 50%;
-    }
 
-    25% {
-        background-position: 100% 50%;
-    }
-
-    50% {
-        background-position: 100% 50%;
-    }
-
-    75% {
-        background-position: 0% 50%;
-    }
-
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-.Card h2::before,
-.Card h2::after {
-    content: '';
-    position: absolute;
-    height: 4px;
-    width: 100%;
-    left: 0;
-    background: linear-gradient(to right,
-            var(--lightblue) 0%,
-            var(--lighterblue) 33%,
-            var(--lighterblue) 66%,
-            var(--lightblue) 100%);
-    background-size: 200% 100%;
-}
-
-.Card h2::before {
-    top: -4px;
-}
-
-.Card h2::after {
-    bottom: -4px;
-}
-
-.Card:hover h2::before,
-.Card:hover h2::after {
-    animation: movingGradient 2s linear infinite;
-}
 
 .CardText {
     padding: 1rem;
@@ -113,6 +70,8 @@
     height: 100%;
     justify-content: space-between;
     max-width: 70%;
+    font-variation-settings: "wdth" 200, "wght" 100;
+
 }
 
 .LinkContainer {
@@ -128,6 +87,8 @@
     border: var(--border);
     background-color: white;
     box-shadow: var(--boxshadow-small);
+    font-variation-settings: "wdth" 200, "wght" 100;
+
 }
 
 .LinkContainer a:hover {

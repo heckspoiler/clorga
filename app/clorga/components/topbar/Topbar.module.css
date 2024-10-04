@@ -117,7 +117,6 @@
 
 .TooltipContent {
     position: absolute;
-    background-color: white;
     border: var(--border);
     box-shadow: var(--boxshadow-large);
     top: 100%;

@@ -1,7 +1,6 @@
 /* Login Form Stuff */
 
 .FormContainer {
-    background-color: white;
     border: var(--border);
     box-shadow: var(--boxshadow-large);
     height: 30rem;
@@ -116,16 +115,9 @@
 
 .Buttons button:hover {
     scale: 1.03;
-    filter: brightness(1.2)
 }
 
-.Buttons button:nth-of-type(1) {
-    background-color: white;
-}
 
-.Buttons button:nth-of-type(2) {
-    background-color: var(--pastel-green);
-}
 
 .ForgotPassword {
     font-size: 0.6rem;

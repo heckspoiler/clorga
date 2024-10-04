@@ -12,11 +12,13 @@
 }
 
 .NavbarList li {
-
     position: relative;
     overflow: hidden;
     z-index: 1;
     display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
 }
 
 .Link {
@@ -24,6 +26,7 @@
     z-index: 2;
     padding: 0.5rem 0.75rem;
     font-size: 0.9rem;
+    font-variation-settings: "wdth" 200, "wght" 100;
 }
 
 .NavbarList li::before {

@@ -251,7 +251,6 @@
 
 .InputProject,
 .InputTag {
-    background-color: white !important;
     border: none !important;
     display: flex;
     padding-bottom: 0rem !important;

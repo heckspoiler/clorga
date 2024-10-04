@@ -2,7 +2,6 @@
     margin-top: 6rem;
     width: 100%;
     min-height: 100vh;
-    border-top: var(--border);
     border-bottom: var(--border);
     background-color: white;
     display: flex;

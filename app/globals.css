@@ -1,32 +1,18 @@
+@import url("https://use.typekit.net/eef8mxd.css");
+
+
+
+
 :root {
 
-  --pastel-green: rgb(184, 255, 159);
-  --yellow: rgb(255, 229, 0);
-  --yellow-lower-opacity: #deecfb;
-  --action-pink: #FFA6F6;
-  --active-blue: #00F0FF;
+
 
   --black: rgb(67, 67, 67);
-  --border-image: linear-gradient(to right,
-      var(--pastel-green) 0 33%,
-      var(--active-blue) 33% 66%,
-      var(--action-pink) 66% 100%) 1;
   --bezier: cubic-bezier(0.47, 0, 0.75, 1);
-  --boxshadow-large: 4px 4px 1px var(--fontblue);
-
-  --boxshadow-small: 2px 2px 1px var(--fontblue);
-
+  --boxshadow-large: 4px 4px 1px var(--black);
+  --boxshadow-small: 2px 2px 1px var(--black);
   --border: 0.5px groove var(--black);
-
-
-
-  /* monochrome blue color scheme */
-  --lightestblue: #f3f8fd;
-  --lightblue: white;
-  --lighterblue: white;
-  --accentblue: rgb(67, 67, 67);
-  --darkerblue: white;
-  --fontblue: rgb(67, 67, 67);
+  --accentgreen: #E1FF11
 }
 
 
@@ -35,7 +21,9 @@
   padding: 0;
   margin: 0;
   line-height: 1.2;
-  color: var(--fontblue)
+  color: var(--fontblue);
+  font-family: "sztos-variable", sans-serif;
+  font-variation-settings: "wdth" 200, "wght" 400;
 }
 
 html {
@@ -67,9 +55,22 @@ h4 {
 
 
 a,
+p,
 button {
   color: inherit;
   text-decoration: none;
+  font-variation-settings: "wdth" 200, "wght" 100;
+}
+
+a:hover,
+button:hover {
+  background-color: var(--accentgreen);
+}
+
+a,
+button {
+  border: var(--border);
+  box-shadow: var(--boxshadow-small);
 }
 
 button {
