@@ -1,15 +1,16 @@
 import type { Metadata, Viewport } from 'next';
 import {
-  Space_Mono,
+  Space_Grotesk,
   Noto_Sans,
   Azeret_Mono,
   Chivo_Mono,
+  Work_Sans,
 } from 'next/font/google';
 import './globals.css';
 import FixedBackground from './components/fixedBackground/FixedBackground';
 import { Header } from './components/Header/Header';
 
-const spacemono = Space_Mono({
+const spacemono = Space_Grotesk({
   subsets: ['latin'],
   weight: ['400', '700'],
 });
@@ -53,7 +54,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={spacemono.className}>
-        <FixedBackground />
         <Header />
         <main>{children}</main>
       </body>

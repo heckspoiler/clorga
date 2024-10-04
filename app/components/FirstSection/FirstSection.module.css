@@ -6,12 +6,17 @@
 
 .Subsection {
     width: 50%;
-    height: calc(100vh - 4rem);
+    height: calc(100vh);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 3rem 3rem 0 3rem;
+    padding: 3rem 3rem 0 0;
     position: relative;
+
+}
+
+.Subsection:nth-of-type(1) {
+    border-right: var(--border)
 }
 
 .LottieContainer {
