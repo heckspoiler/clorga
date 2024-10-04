@@ -12,7 +12,8 @@
   /* --boxshadow-large: 4px 4px 1px var(--black);
   --boxshadow-small: 2px 2px 1px var(--black); */
   --border: 0.5px groove var(--black);
-  --accentgreen: #E1FF11
+  --accentgreen: rgb(248, 244, 8);
+  --accentgreen-low: rgba(255, 255, 17, 0.25)
 }
 
 

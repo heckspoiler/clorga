@@ -6,6 +6,7 @@ import Image from 'next/image';
 import styles from './FirstSection.module.css';
 import TextContentSection from './TextContentSection/TextContentSection';
 import Marquee from './Marquee/Marquee';
+import Plussign from '../general/Plussign';
 
 export default function FirstSection() {
   return (
@@ -15,8 +16,8 @@ export default function FirstSection() {
           <TextContentSection />
         </div>
         <div className={styles.Subsection}>
-          <div>
-            <h1>hlloeoej</h1>
+          <div className={styles.Rotate}>
+            <Plussign width={'400'} />
           </div>
         </div>
       </section>
