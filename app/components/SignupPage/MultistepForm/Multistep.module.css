@@ -52,14 +52,13 @@
     position: relative;
 }
 
-.IsCompanyContainer {
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+
+.FormRow input {
+    border: none;
+    border-bottom: var(--border)
 }
+
+
 
 .CoverContainer {
     position: absolute;
@@ -71,10 +70,6 @@
     z-index: 2;
     opacity: 1;
     pointer-events: none;
-}
-
-.CoverContainerHidden {
-    opacity: 0;
 }
 
 
@@ -92,41 +87,47 @@
 
 .ButtonContainer {
     display: flex;
-    padding-top: 1rem;
+    padding: 1rem;
+    padding-bottom: 0;
     justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
 }
 
-.ButtonContainerFirst {
-    gap: 1rem;
-    display: flex;
+.ButtonContainer p {
+    font-size: 0.8rem;
 }
 
-.ButtonContainer button,
-.ButtonContainerFirst button,
-.ButtonContainerFirst div {
+.ButtonContainer button {
     padding: 0.5rem 1rem;
     border: var(--border);
     box-shadow: var(--boxshadow-small);
     font-size: 0.8rem;
 }
 
-.ButtonContainer button:hover {
-    padding: 0.5rem 1rem;
-    border: var(--border);
-    box-shadow: var(--boxshadow-small);
-}
-
-.ButtonContainerFirst div:hover {
-    cursor: pointer;
-}
-
-.ButtonContainerFirst div.active {
-    background-color: var(--lightblue);
-}
-
 .ButtonDisabled {
     opacity: 0.4;
     box-shadow: none !important;
+}
+
+.OtherAuth {
+    display: flex;
+    gap: 1rem;
+
+}
+
+.OtherAuth button {
+    border: var(--border);
+    box-shadow: var(--boxshadow-small);
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.OtherAuth button:hover,
+.SubmitButton:hover {
+    scale: 1.05
 }
 
 .ErrorInput {

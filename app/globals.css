@@ -17,6 +17,9 @@
 
   --boxshadow-small: 2px 2px 1px var(--fontblue);
 
+  --border: 0.5px groove var(--darkerblue);
+
+
 
   /* monochrome blue color scheme */
   --lightestblue: #f3f8fd;
@@ -25,6 +28,8 @@
   --accentblue: #7ab3ef;
   --darkerblue: #368ce7;
   --fontblue: #1666ba;
+
+
 }
 
 

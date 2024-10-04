@@ -4,6 +4,8 @@ import React, { FormEvent, useState } from 'react';
 import styles from './Multistep.module.css';
 import UserDetailForm from './UserDetailForm';
 import { signup } from '@/app/signup/actions';
+import GithubLogo from '../../general/GithubLogo';
+import GoogleLogo from '../../general/GoogleLogo';
 
 type FormData = {
   firstName: string;
@@ -74,6 +76,15 @@ export default function SignupForm() {
           <button type="submit" className={styles.SubmitButton}>
             Sign Up
           </button>
+          <p>or use</p>
+          <div className={styles.OtherAuth}>
+            <button>
+              <GithubLogo width={25} height={25} />
+            </button>{' '}
+            <button>
+              <GoogleLogo width={25} height={25} />
+            </button>
+          </div>
         </div>
       </form>
     </div>

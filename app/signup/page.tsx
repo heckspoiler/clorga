@@ -7,7 +7,6 @@ import { Header } from '../components/Header/Header';
 export default function page() {
   return (
     <div className={styles.Main}>
-      <Header />
       <SignupPageContent />
     </div>
   );
