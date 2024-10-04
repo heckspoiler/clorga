@@ -6,6 +6,7 @@ import UserDetailForm from './UserDetailForm';
 import { signup } from '@/app/signup/actions';
 import GithubLogo from '../../general/GithubLogo';
 import GoogleLogo from '../../general/GoogleLogo';
+import AuthButtons from './AuthButtons';
 
 type FormData = {
   firstName: string;
@@ -77,14 +78,7 @@ export default function SignupForm() {
             Sign Up
           </button>
           <p>or use</p>
-          <div className={styles.OtherAuth}>
-            <button>
-              <GithubLogo width={25} height={25} />
-            </button>{' '}
-            <button>
-              <GoogleLogo width={25} height={25} />
-            </button>
-          </div>
+          <AuthButtons />
         </div>
       </form>
     </div>

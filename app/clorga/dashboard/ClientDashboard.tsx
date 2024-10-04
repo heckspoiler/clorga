@@ -18,9 +18,5 @@ export default function ClientDashboard({ user }: { user: any }) {
     setUser(userDetails);
   }, []);
 
-  return (
-    <h1>
-      {user.first_name} {firstName}
-    </h1>
-  );
+  return <h1>{<>{firstName ? firstName : 'you!'}</>}</h1>;
 }

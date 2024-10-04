@@ -8,7 +8,7 @@ import {
   Chivo_Mono,
 } from 'next/font/google';
 import '../globals.css';
-import Topbar from '../components/topbar/Topbar';
+import Topbar from './components/topbar/Topbar';
 import FixedBackground from '../components/fixedBackground/FixedBackground';
 
 const spacemono = Space_Mono({

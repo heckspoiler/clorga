@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import UserIcon from '../general/UserIcon';
+import UserIcon from '../../../components/general/UserIcon';
 import TopbarTooltip from './IconTooltip';
 
 export default function UserSpaceIcon({

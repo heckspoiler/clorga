@@ -1,5 +1,5 @@
 import { createClient } from '@/utils/supabase/server';
-import InputField from '@/app/components/InputField/InputField';
+import InputField from '@/app/clorga/components/InputField/InputField';
 
 import styles from './page.module.css';
 import MapCanvas from '../components/MapCanvas/MapCanvas';

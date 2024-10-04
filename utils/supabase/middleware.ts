@@ -37,14 +37,12 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
-  // List of public routes that don't require authentication
-  const publicRoutes = ['/', '/login', '/signup', '/auth', '/about'];
+  // Check if the current route requires authentication (starts with /clorga)
+  const requiresAuth = request.nextUrl.pathname.startsWith('/clorga');
 
-  if (
-    !user &&
-    !publicRoutes.some((route) => request.nextUrl.pathname.startsWith(route))
-  ) {
-    const redirectUrl = new URL('/', request.nextUrl.origin);
+  // If the user is not authenticated and the route requires auth, redirect to login
+  if (!user && requiresAuth) {
+    const redirectUrl = new URL('/login', request.nextUrl.origin);
     return NextResponse.redirect(redirectUrl);
   }
 
@@ -58,8 +56,6 @@ export async function updateSession(request: NextRequest) {
   //    the cookies!
   // 4. Finally:
   //    return myNewResponse
-  // If this is not done, you may be causing the browser and server to go out
-  // of sync and terminate the user's session prematurely!
 
   return supabaseResponse;
 }

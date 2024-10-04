@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Topbar.module.css';
-import Triangle from '../general/Triangle';
+import Triangle from '../../../components/general/Triangle';
 import Navigation from './Navigation';
 import UserSpaceIcon from './UserSpaceIcon';
 import { usePathname } from 'next/navigation';
