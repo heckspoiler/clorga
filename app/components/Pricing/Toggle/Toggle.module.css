@@ -6,7 +6,36 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
 }
+
+.Discount {
+    position: absolute;
+    width: fit-content;
+    top: 0;
+    right: 0;
+    height: 100%;
+    background: var(--accentgreen);
+    border-left: var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 2rem;
+    transform: translateX(100%);
+    transition: transform 0.2s var(--bezier);
+}
+
+.DiscountVisible {
+    transform: translateX(0);
+    transition: transform 0.2s var(--bezier);
+}
+
+.Discount div {
+    width: fit-content;
+    position: relative;
+    text-align: center;
+}
+
 
 .SwitchRow h5 {
     font-variation-settings: "wdth" 200, "wght" 200;

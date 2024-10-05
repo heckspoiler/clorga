@@ -15,6 +15,15 @@ export default function Toggle({
 
   return (
     <div className={styles.SwitchRow}>
+      <div
+        className={`${styles.Discount} ${
+          !isMonthly ? styles.DiscountVisible : ''
+        }`}
+      >
+        <div>
+          <p>Save 10%!</p>
+        </div>
+      </div>
       <div className={styles.SwitchContainer}>
         <h5>Monthly</h5>
         <div className={styles.SwitcherContainer} onClick={handleClick}>

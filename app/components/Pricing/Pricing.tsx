@@ -5,6 +5,8 @@ import styles from './Pricing.module.css';
 import PricingCard from './Card/PricingCard';
 import Toggle from './Toggle/Toggle';
 
+import { monthlyPricingTiers, yearlyPricingTiers } from './PricingTiers';
+
 const Pricing = ({ email }: { email: string | undefined }) => {
   const [isMonthly, setIsMonthly] = useState(true);
 
@@ -18,9 +20,13 @@ const Pricing = ({ email }: { email: string | undefined }) => {
 
           <Toggle isMonthly={isMonthly} setIsMonthly={setIsMonthly} />
           <div className={styles.CardContainer}>
-            <PricingCard />
-            <PricingCard />
-            <PricingCard />
+            <PricingCard
+              pricingTiers={
+                isMonthly ? monthlyPricingTiers : yearlyPricingTiers
+              }
+              isMonthly={isMonthly}
+              email={email}
+            />
           </div>
         </div>
       </section>

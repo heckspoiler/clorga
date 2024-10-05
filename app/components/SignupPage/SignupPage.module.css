@@ -6,7 +6,6 @@
     display: flex;
     position: relative;
     align-items: center;
-
     border-radius: 10px;
     border: var(--border);
 }
