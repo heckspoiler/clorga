@@ -14,12 +14,12 @@ export const monthlyPricingTiers: PricingTier[] = [
     price: '4.99',
     link:
       process.env.NODE_ENV === 'development'
-        ? 'https://buy.stripe.com/test_bIYeWId5W6K62fmbII'
-        : '',
+        ? process.env.STRIPE_MONTHLY_STARTER_LINK
+        : '/',
     priceId:
       process.env.NODE_ENV === 'development'
-        ? 'prod_QyOLg1Y1N6EM9g'
-        : 'prod_QyOLg1Y1N6EM9g',
+        ? process.env.STRIPE_MONTHLY_STARTER_ID
+        : '',
     features: [
       '1 User',
       '3 Projects',
@@ -61,12 +61,12 @@ export const yearlyPricingTiers: PricingTier[] = [
     title: 'Free Tier',
     link:
       process.env.NODE_ENV === 'development'
-        ? 'https://buy.stripe.com/test_3cs4i4c1Sc4q7zG8wx'
+        ? process.env.STRIPE_YEARLY_STARTER_LINK
         : '',
     priceId:
       process.env.NODE_ENV === 'development'
-        ? 'prod_QyOcetOGeBxSWz'
-        : 'prod_QyOcetOGeBxSWz',
+        ? process.env.STRIPE_YEARLY_STARTER_ID
+        : '',
     price: `${4.99 * 11 + 0.1}$`,
     features: [
       '1 User',
