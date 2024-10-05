@@ -1,0 +1,7 @@
+.PricingCard {
+    height: 40rem;
+    width: 24rem;
+    border: var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+}

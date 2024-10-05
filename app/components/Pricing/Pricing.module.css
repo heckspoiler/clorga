@@ -1,0 +1,30 @@
+.PricingSection {
+    position: absolute;
+    top: var(--headerheight);
+    left: 0;
+    height: calc(100vh - var(--headerheight));
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.PricingContainer {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 4rem;
+    gap: 1rem;
+}
+
+.CardContainer {
+    height: fit-content;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}

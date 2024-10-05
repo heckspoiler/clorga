@@ -13,6 +13,7 @@ const onlyLogoPaths = [
   '/signup',
   '/forgotpassword',
   '/dashboard',
+  '/subscribe',
 ];
 
 export function HeaderContent({ user }: { user: any }) {

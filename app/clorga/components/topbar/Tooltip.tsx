@@ -1,6 +1,6 @@
 'use client';
 
-import React, { memo, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import SingoutButton from './SingoutButton';
 import { elements } from './TooltipElements';
 import { userStore } from '@/utils/userStore';
@@ -43,4 +43,4 @@ function TopbarTooltip({
   );
 }
 
-export default memo(TopbarTooltip);
+export default TopbarTooltip;

@@ -2,11 +2,10 @@
 
 import React from 'react';
 
-import Image from 'next/image';
 import styles from './FirstSection.module.css';
 import TextContentSection from './TextContentSection/TextContentSection';
 import Marquee from './Marquee/Marquee';
-import Plussign from '../general/Plussign';
+import RightSection from './RightSection/RightSection';
 
 export default function FirstSection() {
   return (
@@ -16,9 +15,7 @@ export default function FirstSection() {
           <TextContentSection />
         </div>
         <div className={styles.Subsection}>
-          <div className={styles.Rotate}>
-            <Plussign width={'400'} />
-          </div>
+          <RightSection styles={styles} />
         </div>
       </section>
       <section className={styles.LowerSection}>

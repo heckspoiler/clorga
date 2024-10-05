@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import UserIcon from '../../../components/general/UserIcon';
-import TopbarTooltip from './IconTooltip';
+import TopbarTooltip from './Tooltip';
 
 export default function UserSpaceIcon({
   styles,

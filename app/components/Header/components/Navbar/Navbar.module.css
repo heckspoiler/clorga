@@ -4,23 +4,25 @@
     width: 100%;
     align-items: center;
     justify-content: center;
+    padding: 0 1rem;
+
 }
 
 .NavbarList {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-
+    border-radius: var(--radius);
     position: relative;
     overflow: hidden;
     width: 100%;
-
+    border: var(--border)
 }
 
 .NavbarHoverblock {
     content: "";
     position: absolute;
     width: 25%;
-    background-color: black;
+    background-color: var(--accentgreen);
     height: 100%;
     transform: translateX(-100%);
     transition: transform 0.2s var(--bezier)
@@ -33,24 +35,27 @@
     align-items: center;
     justify-content: center;
     border: var(--border);
+    border-top: none;
+    border-bottom: none;
     border-left: none;
     padding: 0.5rem;
     transition: color 0.2s var(--bezier)
 }
 
-.NavbarList li:hover {
-    color: white;
-}
 
 
 
 .NavbarList li:nth-of-type(1) {
-    border-left: var(--border);
+    border-left: none;
+}
+
+.NavbarList li:nth-of-type(4) {
+    border-right: none;
 }
 
 .Link {
     border: none;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     box-shadow: none;
 }
 

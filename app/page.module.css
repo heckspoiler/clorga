@@ -1,5 +1,5 @@
 .Main {
-    margin-top: 6rem;
+    margin-top: var(--headerheight);
     width: 100%;
     min-height: 100vh;
     border-bottom: var(--border);

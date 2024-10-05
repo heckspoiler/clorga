@@ -5,7 +5,7 @@ import SplitText from 'gsap/SplitText';
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-const words = ['Creativity', 'Innovation', 'Ideas', 'Brainstorm'];
+const words = ['Ideas', 'Creativity', 'Innovation', 'Brainstorm'];
 
 export default function TitleContainer({ styles }: { styles: any }) {
   const titleRef = useRef(null);

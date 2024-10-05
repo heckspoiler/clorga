@@ -7,7 +7,7 @@ import Link from 'next/link';
 const navbarItems = [
   { name: 'About Clorga', path: '/about' },
   { name: 'Usecases', path: '/why-clorga' },
-  { name: 'Pricing', path: '/pricing' },
+  { name: 'Pricing', path: '/subscribe' },
   { name: 'Blog', path: '/blog' },
 ];
 
