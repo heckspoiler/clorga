@@ -6,8 +6,9 @@
     display: flex;
     position: relative;
     align-items: center;
-    box-shadow: var(--boxshadow-large);
-    padding: 2rem;
+
+    border-radius: 10px;
+    border: var(--border);
 }
 
 
@@ -17,9 +18,9 @@
 .FormContainer,
 .TitleContainer {
     padding: 2rem;
-    border: var(--border);
     height: 40rem;
     width: 40vw;
+
 }
 
 
@@ -29,7 +30,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    border-right: 1px dashed var(--fontblue);
+    border-right: var(--border);
     gap: 2rem;
 }
 

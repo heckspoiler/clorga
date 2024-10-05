@@ -12,7 +12,10 @@ const Pricing = ({ email }: { email: string | undefined }) => {
     <>
       <section id="pricing" className={styles.PricingSection}>
         <div className={styles.PricingContainer}>
-          <h2>Subscribe to Clorga</h2>
+          <div className={styles.TitleContainer}>
+            <h2>Subscribe to Clorga</h2>
+          </div>
+
           <Toggle isMonthly={isMonthly} setIsMonthly={setIsMonthly} />
           <div className={styles.CardContainer}>
             <PricingCard />

@@ -3,5 +3,74 @@
     width: 24rem;
     border: var(--border);
     border-radius: var(--radius);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.PricingCard:nth-of-type(2) {
+    background-color: rgba(225, 255, 18, 0.05);
+}
+
+.PricingCard h2 {
+    text-align: center;
+    padding: 0.5rem;
+    padding-top: 0;
+}
+
+
+.DescriptionContainer {
+    border: var(--border);
+    border-radius: var(--radius);
     padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.DescriptionContainer:has(svg) {
+    border: none;
+}
+
+.PricingCard ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.PricingCard li {
+    font-variation-settings: "wdth" 200, "wght" 200;
+    position: relative;
+    display: flex;
+    gap: 1rem;
+    font-size: 0.8rem;
+}
+
+.PricingCard h5 {
+    font-size: 1.1rem;
+}
+
+
+
+
+.ButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.ButtonContainer button {
+
+
+    font-size: 1rem;
+    text-transform: uppercase;
+    border: var(--border);
+    padding: 0.5rem 1rem;
+    background-color: var(--accentgreen);
+    font-variation-settings: "wdth" 200, "wght" 300;
+
+
 }
