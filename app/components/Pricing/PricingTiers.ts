@@ -14,11 +14,11 @@ export const monthlyPricingTiers: PricingTier[] = [
     price: '4.99',
     link:
       process.env.NODE_ENV === 'development'
-        ? process.env.STRIPE_MONTHLY_STARTER_LINK
+        ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_STARTER_LINK
         : '/',
     priceId:
       process.env.NODE_ENV === 'development'
-        ? process.env.STRIPE_MONTHLY_STARTER_ID
+        ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_STARTER_ID
         : '',
     features: [
       '1 User',
@@ -61,11 +61,11 @@ export const yearlyPricingTiers: PricingTier[] = [
     title: 'Free Tier',
     link:
       process.env.NODE_ENV === 'development'
-        ? process.env.STRIPE_YEARLY_STARTER_LINK
+        ? process.env.NEXT_PUBLIC_STRIPE_YEARLY_STARTER_LINK
         : '',
     priceId:
       process.env.NODE_ENV === 'development'
-        ? process.env.STRIPE_YEARLY_STARTER_ID
+        ? process.env.NEXT_PUBLIC_STRIPE_YEARLY_STARTER_ID
         : '',
     price: `${4.99 * 11 + 0.1}$`,
     features: [
