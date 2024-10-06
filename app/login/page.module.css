@@ -1,7 +1,6 @@
 .Main {
-    z-index: 1;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: fit-content;
+    margin-top: var(--headerheight);
+    background-color: white;
+    overflow: hidden !important;
 }

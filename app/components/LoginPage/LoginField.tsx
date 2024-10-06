@@ -16,12 +16,9 @@ export default function LoginField({ styles }: { styles: any }) {
             organize your <span>creativity</span>
           </p>
         </div>
-        <div className={styles.Logo}>
-          <Plussign height={'50'} width={'50'} fill={'transparent'} />
-        </div>
       </div>
       <form action={login} className={styles.Form}>
-        <h3>Enter your credentials: </h3>
+        <h3>Enter your credentials </h3>
         <div className={styles.EmailContainer}>
           <label htmlFor="email">Email:</label>
           <input id="email" name="email" type="email" required />
@@ -38,9 +35,13 @@ export default function LoginField({ styles }: { styles: any }) {
             <Link href="/forgot-password">Forgot Password...?</Link>
           </div>
           <p className={styles.OrUse}>or use</p>
-        </div>
-        <div className={styles.AuthButtonContainer}>
-          <AuthButtons />
+          <div className={styles.AuthButtonContainer}>
+            <AuthButtons
+              width={45}
+              height={45}
+              className={styles.AuthButtons}
+            />
+          </div>
         </div>
       </form>
     </div>

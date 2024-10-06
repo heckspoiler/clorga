@@ -9,7 +9,11 @@ import styles from './Multistep.module.css';
 
 const isProduction = process.env.NODE_ENV === 'production';
 
-export default function AuthButtons() {
+export default function AuthButtons({
+  width,
+  height,
+  className,
+}: { width?: number; height?: number; className?: any } = {}) {
   const pathname = usePathname();
   const supabase = createClient();
 
@@ -57,13 +61,16 @@ export default function AuthButtons() {
   return (
     <>
       <div
-        className={styles.OtherAuth}
+        className={className ? className : styles.OtherAuth}
         style={{
           transform: pathname === '/login' ? 'scale(0.7)' : 'scale(1)',
         }}
       >
         <button onClick={() => signInWithProvider('github')}>
-          <GithubLogo width={25} height={25} />
+          <GithubLogo
+            width={width ? width : 25}
+            height={height ? height : 25}
+          />
         </button>
         <button onClick={() => signInWithProvider('google')}>
           <GoogleLogo width={25} height={25} />
