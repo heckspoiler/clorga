@@ -10,8 +10,8 @@ export type PricingTier = {
 
 export const monthlyPricingTiers: PricingTier[] = [
   {
-    title: 'Free Tier',
-    price: '4.99',
+    title: 'Starter Tier',
+    price: '4.99$',
     link:
       process.env.NODE_ENV === 'development'
         ? process.env.NEXT_PUBLIC_STRIPE_MONTHLY_STARTER_LINK
@@ -30,7 +30,7 @@ export const monthlyPricingTiers: PricingTier[] = [
   },
   {
     title: 'Pro Tier',
-    price: '9.99 per seat',
+    price: '9.99$ per seat',
     link: process.env.NODE_ENV === 'development' ? '********' : '',
     priceId: process.env.NODE_ENV === 'development' ? '********' : '',
     features: [
@@ -43,7 +43,7 @@ export const monthlyPricingTiers: PricingTier[] = [
   },
   {
     title: 'Enterprise Tier',
-    price: '19.99 per seat',
+    price: '19.99$ per seat',
     link: process.env.NODE_ENV === 'development' ? '********' : '',
     priceId: process.env.NODE_ENV === 'development' ? '********' : '',
     features: [
@@ -58,7 +58,7 @@ export const monthlyPricingTiers: PricingTier[] = [
 
 export const yearlyPricingTiers: PricingTier[] = [
   {
-    title: 'Free Tier',
+    title: 'Starter Tier',
     link:
       process.env.NODE_ENV === 'development'
         ? process.env.NEXT_PUBLIC_STRIPE_YEARLY_STARTER_LINK
