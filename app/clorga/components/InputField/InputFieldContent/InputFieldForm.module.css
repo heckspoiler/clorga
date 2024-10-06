@@ -4,6 +4,8 @@
     padding: 1em 1em;
 }
 
+.Form * {}
+
 
 
 .FormContainer {
@@ -206,13 +208,12 @@
 }
 
 .LegendRow:nth-of-type(2) div {
-    background-color: var(--accentblue);
+    background-color: var(--accentgreen);
 }
 
 
 .TagClicked {
-    background-color: var(--accentblue);
-    color: var(--lightblue)
+    background-color: var(--accentgreen);
 }
 
 .ButtonContainer {
@@ -223,7 +224,7 @@
 
 .SubmitButton {
     border: var(--border);
-    background-color: var(--lightblue);
+    background-color: var(--accentgreen);
     display: flex;
     align-items: center;
     box-shadow: var(--boxshadow-small);

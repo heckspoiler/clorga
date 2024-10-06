@@ -1,19 +1,38 @@
+@import url("https://use.typekit.net/eef8mxd.css");
+
 .Main {
     display: flex;
     flex-direction: column;
     bottom: 40rem;
     right: 2rem;
     position: absolute;
+}
 
+.Main * {
+    font-family: "ff-real-headline-pro", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.Main h4 {
+    font-family: "ff-real-headline-pro", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.Main input {
+    font-family: "ff-real-headline-pro", sans-serif;
+    font-weight: 200;
+    font-style: normal;
 }
 
 .Container {
-    width: 25rem;
+    width: 27rem;
     resize: both;
     border: var(--border);
     background-color: white;
-    box-shadow: var(--boxshadow-large);
     position: absolute;
+    padding: 1rem;
 
 }
 
@@ -23,9 +42,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--lighterblue);
-    box-shadow: var(--boxshadow-large);
-    width: 25rem;
+    background-color: var(--accentgreen);
+    width: 27rem;
 }
 
 .FoldArrowDiv {
@@ -40,8 +58,8 @@
 .FoldArrow {
     height: 0.6em;
     width: 0.6em;
-    border-left: 2px solid var(--darkerblue);
-    border-bottom: 2px solid var(--darkerblue);
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
     rotate: 135deg;
 }
 

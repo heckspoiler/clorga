@@ -3,35 +3,55 @@
     top: 0;
     left: 0;
     background-color: transparent;
-    transform: translateY(-3rem);
+    transform: translateY(-4rem);
     transition: transform 0.3s var(--bezier);
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 100;
+    height: 4rem;
+    width: 100vw;
 
 }
 
 
-.TopbarVisible {
-    transform: translateY(0);
-    transition: transform 0.3s var(--bezier);
-}
 
 .TopbarContainer {
-    width: 100vw;
-    height: 3rem;
-    padding: 0.5rem 3rem;
-    border-bottom: var(--border);
+    width: 80%;
+    padding: 1rem 3rem;
+    border: var(--border);
+    border-radius: var(--radius);
     display: flex;
     align-items: center;
     background-color: white;
     display: flex;
     justify-content: space-between;
+    box-shadow: 1px 1px 30px transparent;
+    transition: box-shadow 0.2s var(--bezier);
 }
 
-.ArrowDown {
-    transform: translateY(-1.5px);
+.TopbarVisible {
+    transform: translateY(1rem);
+    transition: transform 0.3s var(--bezier);
+
+}
+
+
+.TopbarVisible .TopbarContainer {
+
+    box-shadow: 1px 1px 30px rgb(241, 241, 241);
+}
+
+.LogoContainer {}
+
+.LogoContainer a {
+    box-shadow: none;
+    border: none;
+    width: fit-content;
+}
+
+.LogoContainer .ArrowDown {
+    transform: translateY(-2.5px);
 }
 
 .Fill {
@@ -47,51 +67,23 @@
 .NavbarItems {
     display: flex;
     height: 100%;
+    border-top: var(--border);
+    border-bottom: var(--border)
 }
 
 .NavbarItems li {
     list-style-type: none;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     position: relative;
     border-right: var(--border);
+    border-radius: none;
     min-width: 4rem;
     height: 100%;
     display: flex;
     overflow: hidden;
 }
 
-.NavbarItems li::before {
-    content: "";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color: var(--lightestblue);
-    transform: translateY(-100%);
-    transition: transform 0.3s var(--bezier)
-}
 
-.NavbarItems li::after {
-    content: "";
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    background-color: var(--lightestblue);
-    transform: translateY(100%);
-    transition: transform 0.3s var(--bezier);
-    transition-delay: 0.2s
-}
-
-.NavbarItems li:hover::before,
-.NavbarItems li.active::before {
-    background-color: var(--lightestblue);
-    transform: translateY(0);
-}
-
-.NavbarItems li:hover::after,
-.NavbarItems li.active::after {
-    background-color: var(--lightestblue);
-    transform: translateY(0);
-}
 
 .NavbarItems li:nth-of-type(1) {
     border-left: var(--border);
@@ -108,6 +100,9 @@
     align-items: center;
     justify-content: center;
     z-index: 10;
+    border: none;
+    box-shadow: none;
+    font-variation-settings: "wdth" 200, "wght" 400;
 }
 
 .UserIconContainer {
@@ -118,7 +113,7 @@
 .TooltipContent {
     position: absolute;
     border: var(--border);
-    box-shadow: var(--boxshadow-large);
+    background-color: white;
     top: 100%;
     right: 0;
     display: flex;
@@ -147,7 +142,7 @@
 }
 
 .TooltipLink:hover {
-    background-color: var(--lightestblue);
+    background-color: var(--accentgreen);
 }
 
 .TooltipLink:has(button) {
@@ -158,6 +153,12 @@
     display: flex;
     gap: 2rem;
     text-transform: lowercase;
+}
+
+.TooltipLink:has(a) a {
+
+    border: none;
+    box-shadow: none;
 }
 
 .TooltipLink:has(a) p {

@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useCallback } from 'react';
 import styles from './Topbar.module.css';
-import Triangle from '../../../components/general/Triangle';
+import Triangle from '../Triangle';
 import Navigation from './Navigation';
 import UserSpaceIcon from './UserSpaceIcon';
 import { usePathname } from 'next/navigation';
@@ -48,7 +48,7 @@ export default function Topbar() {
   }, [isHovered, isVisible, first]);
 
   useEffect(() => {
-    setColor(isVisible ? 'white' : '#bedaf7');
+    setColor(isVisible ? 'white' : 'rgba(225, 255, 18, 1)');
   }, [isVisible]);
 
   return (
@@ -57,7 +57,7 @@ export default function Topbar() {
       onMouseLeave={handleMouseLeave}
     >
       <div className={styles.TopbarContainer} onMouseEnter={handleMouseEnter}>
-        <div>
+        <div className={styles.LogoContainer}>
           <Link href="/">
             <h2>CLORGA</h2>
           </Link>
@@ -76,8 +76,9 @@ export default function Topbar() {
           height={66 / 4.4}
           width={145 / 4.4}
           strokeWidth={2}
-          longestStrokeColor={longestStrokeColor}
+          longestStrokeColor={'white'}
           styles={styles}
+          strokeColor={'black'}
         />
       </div>
     </div>
