@@ -18,7 +18,7 @@ export default function LoginField({ styles }: { styles: any }) {
         </div>
       </div>
       <form action={login} className={styles.Form}>
-        <h3>Enter your credentials </h3>
+        <h2>Enter your credentials </h2>
         <div className={styles.EmailContainer}>
           <label htmlFor="email">Email:</label>
           <input id="email" name="email" type="email" required />

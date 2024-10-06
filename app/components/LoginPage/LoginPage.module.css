@@ -28,7 +28,7 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    width: 30rem;
+    width: 35rem;
     gap: 1rem;
 }
 
@@ -56,7 +56,11 @@
     transform-origin: center;
 }
 
+.Form h2 {
 
+    width: fit-content;
+
+}
 
 
 .PasswordContainer,
@@ -144,8 +148,8 @@
 
 .AuthButtons button svg {
 
-    height: 3rem;
-    width: 3rem;
+    height: 2.5rem;
+    width: 2.5rem;
 }
 
 .OrUse {
