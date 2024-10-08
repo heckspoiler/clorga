@@ -14,7 +14,10 @@ export default function D3Element({
   projects: Project[] | null;
 }) {
   const svgRef = useRef<SVGSVGElement | null>(null);
-  const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
+  const [dimensions, setDimensions] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
   const [strokeWidth, setStrokeWidth] = useState(1);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -61,15 +64,14 @@ export default function D3Element({
         d3
           .forceLink(links)
           .id((d: any) => d.id)
-          .distance(100) // Set distance for initial layout
+          .distance(100)
       )
-      .force('charge', d3.forceManyBody().strength(1)) // Remove charge force
-      .force('center', d3.forceCenter(width / 2, height / 2)) // Center initial layout
+      .force('charge', d3.forceManyBody().strength(20))
+      .force('center', d3.forceCenter(width / 2, height / 2))
       .on('tick', ticked)
-      .stop(); // Stop the simulation immediately after tick
+      .stop();
 
-    // Run the simulation for a few ticks to get an initial layout
-    for (let i = 0; i < 100; i++) simulation.tick(); // Adjust number of ticks as needed
+    for (let i = 0; i < 100; i++) simulation.tick();
 
     // Remove forces after initial layout
     simulation.force('link', null).force('charge', null).alpha(0);
@@ -80,9 +82,9 @@ export default function D3Element({
       .selectAll('line')
       .data(links)
       .join('line')
-      .attr('stroke', '#999')
-      .attr('stroke-opacity', 0.6)
-      .attr('stroke-width', strokeWidth); // Set initial stroke width
+      .attr('stroke', 'black')
+      .attr('stroke-opacity', 1)
+      .attr('stroke-width', strokeWidth);
 
     const node = svg
       .append('g')
