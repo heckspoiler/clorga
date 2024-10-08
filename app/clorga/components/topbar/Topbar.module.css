@@ -3,7 +3,7 @@
     top: 0;
     left: 0;
     background-color: transparent;
-    transform: translateY(-4rem);
+    transform: translateY(1rem);
     transition: transform 0.3s var(--bezier);
     display: flex;
     flex-direction: column;
@@ -38,7 +38,6 @@
 
 
 .TopbarVisible .TopbarContainer {
-
     box-shadow: 1px 1px 30px rgb(241, 241, 241);
 }
 
@@ -52,6 +51,11 @@
 
 .LogoContainer .ArrowDown {
     transform: translateY(-2.5px);
+}
+
+.ArrowDown svg {
+    transform: translateY(-1px);
+
 }
 
 .Fill {

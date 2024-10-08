@@ -4,7 +4,9 @@
     padding: 1em 1em;
 }
 
-.Form * {}
+.Form * {
+    letter-spacing: 0.8px;
+}
 
 
 
@@ -43,10 +45,15 @@
     max-height: 100px;
     transform: scaleY(1);
     opacity: 1;
+
+    font-weight: 200;
 }
 
 .FormCell label {
     min-width: 4rem;
+    font-weight: 1.5rem;
+    font-weight: 800;
+
 }
 
 .FormCell input {
@@ -56,6 +63,7 @@
 
 .FormCell textarea {
     min-height: 4rem;
+    font-style: thin;
 }
 
 .TagsContainer {
@@ -127,7 +135,6 @@
     border: var(--border);
     width: fit-content;
     padding: 0.5em 1em;
-    box-shadow: var(--boxshadow-small);
     font-size: 0.8rem;
 }
 
@@ -155,7 +162,6 @@
 .SubmitButton:hover,
 .Submit:hover {
     cursor: pointer;
-    box-shadow: var(--boxshadow-small);
 }
 
 .SvgContainer {

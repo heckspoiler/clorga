@@ -6,23 +6,25 @@
     bottom: 40rem;
     right: 2rem;
     position: absolute;
+    box-shadow: 1px 1px 30px rgb(241, 241, 241);
+
 }
 
 .Main * {
-    font-family: "ff-real-headline-pro", sans-serif;
+    font-family: "stolzl", sans-serif;
     font-weight: 400;
     font-style: normal;
 }
 
 .Main h4 {
-    font-family: "ff-real-headline-pro", sans-serif;
-    font-weight: 800;
+    font-family: "stolzl", sans-serif;
+    font-weight: 700;
     font-style: normal;
 }
 
 .Main input {
-    font-family: "ff-real-headline-pro", sans-serif;
-    font-weight: 200;
+    font-family: "stolzl", sans-serif;
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -33,6 +35,8 @@
     background-color: white;
     position: absolute;
     padding: 1rem;
+    box-shadow: 1px 1px 30px rgb(241, 241, 241);
+
 
 }
 

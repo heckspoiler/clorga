@@ -20,7 +20,6 @@ export default function UserSpaceIcon({
   const handleClick = (e: React.MouseEvent) => {
     e.stopPropagation();
     setIsClicked((prevState) => !prevState);
-    console.log(isClicked);
   };
 
   useEffect(() => {
@@ -31,8 +30,6 @@ export default function UserSpaceIcon({
     if (isClicked) {
       document.body.addEventListener('click', handleBodyClick);
     }
-
-    console.log('fasdffds', isClicked);
 
     return () => {
       document.body.removeEventListener('click', handleBodyClick);
