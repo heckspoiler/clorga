@@ -3,13 +3,15 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { createClient } from '@supabase/supabase-js';
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
-// type imports
 
-import { Project } from '@/app/page';
-import { Idea } from '@/app/page';
+// type imports
+import type { Project } from '@/app/clorga/page';
+import ProjectGraph from '@/app/clorga/components/d3/d3';
+import { Idea } from '@/app/clorga/page';
 import BringBackButton from '../general/BringBackButton';
 
 import styles from './MapCanvas.module.css';
+import D3Element from '@/app/clorga/components/d3/d3real';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
@@ -56,6 +58,7 @@ export default function MapCanvas({
   return (
     <div className={styles.Main}>
       <div className={styles.CanvasContainer}>
+        <D3Element projects={projects} />
         {projects?.map((project: Project, index: number) => (
           <div key={`${project.id} ${index}`}>
             <h2>{project.project_name}</h2>
