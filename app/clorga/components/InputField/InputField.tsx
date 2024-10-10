@@ -46,7 +46,6 @@ export default function InputField({
     setAllTags: any;
   };
 
-  // Memoize tags calculation to avoid unnecessary recalculations
   const tags = useMemo(() => {
     const tagsUnjoined =
       initialProjects?.flatMap((project) => project.project_tags) || [];
