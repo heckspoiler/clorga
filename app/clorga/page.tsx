@@ -3,9 +3,6 @@ import InputField from '@/app/clorga/components/InputField/InputField';
 
 import styles from './page.module.css';
 import MapCanvas from './components/MapCanvas/MapCanvas';
-import { UserProvider } from '@/utils/context';
-import { User } from 'lucide-react';
-import ProjectGraph from './components/d3/d3';
 
 export type Idea = {
   id: number;
