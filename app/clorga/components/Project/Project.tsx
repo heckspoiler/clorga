@@ -9,28 +9,29 @@ interface ProjectProps {
   project: ProjectType;
   updateLineCoordinates: () => void;
   index: number;
+  isSpacebar: boolean;
 }
 
-const pastelColors = [
-  '#FFB3BA', // Light pink
-  '#FFDFBA', // Light peach
-  '#FFFFBA', // Light yellow
-  '#BAFFC9', // Light mint
-  '#BAE1FF', // Light blue
-  '#D4A5A5', // Soft mauve
-  '#B5EAD7', // Soft green
-  '#C7CEEA', // Lavender blue
-  '#FFC8A2', // Light coral
-  '#FFD3B6', // Peach
-  '#FF9AA2', // Soft rose
-  '#E2F0CB', // Pastel green
-  '#B0E57C', // Light lime
-  '#C3B1E1', // Light purple
-  '#F5C6EC', // Light pink-purple
+export const pastelColors = [
+  '#FFB3BA',
+  '#FFDFBA',
+  '#FFFFBA',
+  '#BAFFC9',
+  '#BAE1FF',
+  '#D4A5A5',
+  '#B5EAD7',
+  '#C7CEEA',
+  '#FFC8A2',
+  '#FFD3B6',
+  '#FF9AA2',
+  '#E2F0CB',
+  '#B0E57C',
+  '#C3B1E1',
+  '#F5C6EC',
 ];
 
 const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
-  ({ project, updateLineCoordinates, index }, ref) => {
+  ({ project, updateLineCoordinates, index, isSpacebar }, ref) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
 
@@ -45,7 +46,11 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
     };
 
     return (
-      <Draggable onDrag={updateLineCoordinates} onStop={updateLineCoordinates}>
+      <Draggable
+        onDrag={updateLineCoordinates}
+        onStop={updateLineCoordinates}
+        disabled={isSpacebar}
+      >
         <div
           ref={ref}
           style={{

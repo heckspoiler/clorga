@@ -34,8 +34,8 @@ export default function MapCanvas({
   const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
 
   useEffect(() => {
-    if (scaleSize < 0.3) {
-      setScaleSize(0.3);
+    if (scaleSize < 0.5) {
+      setScaleSize(0.5);
     }
   }, [scaleSize]);
 

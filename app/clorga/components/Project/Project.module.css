@@ -3,6 +3,7 @@
     border: var(--border);
     min-width: 18rem;
     transition: scale 0.05s linear;
+    transform-origin: center;
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
@@ -21,10 +22,17 @@
 .TitleContainer h3 {
     text-transform: uppercase;
     font-size: 1rem;
+    font-variation-settings: "wdth" 200, "wght" 300;
+
 }
 
 .IdeaContainer {
     padding: 1rem;
+}
+
+.IdeaContainer label {
+    font-variation-settings: "wdth" 200, "wght" 300;
+
 }
 
 .IdeaDropdownContainer {
@@ -75,7 +83,10 @@
     top: 100%;
     left: 0;
     width: 100%;
-    border: var(--border);
+    border-left: var(--border);
+    border-right: var(--border);
+    border-top: var(--border);
+    border-radius: var(--radius);
     background-color: #fff;
     max-height: 200px;
     overflow-y: auto;
@@ -86,6 +97,20 @@
     cursor: pointer;
     border-bottom: var(--border);
     padding: 0.5rem;
+    font-variation-settings: "wdth" 200, "wght" 100;
+    font-size: 0.8rem;
+}
+
+.Option:nth-of-type(1) {
+    border-top-right-radius: var(--radius);
+    border-top-left-radius: var(--radius);
+
+}
+
+
+.Option:last-of-type {
+    border-bottom-right-radius: var(--radius);
+    border-bottom-left-radius: var(--radius);
 }
 
 .Option:hover {
