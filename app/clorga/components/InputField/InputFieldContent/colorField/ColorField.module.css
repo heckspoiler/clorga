@@ -1,0 +1,26 @@
+.ColorContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.ColorField {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.Color {
+    height: 1rem;
+    width: 1rem;
+    border: var(--border);
+    cursor: pointer;
+}
+
+.Color:hover {
+    scale: 1.05;
+}
+
+.Color:active {
+    outline: 1px red;
+}

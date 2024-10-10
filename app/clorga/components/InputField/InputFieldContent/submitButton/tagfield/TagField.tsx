@@ -6,6 +6,8 @@ import AddTagField from './AddTagField';
 import Plussign from '@/app/components/general/Plussign';
 import type { Project } from '@/app/clorga/page';
 
+import CellContainer from '../../../CellContainer/CellContainer';
+
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
 export default function TagField({
   styles,
@@ -69,7 +71,7 @@ export default function TagField({
   };
 
   return (
-    <div className={styles.TagsContainer}>
+    <CellContainer>
       <div className={styles.FormCell}>
         <label htmlFor="tags">Tags:</label>
         <div className={styles.Tags}>
@@ -137,6 +139,6 @@ export default function TagField({
           <p>selected</p>
         </div>
       </div>
-    </div>
+    </CellContainer>
   );
 }

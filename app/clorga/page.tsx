@@ -19,6 +19,7 @@ export type Project = {
   project_name: string | null;
   due_date: string | null;
   project_tags: Array<string> | null;
+  color: string;
 };
 
 export default async function Index() {

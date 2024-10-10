@@ -1,6 +1,7 @@
 .Form {
     height: 100%;
     width: 100%;
+    min-width: 40rem;
 }
 
 .Form * {
@@ -13,8 +14,6 @@
     height: 100%;
     display: flex;
     flex-direction: column;
-
-
 }
 
 .FormCell,
@@ -25,8 +24,13 @@
     width: fit-content;
     flex-direction: column;
     width: 100%;
-    padding: 0.5rem 0;
 
+}
+
+.ProjectCell {
+    display: flex;
+    align-items: left;
+    flex-direction: column;
 }
 
 .FormCell:nth-of-type(1) {
@@ -35,29 +39,17 @@
 }
 
 .FormCellDate {
-    max-height: 0px;
-    transform: scaleY(0);
-    opacity: 0;
-    transition: max-height 0.4s var(--bezier), transform 0.2s var(--bezier), opacity 0.1s var(--bezier)
+    padding-top: 1rem;
 }
 
-.DateFieldIsVisible {
-    max-height: 100px;
-    transform: scaleY(1);
-    opacity: 1;
-
-    font-weight: 200;
-}
-
-.FormCell label {
+.Form label {
     min-width: 4rem;
-    font-weight: 1.5rem;
-    font-weight: 800;
-
+    font-size: 0.7rem;
+    font-variation-settings: "wdth" 200, "wght" 400;
 }
 
-.FormCell input {
-    width: 100%;
+.FormCell *:not(label) {
+    font-size: 0.6rem;
 }
 
 
@@ -76,6 +68,7 @@
     height: 100%;
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row;
     max-height: 14em;
     padding: 0.5em 1em;
     overflow-y: auto;
@@ -83,7 +76,6 @@
     gap: 1em;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
 }
 
 .SubmitField {
@@ -112,6 +104,12 @@
     padding: 0.5em 1em;
 }
 
+.DateandColor {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
 .Tags::-webkit-scrollbar {
     width: 8px;
 }
@@ -135,7 +133,6 @@
     border: var(--border);
     width: fit-content;
     padding: 0.5em 1em;
-    font-size: 0.8rem;
 }
 
 .Tag,
@@ -152,7 +149,6 @@
     align-items: center;
     gap: 0.5rem;
     position: relative;
-    font-size: 0.7rem;
 }
 
 .Tag:hover,
@@ -196,7 +192,7 @@
 }
 
 .LegendRow {
-    font-size: 0.6rem;
+    font-size: 0.5rem;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -234,7 +230,7 @@
     display: flex;
     align-items: center;
     box-shadow: var(--boxshadow-small);
-    font-size: 0.7rem;
+    font-size: 0.6rem;
 }
 
 .SubmitButton:hover {
@@ -250,7 +246,7 @@
     background-color: var(--lightblue);
     border: var(--border);
     box-shadow: var(--boxshadow-small);
-    font-size: 0.9rem;
+    font-size: 0.7rem;
 }
 
 
@@ -258,9 +254,8 @@
 .InputTag {
     border: none !important;
     display: flex;
-    padding-bottom: 0rem !important;
+    padding-bottom: 1rem !important;
     gap: 1em;
-
 }
 
 

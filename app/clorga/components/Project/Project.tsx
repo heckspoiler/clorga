@@ -45,6 +45,8 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
       setIsDropdownOpen(false); // Close dropdown on selection
     };
 
+    console.log('project', project.color);
+
     return (
       <Draggable
         onDrag={updateLineCoordinates}
@@ -64,7 +66,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
           <div
             className={styles.TitleContainer}
             style={{
-              backgroundColor: pastelColors[index % pastelColors.length],
+              backgroundColor: project.color || 'white',
             }}
           >
             <h3>{project.project_name}</h3>

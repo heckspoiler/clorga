@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import styles from './InputFieldForm.module.css';
-import TagField from './tagfield/TagField';
+import TagField from './submitButton/tagfield/TagField';
 import ProjectField from './projectfield/ProjectField';
 
 import { newProjectStore } from '@/utils/newProjectStore';
@@ -42,7 +42,6 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
           selectedProject={selectedProject}
           setSelectedProject={setSelectedProject}
         />
-        <DateField styles={styles} newProject={newProject} />
         <Idea styles={styles} />
         <IdeaTextField styles={styles} />
         <TagField

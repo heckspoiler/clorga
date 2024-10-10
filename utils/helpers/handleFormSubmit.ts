@@ -15,6 +15,7 @@ export const handleProjectSubmit = async ({
   ideaDescription,
   selectedTagsForIdea,
   setIsSubmitted,
+  projectColor,
 }: {
   projectName: string;
   projectTags: string[];
@@ -24,6 +25,7 @@ export const handleProjectSubmit = async ({
   ideaDescription: string;
   selectedTagsForIdea: Set<string>;
   setIsSubmitted: (isSubmitted: boolean) => void;
+  projectColor: string;
 }) => {
   if (projectName === '') {
     alert('Project name is required.');
@@ -70,6 +72,7 @@ export const handleProjectSubmit = async ({
           project_tags: updatedTags,
           due_date: formattedDueDate || existingProject.due_date,
           project_ideas: updatedIdeas,
+          color: projectColor,
         })
         .eq('id', existingProject.id);
 
@@ -81,6 +84,7 @@ export const handleProjectSubmit = async ({
         project_tags: projectTags,
         due_date: formattedDueDate,
         project_ideas: [newIdea],
+        color: projectColor,
       });
 
       if (error) throw error;

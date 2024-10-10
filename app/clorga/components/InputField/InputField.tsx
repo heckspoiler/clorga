@@ -14,13 +14,8 @@ import { formStore } from '@/utils/formstore';
 
 import { createClient } from '@supabase/supabase-js';
 
-import gsap from 'gsap';
-import { Draggable } from 'gsap/all';
-import { useGSAP } from '@gsap/react';
 import InputFieldForm from './InputFieldContent/InputFieldForm';
 import type { Project } from '../../page';
-
-gsap.registerPlugin(Draggable, useGSAP);
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,

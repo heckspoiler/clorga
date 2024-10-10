@@ -16,6 +16,7 @@ export default function SubmitButton({ styles }: { styles: any }) {
     ideaAuthor,
     ideaDescription,
     selectedTagsForIdea,
+    projectColor,
     setIdeaAuthor,
   } = newProjectStore();
 
@@ -58,6 +59,7 @@ export default function SubmitButton({ styles }: { styles: any }) {
         ideaDescription,
         selectedTagsForIdea,
         setIsSubmitted,
+        projectColor,
       });
     } catch (error) {
       console.error('Error submitting project:', error);

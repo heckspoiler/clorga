@@ -9,6 +9,7 @@ import { newProjectStore } from '@/utils/newProjectStore';
 
 import { handleInputChange } from '@/utils/helpers/handleInputChange';
 import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
+import CellContainer from '../../CellContainer/CellContainer';
 
 export default function IdeaTextField({ styles }: { styles: any }) {
   // zustand stores
@@ -18,18 +19,20 @@ export default function IdeaTextField({ styles }: { styles: any }) {
   useResetOnSubmit(isSubmitted, () => setIdeaDescription(''), []);
 
   return (
-    <div className={styles.FormCell}>
-      <label htmlFor="name">Elaborate:</label>
-      <textarea
-        id="idea-description"
-        name="idea-description"
-        placeholder="3D vito bing chasing etienne in mario kart"
-        wrap="soft"
-        aria-label="Idea description"
-        data-clickable="true"
-        value={ideaDescription}
-        onChange={(e) => handleInputChange(e, setIdeaDescription)}
-      ></textarea>
-    </div>
+    <CellContainer>
+      <div className={styles.FormCell}>
+        <label htmlFor="name">Elaborate:</label>
+        <textarea
+          id="idea-description"
+          name="idea-description"
+          placeholder="3D vito bing chasing etienne in mario kart"
+          wrap="soft"
+          aria-label="Idea description"
+          data-clickable="true"
+          value={ideaDescription}
+          onChange={(e) => handleInputChange(e, setIdeaDescription)}
+        ></textarea>
+      </div>
+    </CellContainer>
   );
 }

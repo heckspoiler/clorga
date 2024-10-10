@@ -8,6 +8,7 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 // helper imports
 import { handleInputChange } from '@/utils/helpers/handleInputChange';
 import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
+import ColorField from '../colorField/ColorField';
 
 // component starts here
 
@@ -16,7 +17,7 @@ export default function DateField({
   newProject,
 }: {
   styles: any;
-  newProject: boolean;
+  newProject?: boolean;
 }) {
   //zustand store
   const { projectDueDate, setProjectDueDate } = newProjectStore();
@@ -25,11 +26,7 @@ export default function DateField({
   useResetOnSubmit(isSubmitted, () => setProjectDueDate(''), []);
 
   return (
-    <div
-      className={`${styles.FormCellDate} ${
-        newProject ? styles.DateFieldIsVisible : ''
-      }`}
-    >
+    <div className={`${styles.FormCellDate} `}>
       <label htmlFor="idea-title">Date Due (optional):</label>
       <input
         id="idea-title"

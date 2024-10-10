@@ -15,15 +15,15 @@ export default function FormVisibleButton({
   useEffect(() => {
     const colorTimeout1 = setTimeout(() => {
       setBackgroundColor('rgba(225, 255, 18, 1)');
-    }, 2000);
+    }, 500);
 
     const colorTimeout2 = setTimeout(() => {
       setBackgroundColor('#fff');
-    }, 4000);
+    }, 1200);
 
     const transitionTimeout = setTimeout(() => {
       setTransition('');
-    }, 5000);
+    }, 1800);
 
     return () => {
       clearTimeout(colorTimeout1);

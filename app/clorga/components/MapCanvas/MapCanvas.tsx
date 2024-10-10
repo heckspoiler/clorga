@@ -44,7 +44,7 @@ export default function MapCanvas({
   useEffect(() => {
     setTimeout(() => {
       setIsVisible(false);
-    }, 2000);
+    }, 500);
   }, []);
 
   const fetchProjects = useCallback(async () => {
