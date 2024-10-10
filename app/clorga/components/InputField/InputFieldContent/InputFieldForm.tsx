@@ -9,7 +9,7 @@ import { newProjectStore } from '@/utils/newProjectStore';
 
 import Idea from './ideaField/Idea';
 
-import { Project } from '@/app/page';
+import type { Project } from '@/app/clorga/page';
 import IdeaTextField from './ideaTextField/IdeaTextField';
 import SubmitButton from './submitButton/SubmitButton';
 import DateField from './dateField/DateField';
