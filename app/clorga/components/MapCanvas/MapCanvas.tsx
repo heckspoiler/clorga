@@ -6,17 +6,19 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 // type imports
 import type { Project } from '@/app/clorga/page';
-import ProjectGraph from '@/app/clorga/components/d3/d3';
-import { Idea } from '@/app/clorga/page';
-import BringBackButton from '../general/BringBackButton';
+
+import BringBackButton from '../../../components/general/BringBackButton';
 
 import styles from './MapCanvas.module.css';
-import D3Element from '@/app/clorga/components/d3/d3real';
+import Canvas from './Canvas';
+import ScaleContainer from './ScaleButton/ScaleButton';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY as string
 );
+
+const props = {};
 
 export default function MapCanvas({
   initialProjects,
@@ -28,6 +30,14 @@ export default function MapCanvas({
   );
 
   const { isSubmitted, setIsSubmitted } = isSubmittedStore();
+  const [scaleSize, setScaleSize] = useState(1);
+  const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (scaleSize < 0.3) {
+      setScaleSize(0.3);
+    }
+  }, [scaleSize]);
 
   const fetchProjects = useCallback(async () => {
     const { data, error } = await supabase.from('projects').select('*');
@@ -57,24 +67,20 @@ export default function MapCanvas({
 
   return (
     <div className={styles.Main}>
-      <div className={styles.CanvasContainer}>
-        <D3Element projects={projects} />
-        {projects?.map((project: Project, index: number) => (
-          <div key={`${project.id} ${index}`}>
-            <h2>{project.project_name}</h2>
-            <div>
-              {project.project_ideas.map((idea: Idea, index: number) => (
-                <div key={index}>
-                  <h3>{idea.title}</h3>
-                  <p>{idea.description}</p>
-                  <p>{idea.tags?.join(', ')}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
+      <Canvas
+        styles={styles}
+        projects={projects}
+        scaleSize={scaleSize}
+        setScaleSize={setScaleSize}
+        selectedIdea={selectedIdea}
+        setSelectedIdea={setSelectedIdea}
+      />
       <BringBackButton />
+      <ScaleContainer
+        scaleSize={scaleSize}
+        setScaleSize={setScaleSize}
+        styles={styles}
+      />
     </div>
   );
 }

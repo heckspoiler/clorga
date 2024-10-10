@@ -1,0 +1,93 @@
+.Project {
+    background-color: white;
+    border: var(--border);
+    min-width: 18rem;
+    transition: scale 0.05s linear;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-radius: var(--radius);
+    box-shadow: 3px 3px 10px rgb(221, 221, 221);
+}
+
+.TitleContainer {
+    background-color: var(--accentgreen);
+    padding: 0.5rem 1rem;
+    border-bottom: var(--border);
+    border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius);
+}
+
+.TitleContainer h3 {
+    text-transform: uppercase;
+    font-size: 1rem;
+}
+
+.IdeaContainer {
+    padding: 1rem;
+}
+
+.IdeaDropdownContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.TagsContainer {
+    padding: 1rem 0;
+    display: flex;
+
+    gap: 0.5rem;
+    flex-direction: column;
+}
+
+.Tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.Tag {
+    padding: 0.5rem;
+    border: var(--border);
+    border-radius: var(--radius);
+    font-size: 0.8rem;
+}
+
+.IdeaDropdownContainer {
+    position: relative;
+    width: 100%;
+}
+
+.DropdownButton {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 0.7rem;
+    cursor: pointer;
+    background-color: white;
+    text-align: left;
+    border: var(--border);
+    box-shadow: none;
+}
+
+.OptionsContainer {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    border: var(--border);
+    background-color: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.Option {
+    cursor: pointer;
+    border-bottom: var(--border);
+    padding: 0.5rem;
+}
+
+.Option:hover {
+    background-color: var(--accentgreen);
+}

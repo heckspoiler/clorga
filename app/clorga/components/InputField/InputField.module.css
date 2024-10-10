@@ -7,6 +7,7 @@
     right: 2rem;
     position: absolute;
     box-shadow: 1px 1px 30px rgb(241, 241, 241);
+    z-index: 100;
 
 }
 
