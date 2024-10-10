@@ -12,6 +12,7 @@ import BringBackButton from '../../../components/general/BringBackButton';
 import styles from './MapCanvas.module.css';
 import Canvas from './Canvas';
 import ScaleContainer from './ScaleButton/ScaleButton';
+import InputField from '../InputField/InputField';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL as string,
@@ -32,6 +33,7 @@ export default function MapCanvas({
   const { isSubmitted, setIsSubmitted } = isSubmittedStore();
   const [scaleSize, setScaleSize] = useState(1);
   const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
     if (scaleSize < 0.5) {
@@ -80,7 +82,12 @@ export default function MapCanvas({
         scaleSize={scaleSize}
         setScaleSize={setScaleSize}
         styles={styles}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
       />
+      {initialProjects && (
+        <InputField initialProjects={initialProjects} isVisible={isVisible} />
+      )}
     </div>
   );
 }

@@ -96,10 +96,11 @@ export default function Canvas({
   };
 
   const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    e.preventDefault();
     if (e.deltaY > 0 && enableZoom) {
+      e.preventDefault();
       setScaleSize(scaleSize - 0.005);
     } else if (e.deltaY < 0 && enableZoom) {
+      e.preventDefault();
       setScaleSize(scaleSize + 0.005);
     }
   };

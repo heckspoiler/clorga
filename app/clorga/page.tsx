@@ -27,7 +27,6 @@ export default async function Index() {
 
   return (
     <main className={styles.Main}>
-      {initialProjects && <InputField initialProjects={initialProjects} />}
       <MapCanvas initialProjects={initialProjects} />
     </main>
   );
