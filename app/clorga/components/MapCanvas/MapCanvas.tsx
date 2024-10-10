@@ -41,6 +41,12 @@ export default function MapCanvas({
     }
   }, [scaleSize]);
 
+  useEffect(() => {
+    setTimeout(() => {
+      setIsVisible(false);
+    }, 2000);
+  }, []);
+
   const fetchProjects = useCallback(async () => {
     const { data, error } = await supabase.from('projects').select('*');
     if (error) console.log('error', error);

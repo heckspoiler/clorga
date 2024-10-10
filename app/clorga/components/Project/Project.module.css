@@ -11,6 +11,15 @@
     box-shadow: 3px 3px 10px rgb(221, 221, 221);
 }
 
+.Project *::-moz-selection {
+    /* Code for Firefox */
+    background: transparent;
+}
+
+.Project *::selection {
+    background: transparent;
+}
+
 .TitleContainer {
     background-color: var(--accentgreen);
     padding: 0.5rem 1rem;
