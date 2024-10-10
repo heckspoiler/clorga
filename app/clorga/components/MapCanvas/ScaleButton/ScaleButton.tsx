@@ -17,7 +17,10 @@ export default function ScaleContainer({
   return (
     <div className={styles.ZoomContainer}>
       <FormVisibleButton isVisible={isVisible} setIsVisible={setIsVisible} />
-      <div style={{ display: 'flex', gap: '0.5rem' }}>
+      <div
+        style={{ display: 'flex', gap: '0.5rem' }}
+        className={styles.ZoomButtons}
+      >
         <button onClick={() => setScaleSize(scaleSize + 0.05)}>+</button>
         <button onClick={() => setScaleSize(1)}>100%</button>
         <button onClick={() => setScaleSize(scaleSize - 0.05)}>-</button>

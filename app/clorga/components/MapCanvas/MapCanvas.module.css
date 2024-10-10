@@ -48,6 +48,16 @@
     font-size: 0.8rem;
 }
 
+
+.ZoomContainer button:nth-of-type(1) {
+    width: 100%;
+}
+
+.ZoomButtons button:nth-of-type(1) {
+    background-color: white;
+    width: auto;
+}
+
 .ZoomContainer button:hover {
     background-color: var(--accentgreen);
 }
