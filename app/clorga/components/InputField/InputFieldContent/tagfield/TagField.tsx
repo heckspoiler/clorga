@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { newProjectStore } from '@/utils/newProjectStore';
 import AddTagField from './AddTagField';
 import Plussign from '@/app/components/general/Plussign';
-import { Project } from '@/app/page';
+import type { Project } from '@/app/clorga/page';
 
 import { isSubmittedStore } from '@/utils/isSubmittedStore';
 export default function TagField({
