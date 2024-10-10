@@ -33,14 +33,7 @@ export default function InputField({
 }: {
   initialProjects: Project[];
 }) {
-  const draggableRef = useRef<HTMLDivElement>(null);
-  const foldContainerRef = useRef(null);
-  const [isDragging, setIsDragging] = useState(false);
-  const [isClosed, setIsClosed] = useState(false);
-
-  // zustand stores
-  const { isInViewport, setIsInViewport, shouldComeBack } =
-    forminViewportStore();
+  const [isVisible, setIsVisible] = useState(true);
   const { allTagsStore, setAllTags } = formStore() as {
     allTagsStore: any;
     setAllTags: any;
@@ -59,101 +52,9 @@ export default function InputField({
     }
   }, [tags, allTagsStore, setAllTags]);
 
-  // Checker if in Viewport or not
-
-  const checkIfInViewport = useCallback(() => {
-    if (draggableRef?.current && isClosed) {
-      const rect = (
-        draggableRef.current as HTMLElement
-      ).getBoundingClientRect();
-      const isVisible =
-        rect.top >= -rect.height &&
-        rect.left >= -rect.width &&
-        rect.bottom <= window.innerHeight + rect.height &&
-        rect.right <= window.innerWidth + rect.width;
-      setIsInViewport(isVisible);
-    }
-  }, [setIsInViewport, isClosed]);
-
-  // Draggable setup
-  useGSAP(() => {
-    const draggableElement = draggableRef.current;
-
-    Draggable.create(draggableElement, {
-      type: 'x,y',
-      edgeResistance: 0,
-      zIndex: 1,
-      inertia: true,
-      autoScroll: 1,
-      dragClickables: false,
-      onDragStart: () => {
-        setIsDragging(true);
-        if (draggableElement) {
-          draggableElement.style.zIndex = '10';
-        }
-      },
-      onDrag: checkIfInViewport,
-      onDragEnd: () => {
-        setIsDragging(false);
-        if (draggableElement) {
-          draggableElement.style.zIndex = '1';
-        }
-        checkIfInViewport();
-      },
-    });
-  }, [checkIfInViewport]);
-
-  useEffect(() => {
-    if (shouldComeBack) {
-      gsap.to(draggableRef.current, {
-        x: 0,
-        y: 0,
-        duration: 0.5,
-        onComplete: () => {
-          setIsClosed(false);
-          setIsInViewport(true);
-        },
-      });
-    }
-  }, [shouldComeBack, setIsInViewport]);
-
   return (
-    <div
-      ref={draggableRef}
-      className={`${styles.Main} ${isDragging ? styles.isDragging : ''}`}
-      onMouseDown={() => setIsDragging(true)}
-      onMouseUp={() => setIsDragging(false)}
-    >
-      <div className={styles.FoldArrowContainer}>
-        <h4>{isClosed ? 'Feed me' : 'Ideabox'}</h4>
-        <div
-          className={styles.FoldArrowDiv}
-          onClick={() => setIsClosed(!isClosed)}
-          data-clickable="true"
-          style={{
-            cursor: 'pointer',
-            transform: isClosed ? 'rotate(180deg)' : 'rotate(0deg)',
-          }}
-        >
-          <div className={styles.FoldArrow} />
-        </div>
-      </div>
-      <div>
-        <div
-          className={`${styles.Container} ${
-            isClosed ? styles.FormContainerClosed : ''
-          }`}
-          ref={foldContainerRef}
-        >
-          <div
-            className={`${styles.FormContainer} ${
-              isClosed ? styles.FormContainerClosed : ''
-            }`}
-          >
-            <InputFieldForm projects={initialProjects} />
-          </div>
-        </div>
-      </div>
+    <div className={`${styles.Main} ${isVisible ? styles.IsVisible : ''}`}>
+      <InputFieldForm projects={initialProjects} />
     </div>
   );
 }

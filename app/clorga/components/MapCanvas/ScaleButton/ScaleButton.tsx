@@ -12,10 +12,10 @@ export default function ScaleContainer({
   return (
     <div className={styles.ZoomContainer}>
       <div style={{ display: 'flex', gap: '0.5rem' }}>
+        <button onClick={() => setScaleSize(1)}>100%</button>
         <button onClick={() => setScaleSize(scaleSize + 0.05)}>+</button>
         <button onClick={() => setScaleSize(scaleSize - 0.05)}>-</button>
       </div>
-      <p>Zoom</p>
     </div>
   );
 }
