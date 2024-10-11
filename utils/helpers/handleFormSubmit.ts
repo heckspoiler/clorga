@@ -1,5 +1,6 @@
 // utils/formHelpers.js
 import { createClient } from '@supabase/supabase-js';
+import { formatDate } from './formatDate';
 
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL ?? '',
@@ -51,7 +52,7 @@ export const handleProjectSubmit = async ({
     const newIdea = {
       tags: selectedTagsForIdea ? Array.from(selectedTagsForIdea) : [],
       title: ideaTitle,
-      created_at: new Date().toISOString(),
+      created_at: formatDate(new Date().toISOString()),
       description: ideaDescription,
       author: ideaAuthor,
     };

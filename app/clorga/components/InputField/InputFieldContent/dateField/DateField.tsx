@@ -8,8 +8,7 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 // helper imports
 import { handleInputChange } from '@/utils/helpers/handleInputChange';
 import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
-import ColorField from '../colorField/ColorField';
-
+import { formatDate } from '@/utils/helpers/formatDate';
 // component starts here
 
 export default function DateField({

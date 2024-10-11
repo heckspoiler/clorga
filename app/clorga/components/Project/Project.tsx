@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 import type { Project as ProjectType } from '../../page';
 import styles from './Project.module.css';
+import { formatDate } from '@/utils/helpers/formatDate';
 
 interface ProjectProps {
   project: ProjectType;
@@ -11,24 +12,6 @@ interface ProjectProps {
   index: number;
   isSpacebar: boolean;
 }
-
-export const pastelColors = [
-  '#FFB3BA',
-  '#FFDFBA',
-  '#FFFFBA',
-  '#BAFFC9',
-  '#BAE1FF',
-  '#D4A5A5',
-  '#B5EAD7',
-  '#C7CEEA',
-  '#FFC8A2',
-  '#FFD3B6',
-  '#FF9AA2',
-  '#E2F0CB',
-  '#B0E57C',
-  '#C3B1E1',
-  '#F5C6EC',
-];
 
 const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
   ({ project, updateLineCoordinates, index, isSpacebar }, ref) => {
@@ -71,7 +54,16 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
           >
             <h3>{project.project_name}</h3>
           </div>
-
+          {/* Due Date Section */}
+          <div className={styles.DueDateContainer}>
+            <label>Due Date:</label>
+            <div className={styles.DueDate}>
+              <p key={index} className={styles.Date}>
+                {formatDate(project.due_date)}
+              </p>
+            </div>
+          </div>
+          {/* <-- Close Due Date section */}
           <div className={styles.IdeaContainer}>
             <div className={styles.IdeaDropdownContainer}>
               <label>Select Idea</label>
@@ -96,7 +88,6 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
                 </div>
               )}
             </div>
-
             {selectedIdea && (
               <>
                 <div className={styles.TagsContainer}>

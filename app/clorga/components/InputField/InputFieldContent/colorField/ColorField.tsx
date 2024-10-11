@@ -6,7 +6,7 @@ import styles from './ColorField.module.css';
 
 import { newProjectStore } from '@/utils/newProjectStore';
 
-import { pastelColors } from '../../../Project/Project';
+import { pastelColors } from '@/utils/colorArray';
 export default function ColorField() {
   const { projectColor, setProjectColor } = newProjectStore();
   return (
