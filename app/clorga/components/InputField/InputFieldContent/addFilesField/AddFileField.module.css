@@ -1,0 +1,51 @@
+.UploadContainer {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    /* Align items neatly */
+    padding-top: 0.5rem;
+}
+
+.SubmitButton {
+    box-shadow: none;
+    border: var(--border);
+    padding: 0.6rem 1.2rem;
+    /* Slightly larger padding for balance */
+    border-radius: 4px;
+    /* Small rounding for a more polished look */
+    background-color: var(--accentgreen);
+    font-size: 0.7rem;
+    /* Slightly larger font for readability */
+    cursor: pointer;
+}
+
+.fileInput {
+    display: none;
+    /* Keep file input hidden */
+}
+
+.CustomButton {
+    border: var(--border);
+    padding: 0.6rem 1.2rem;
+    /* Consistent padding with SubmitButton */
+    cursor: pointer;
+    border-radius: var(--radius);
+    /* Match border radius with SubmitButton */
+    font-size: 0.7rem;
+    /* Slightly larger font for readability */
+}
+
+.CustomButton:hover {
+    background-color: var(--accentgreen);
+}
+
+.fileName {
+    font-size: 0.7rem;
+    min-width: 8rem;
+    height: 1.5rem;
+    border-bottom: var(--border);
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    /* Center text vertically */
+}

@@ -6,8 +6,7 @@ import { isSubmittedStore } from '@/utils/isSubmittedStore';
 import { IsSubmittedStoreType } from '@/utils/isSubmittedStore';
 import { handleProjectSubmit } from '@/utils/helpers/handleFormSubmit';
 import { userStore } from '@/utils/userStore';
-
-import { formatDate } from '@/utils/helpers/formatDate';
+import CellContainer from '../../CellContainer/CellContainer';
 
 export default function SubmitButton({ styles }: { styles: any }) {
   const {
@@ -69,8 +68,10 @@ export default function SubmitButton({ styles }: { styles: any }) {
   };
 
   return (
-    <button className={styles.Submit} onClick={handleSubmit}>
-      Submit
-    </button>
+    <div className={styles.SubmitButtonContainer}>
+      <button className={styles.Submit} onClick={handleSubmit}>
+        Submit
+      </button>
+    </div>
   );
 }

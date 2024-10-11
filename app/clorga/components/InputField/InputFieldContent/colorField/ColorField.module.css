@@ -21,6 +21,9 @@
     scale: 1.05;
 }
 
-.Color:active {
-    outline: 1px red;
+.Selected {
+    scale: 1.1;
+    outline: 0.5px solid black;
+    outline-offset: 3px;
+
 }

@@ -13,6 +13,8 @@ import type { Project } from '@/app/clorga/page';
 import IdeaTextField from './ideaTextField/IdeaTextField';
 import SubmitButton from './submitButton/SubmitButton';
 import DateField from './dateField/DateField';
+import AddFileField from './addFilesField/AddFileField';
+import CellContainer from '../CellContainer/CellContainer';
 
 export type Idea = {
   id: number;
@@ -49,9 +51,10 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
           selectedProject={selectedProject}
           projects={projects}
         />
-        <div className={styles.ButtonContainer}>
+        <AddFileField />
+        <CellContainer>
           <SubmitButton styles={styles} />
-        </div>
+        </CellContainer>
       </div>
     </form>
   );

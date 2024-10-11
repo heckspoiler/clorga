@@ -57,10 +57,49 @@
     display: flex;
     gap: 0.5rem;
     align-items: center;
+    position: relative
 }
 
 .DueDate {
     border: none;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: 0.5rem;
+}
+
+.DueDateIndicator {
+    height: 10px;
+    width: 10px;
+    border: var(--border);
+    transform: translateY(-2px);
+    position: relative;
+}
+
+
+.DueDateTooltip {
+    visibility: hidden;
+    position: absolute;
+    padding: 0.5rem;
+    height: fit-content;
+    min-width: 12rem;
+    font-size: 0.65rem;
+    background-color: white;
+    border: var(--border);
+    top: calc(100% + 1px);
+    left: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.DueDateTooltip span {
+    text-decoration: underline;
+}
+
+.DueDate:hover .DueDateTooltip {
+    visibility: visible;
+
 }
 
 .Date {

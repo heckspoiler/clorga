@@ -7,6 +7,19 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''
 );
 
+export const formattedDate = (date?: string | Date): string => {
+  if (date) {
+    return new Date(date).toString();
+  } else {
+    const newDate = date ? new Date(date) : new Date();
+    const year = newDate.getFullYear();
+    const month = String(newDate.getMonth() + 1).padStart(2, '0');
+    const day = String(newDate.getDate()).padStart(2, '0');
+    const number = `${year}${month}${day}`;
+    return number;
+  }
+};
+
 export const handleProjectSubmit = async ({
   projectName,
   projectTags,
@@ -35,9 +48,9 @@ export const handleProjectSubmit = async ({
   }
 
   try {
-    const formattedDueDate = projectDueDate
-      ? new Date(projectDueDate).toISOString()
-      : null;
+    const formattedDueDate =
+      projectDueDate === '' ? null : formattedDate(projectDueDate);
+
     const actualProjectName =
       projectName === '' ? 'Untitled Project' : projectName;
 
