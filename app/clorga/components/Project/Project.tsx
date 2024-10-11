@@ -118,6 +118,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
                     key={''}
                     className={styles.Option}
                     onClick={() => handleSelectIdea('')}
+                    style={{ backgroundColor: 'rgb(246, 253, 203)' }}
                   >
                     clear selection
                   </div>

@@ -12,12 +12,13 @@
 }
 
 :root {
-  --black: rgb(67, 67, 67);
+  --black: rgb(24, 24, 24);
   --bezier: cubic-bezier(0.47, 0, 0.75, 1);
-  --boxshadow-large: 4px 4px 1px var(--black);
-  --boxshadow-small: 2px 2px 1px var(--black);
+  --boxshadow-large: 4px 4px 1px transparent;
+  --boxshadow-small: 2px 2px 1px transparent;
   --border: 0.5px groove var(--black);
   --accentgreen: rgba(225, 255, 18, 1);
+
   --accentgreen-low: rgba(255, 255, 17, 0.25);
   --radius: 5px;
   --headerheight: 3rem;
@@ -29,7 +30,7 @@
   padding: 0;
   margin: 0;
   line-height: 1.2;
-  color: var(--fontblue);
+  color: var(--black);
   font-family: "sztos-variable", sans-serif;
   font-variation-settings: "wdth" 200, "wght" 200;
 }
