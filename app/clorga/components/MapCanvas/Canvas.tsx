@@ -180,6 +180,7 @@ export default function Canvas({
             index={index}
             ref={(el) => (projectRefs.current[index] = el)}
             isSpacebar={isSpacebar}
+            scaleSize={scaleSize}
           />
         ))}
       </div>

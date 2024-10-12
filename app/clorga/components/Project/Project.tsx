@@ -8,7 +8,6 @@ import { formatDate } from '@/utils/helpers/formatDate';
 import { formattedDate } from '@/utils/helpers/handleFormSubmit';
 
 import { warningShades } from '@/utils/colorArrays';
-
 import { tooltipColorSetter } from '@/utils/helpers/tooltipColorSetter';
 
 interface ProjectProps {
@@ -16,10 +15,11 @@ interface ProjectProps {
   updateLineCoordinates: () => void;
   index: number;
   isSpacebar: boolean;
+  scaleSize: number;
 }
 
 const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
-  ({ project, updateLineCoordinates, index, isSpacebar }, ref) => {
+  ({ project, updateLineCoordinates, index, isSpacebar, scaleSize }, ref) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
     const safeGreen = '#a1d99b';
@@ -52,6 +52,8 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
       }
     }, []);
 
+    const affectedProject = project?.project_name;
+
     return (
       <Draggable
         onDrag={updateLineCoordinates}
@@ -67,7 +69,11 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
             top: `200px`,
             left: `${index === 0 ? 1 : 21 * index}rem`,
             cursor: 'move',
-            zIndex: hoveredProject === project.project_name ? 2 : 0,
+            zIndex: hoveredProject === affectedProject ? 2 : 0,
+            scale:
+              scaleSize < 1 && hoveredProject === affectedProject
+                ? 1 - scaleSize + 1
+                : 1,
           }}
           className={styles.Project}
         >
@@ -92,16 +98,23 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
                   className={styles.DueDateIndicator}
                 >
                   <div className={styles.DueDateTooltip}>
-                    <p>
-                      {project.project_name} is due in <span>{amountDays}</span>{' '}
-                      days
-                    </p>
+                    {amountDays !== undefined && amountDays >= 0 ? (
+                      <p>
+                        {affectedProject} is due in <span>{amountDays}</span>{' '}
+                        days
+                      </p>
+                    ) : (
+                      <p>
+                        {affectedProject} is <span>overdue</span> <br />(
+                        {amountDays && amountDays * -1} days)
+                      </p>
+                    )}
                   </div>
                 </div>
               )}
             </div>
           </div>
-          {/* <-- Close Due Date section */}
+          {/* Close Due Date section */}
           <div className={styles.IdeaContainer}>
             <div className={styles.IdeaDropdownContainer}>
               <label>Select Idea</label>
@@ -120,7 +133,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
                     onClick={() => handleSelectIdea('')}
                     style={{ backgroundColor: 'rgb(246, 253, 203)' }}
                   >
-                    clear selection
+                    Clear selection
                   </div>
                   {project.project_ideas.map((idea, ideaIndex) => (
                     <div
