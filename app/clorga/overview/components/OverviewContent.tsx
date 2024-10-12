@@ -5,7 +5,7 @@ import { projectStore } from '@/utils/projectstore';
 import { useProjects } from '@/utils/supabase/useProjects';
 import CellContainer from './CellContainer/CellContainer';
 import styles from './OverviewContent.module.css';
-import ProjectsField from './projectsField/ProjectsField';
+import ProjectsDropdown from './projectsDropdown/ProjectsDropdown';
 
 export default function OverviewContent() {
   const { projectsStore } = projectStore();
@@ -21,7 +21,7 @@ export default function OverviewContent() {
       <CellContainer
         title={`${activeProject ? activeProject : 'select project'}`}
       >
-        <ProjectsField
+        <ProjectsDropdown
           projects={projects}
           activeProject={activeProject}
           setActiveProject={setActiveProject}

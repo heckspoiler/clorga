@@ -1,9 +1,8 @@
 import { Project } from '@/app/clorga/page';
 import React, { useState } from 'react';
-import styles from './ProjectsField.module.css';
-import { active } from 'd3';
+import styles from './ProjectsDropdown.module.css';
 
-export default function ProjectsField({
+export default function ProjectsDropdown({
   projects,
   activeProject,
   setActiveProject,
@@ -12,7 +11,8 @@ export default function ProjectsField({
   activeProject: string | null;
   setActiveProject: React.Dispatch<React.SetStateAction<string | null>>;
 }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(true);
+  const [isHovered, setIsHovered] = useState('');
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -30,29 +30,21 @@ export default function ProjectsField({
       {isDropdownOpen && (
         <div
           onMouseLeave={() => setIsDropdownOpen(!isDropdownOpen)}
-          style={{
-            position: 'absolute',
-            backgroundColor: '#fff',
-            border: 'var(--border)',
-            padding: '1rem',
-            width: 'fit-content',
-            borderRadius: 'var(--radius)',
-            boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-            zIndex: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '0.5rem',
-          }}
+          className={styles.DropdownMenu}
         >
           {projects?.map((project, index) => (
             <div
+              onMouseEnter={() => setIsHovered(project.project_name || '')}
+              onMouseLeave={() => setIsHovered('')}
               key={project.id}
-              className={`${styles.Project} ${
-                activeProject === project.project_name ? styles.Active : ''
-              }`}
+              className={styles.Project}
               style={{
-                backgroundColor: project.color,
-                padding: '0.5rem',
+                backgroundColor: `${
+                  isHovered === project.project_name ||
+                  activeProject === project.project_name
+                    ? project.color
+                    : 'white'
+                }`,
                 cursor: 'pointer',
               }}
               onClick={() => {
@@ -64,19 +56,25 @@ export default function ProjectsField({
             </div>
           ))}
           <div
-            key="clear"
-            className={styles.Project}
             style={{
-              padding: '0.5rem',
+              padding: '1rem',
               cursor: 'pointer',
-              marginTop: '4rem',
-            }}
-            onClick={() => {
-              setActiveProject('');
-              setIsDropdownOpen(!isDropdownOpen);
             }}
           >
-            <h3 style={{ margin: 0 }}>clear selection</h3>
+            <div
+              key="clear"
+              className={styles.Project}
+              style={{
+                padding: '0.5rem',
+                cursor: 'pointer',
+              }}
+              onClick={() => {
+                setActiveProject('');
+                setIsDropdownOpen(!isDropdownOpen);
+              }}
+            >
+              <h3 style={{ margin: 0 }}>clear selection</h3>
+            </div>
           </div>
         </div>
       )}

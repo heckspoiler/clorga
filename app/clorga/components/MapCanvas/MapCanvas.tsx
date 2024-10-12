@@ -41,6 +41,7 @@ export default function MapCanvas({
         className={`${styles.Overlay} ${
           isVisible ? styles.OverlayVisible : ''
         }`}
+        onClick={() => setIsVisible(false)}
       ></div>
       <Canvas
         styles={styles}

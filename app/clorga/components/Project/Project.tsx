@@ -70,8 +70,8 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
           ref={ref}
           style={{
             position: 'absolute',
-            top: `${Math.floor(index / itemsPerRow) * rowHeight}px`, // Calculate row based on index
-            left: `${(index % itemsPerRow) * columnWidth}rem`, // Calculate column based on index
+            top: `${Math.floor(index / itemsPerRow) * rowHeight + 50}px`, // Calculate row based on index
+            left: `${(index % itemsPerRow) * columnWidth + 1.5}rem`, // Calculate column based on index
             cursor: 'move',
             zIndex: hoveredProject === affectedProject ? 2 : 0,
             scale:
