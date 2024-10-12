@@ -75,9 +75,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
             cursor: 'move',
             zIndex: hoveredProject === affectedProject ? 2 : 0,
             scale:
-              scaleSize < 1 && hoveredProject === affectedProject
-                ? 1 - scaleSize + 1
-                : 1,
+              scaleSize < 1 && hoveredProject === affectedProject ? 1.2 : 1,
           }}
           className={styles.Project}
         >
@@ -138,7 +136,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
                     key={''}
                     className={styles.Option}
                     onClick={() => handleSelectIdea('')}
-                    style={{ backgroundColor: 'rgb(246, 253, 203)' }}
+                    style={{ backgroundColor: 'rgb(255, 181, 181)' }}
                   >
                     Clear selection
                   </div>
@@ -155,7 +153,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
               )}
             </div>
             {selectedIdea && (
-              <>
+              <div className={styles.IdeaContainerLower}>
                 <div className={styles.TagsContainer}>
                   <label>Tags</label>
                   <div className={styles.Tags}>
@@ -170,7 +168,11 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
                   <label>Description</label>
                   <p>{selectedIdeaObj?.description}</p>
                 </div>
-              </>
+                <div className={styles.DescriptionContainer}>
+                  <label>Submitted by: </label>
+                  <p>{selectedIdeaObj?.author}</p>
+                </div>
+              </div>
             )}
           </div>
         </div>

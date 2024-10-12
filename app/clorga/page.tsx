@@ -10,6 +10,7 @@ export type Idea = {
   created_at: string;
   description: string;
   tags: Array<string> | null;
+  author?: string;
 };
 
 export type Project = {

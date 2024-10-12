@@ -1,6 +1,12 @@
 import { create } from 'zustand';
+import type { Project } from '@/app/clorga/page';
 
-export const projectStore = create((set) => ({
+interface ProjectStoreState {
+  projectsStore: Project[];
+  setProjects: (projects: Project[]) => void;
+}
+
+export const projectStore = create<ProjectStoreState>((set) => ({
   projectsStore: [],
-  setProjects: (projects: string[]) => set({ projectsStore: projects }),
+  setProjects: (projects) => set({ projectsStore: projects }),
 }));
