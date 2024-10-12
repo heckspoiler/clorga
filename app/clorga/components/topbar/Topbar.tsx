@@ -17,7 +17,7 @@ import Link from 'next/link';
 //   'dashboard',
 // ];
 
-const TOOLTIP_HIDE_DELAY = 3000;
+const TOOLTIP_HIDE_DELAY = 1000;
 
 export default function Topbar() {
   const [isVisible, setIsVisible] = useState(true);

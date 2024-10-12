@@ -20,16 +20,16 @@ export default function ProjectsDropdown({
 
   return (
     <div>
-      <button
+      {/* <button
         onClick={toggleDropdown}
         style={{ marginBottom: '0.5rem' }}
         className={styles.SelectButton}
       >
         {activeProject ? activeProject : 'Select Project'}
-      </button>
+      </button> */}
       {isDropdownOpen && (
         <div
-          onMouseLeave={() => setIsDropdownOpen(!isDropdownOpen)}
+          // onMouseLeave={() => setIsDropdownOpen(!isDropdownOpen)}
           className={styles.DropdownMenu}
         >
           {projects?.map((project, index) => (
@@ -49,7 +49,7 @@ export default function ProjectsDropdown({
               }}
               onClick={() => {
                 setActiveProject(project.project_name);
-                setIsDropdownOpen(!isDropdownOpen);
+                // setIsDropdownOpen(!isDropdownOpen);
               }}
             >
               <h3 style={{ margin: 0 }}>{project.project_name}</h3>
