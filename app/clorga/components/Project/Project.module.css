@@ -1,7 +1,7 @@
 .Project {
     background-color: white;
     border: var(--border);
-    min-width: 18rem;
+    width: 20rem;
     transition: scale 0.05s linear;
     transform-origin: center;
     display: flex;
@@ -82,7 +82,8 @@
     position: absolute;
     padding: 0.5rem;
     height: fit-content;
-    min-width: 12rem;
+    width: fit-content;
+    min-width: 8rem;
     font-size: 0.65rem;
     background-color: white;
     border: var(--border);

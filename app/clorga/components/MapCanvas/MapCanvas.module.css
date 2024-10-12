@@ -21,47 +21,6 @@
 
 
 
-.ZoomContainer {
-    height: fit-content;
-    width: fit-content;
-    position: absolute;
-    bottom: 2rem;
-    left: 2rem;
-    z-index: 2;
-    display: flex;
-    gap: 0.5rem;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.ZoomContainer button {
-    padding: 0.5rem;
-    min-height: 2rem;
-    min-width: 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: var(--border);
-    box-shadow: none;
-    background-color: white;
-    font-size: 0.8rem;
-}
-
-
-.ZoomContainer button:nth-of-type(1) {
-    width: 100%;
-}
-
-.ZoomButtons button:nth-of-type(1) {
-    background-color: white;
-    width: auto;
-}
-
-.ZoomContainer button:hover {
-    background-color: var(--accentgreen) !important;
-}
-
 .Project {
     transition: scale 0.1s var(--bezier)
 }

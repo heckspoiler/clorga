@@ -25,7 +25,15 @@ export type Idea = {
   tags: string[];
 };
 
-export default function InputFieldForm({ projects }: { projects: Project[] }) {
+export default function InputFieldForm({
+  projects,
+  isVisible,
+  setIsVisible,
+}: {
+  projects: Project[];
+  isVisible: boolean;
+  setIsVisible: any;
+}) {
   const projectProp = projects.map((project) => project.project_name);
 
   // Zustand Stores
@@ -53,7 +61,11 @@ export default function InputFieldForm({ projects }: { projects: Project[] }) {
         />
         <AddFileField />
         <CellContainer>
-          <SubmitButton styles={styles} />
+          <SubmitButton
+            styles={styles}
+            isVisible={isVisible}
+            setIsVisible={setIsVisible}
+          />
         </CellContainer>
       </div>
     </form>

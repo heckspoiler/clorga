@@ -11,7 +11,7 @@ import BringBackButton from '../../../components/general/BringBackButton';
 
 import styles from './MapCanvas.module.css';
 import Canvas from './Canvas';
-import ScaleContainer from './ScaleButton/ScaleButton';
+import ScaleContainer from './ScaleButton/ScaleContainer';
 import InputField from '../InputField/InputField';
 
 const supabase = createClient(
@@ -92,7 +92,11 @@ export default function MapCanvas({
         setIsVisible={setIsVisible}
       />
       {initialProjects && (
-        <InputField initialProjects={initialProjects} isVisible={isVisible} />
+        <InputField
+          initialProjects={initialProjects}
+          isVisible={isVisible}
+          setIsVisible={setIsVisible}
+        />
       )}
     </div>
   );

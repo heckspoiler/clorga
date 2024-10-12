@@ -8,7 +8,15 @@ import { handleProjectSubmit } from '@/utils/helpers/handleFormSubmit';
 import { userStore } from '@/utils/userStore';
 import CellContainer from '../../CellContainer/CellContainer';
 
-export default function SubmitButton({ styles }: { styles: any }) {
+export default function SubmitButton({
+  styles,
+  isVisible,
+  setIsVisible,
+}: {
+  styles: any;
+  isVisible: boolean;
+  setIsVisible: any;
+}) {
   const {
     projectName,
     projectTags,
@@ -45,7 +53,7 @@ export default function SubmitButton({ styles }: { styles: any }) {
 
   const handleSubmit = async (event: React.MouseEvent) => {
     event.preventDefault();
-
+    setIsVisible(!isVisible);
     if (isSubmitted) {
       return;
     }

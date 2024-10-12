@@ -1,7 +1,8 @@
 .Form {
     height: 100%;
     width: 100%;
-    min-width: 40rem;
+    width: 40rem;
+
 }
 
 .Form * {
@@ -34,6 +35,8 @@
     align-items: left;
     flex-direction: column;
     border-radius: var(--radius);
+
+    max-width: 40rem;
 }
 
 .FormCell:nth-of-type(1) {
@@ -65,6 +68,7 @@
 .TagsContainer {
     display: flex;
     flex-direction: column;
+    background-color: red;
     gap: 1em;
 }
 
@@ -80,6 +84,7 @@
     gap: 1em;
     align-items: center;
     justify-content: center;
+
 }
 
 .SubmitField {

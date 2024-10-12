@@ -9,7 +9,7 @@ export default function Navigation({ styles }: { styles: any }) {
           <Link href="/clorga">Your Clorga</Link>
         </li>
         <li>
-          <Link href="">Documents</Link>
+          <Link href="/clorga/overview">Overview</Link>
         </li>
         <li>
           <Link href="">That</Link>

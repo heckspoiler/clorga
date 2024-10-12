@@ -3,6 +3,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import type { Project as ProjectType } from '@/app/clorga/page';
 import Project from '../Project/Project';
+import {
+  handleMouseDown,
+  handleMouseMove,
+  handleMouseUp,
+  handleWheel,
+} from '@/utils/helpers/canvasHandlers';
 
 type CanvasProps = {
   styles: any;
@@ -95,45 +101,18 @@ export default function Canvas({
     setLineCoordinates(coordinates);
   };
 
-  const handleWheel = (e: React.WheelEvent<HTMLDivElement>) => {
-    if (e.deltaY > 0 && enableZoom) {
-      e.preventDefault();
-      setScaleSize(scaleSize - 0.005);
-    } else if (e.deltaY < 0 && enableZoom) {
-      e.preventDefault();
-      setScaleSize(scaleSize + 0.005);
-    }
-  };
-
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (isPanning) {
-      setDragging(true);
-      setStartPosition({
-        x: e.clientX - position.x,
-        y: e.clientY - position.y,
-      });
-    }
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (dragging) {
-      setPosition({
-        x: e.clientX - startPosition.x,
-        y: e.clientY - startPosition.y,
-      });
-    }
-  };
-
-  const handleMouseUp = () => setDragging(false);
-
   return (
     <div
       className={styles.CanvasContainer}
-      onMouseDown={handleMouseDown}
-      onMouseMove={handleMouseMove}
-      onMouseUp={handleMouseUp}
-      onMouseLeave={handleMouseUp}
-      onWheel={handleWheel}
+      onMouseDown={(e) =>
+        handleMouseDown(e, isPanning, setDragging, setStartPosition, position)
+      }
+      onMouseMove={(e) =>
+        handleMouseMove(e, dragging, startPosition, setPosition)
+      }
+      onMouseUp={() => handleMouseUp(setDragging)}
+      onMouseLeave={() => handleMouseUp(setDragging)}
+      onWheel={(e) => handleWheel(e, enableZoom, scaleSize, setScaleSize)}
       style={{
         cursor: isPanning ? 'grab' : 'default',
       }}

@@ -54,6 +54,10 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
 
     const affectedProject = project?.project_name;
 
+    const itemsPerRow = 5;
+    const rowHeight = 220;
+    const columnWidth = 21;
+
     return (
       <Draggable
         onDrag={updateLineCoordinates}
@@ -66,8 +70,8 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
           ref={ref}
           style={{
             position: 'absolute',
-            top: `200px`,
-            left: `${index === 0 ? 1 : 21 * index}rem`,
+            top: `${Math.floor(index / itemsPerRow) * rowHeight}px`, // Calculate row based on index
+            left: `${(index % itemsPerRow) * columnWidth}rem`, // Calculate column based on index
             cursor: 'move',
             zIndex: hoveredProject === affectedProject ? 2 : 0,
             scale:
@@ -83,7 +87,11 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
               backgroundColor: project.color || 'white',
             }}
           >
-            <h3>{project.project_name}</h3>
+            <h3>
+              {project?.project_name && project.project_name.length > 20
+                ? `${project.project_name.slice(0, 18)}...`
+                : project?.project_name || ''}
+            </h3>
           </div>
           {/* Due Date Section */}
           <div className={styles.DueDateContainer}>
@@ -100,13 +108,12 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
                   <div className={styles.DueDateTooltip}>
                     {amountDays !== undefined && amountDays >= 0 ? (
                       <p>
-                        {affectedProject} is due in <span>{amountDays}</span>{' '}
-                        days
+                        due in <span>{amountDays}</span> days
                       </p>
                     ) : (
                       <p>
-                        {affectedProject} is <span>overdue</span> <br />(
-                        {amountDays && amountDays * -1} days)
+                        <span>overdue </span> ( {amountDays && amountDays * -1}{' '}
+                        days)
                       </p>
                     )}
                   </div>

@@ -25,9 +25,11 @@ const supabase = createClient(
 export default function InputField({
   initialProjects,
   isVisible,
+  setIsVisible,
 }: {
   initialProjects: Project[];
   isVisible: boolean;
+  setIsVisible: any;
 }) {
   const { allTagsStore, setAllTags } = formStore() as {
     allTagsStore: any;
@@ -49,7 +51,11 @@ export default function InputField({
 
   return (
     <div className={`${styles.Main} ${isVisible ? styles.IsVisible : ''}`}>
-      <InputFieldForm projects={initialProjects} />
+      <InputFieldForm
+        projects={initialProjects}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
     </div>
   );
 }

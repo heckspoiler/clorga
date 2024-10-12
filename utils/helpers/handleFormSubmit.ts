@@ -7,17 +7,13 @@ const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ?? ''
 );
 
+// Format date as "YYYY-MM-DD"
 export const formattedDate = (date?: string | Date): string => {
-  if (date) {
-    return new Date(date).toString();
-  } else {
-    const newDate = date ? new Date(date) : new Date();
-    const year = newDate.getFullYear();
-    const month = String(newDate.getMonth() + 1).padStart(2, '0');
-    const day = String(newDate.getDate()).padStart(2, '0');
-    const number = `${year}${month}${day}`;
-    return number;
-  }
+  const newDate = date ? new Date(date) : new Date();
+  const year = newDate.getFullYear();
+  const month = String(newDate.getMonth() + 1).padStart(2, '0');
+  const day = String(newDate.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`;
 };
 
 export const handleProjectSubmit = async ({
