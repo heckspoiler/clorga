@@ -6,9 +6,15 @@ import styles from './ColorField.module.css';
 
 import { newProjectStore } from '@/utils/newProjectStore';
 
+import { useResetOnSubmit } from '@/utils/helpers/fieldReset';
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
+
 import { pastelColors } from '@/utils/colorArrays';
 export default function ColorField() {
   const { projectColor, setProjectColor } = newProjectStore();
+  const isSubmitted = isSubmittedStore((state) => state.isSubmitted);
+
+  useResetOnSubmit(isSubmitted, () => setProjectColor(''), []);
   return (
     <div className={styles.ColorContainer}>
       <label>Set Mood:</label>

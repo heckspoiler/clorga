@@ -70,7 +70,6 @@ export default function ProjectsDropdown({
               }}
               onClick={() => {
                 setActiveProject('');
-                setIsDropdownOpen(!isDropdownOpen);
               }}
             >
               <h3 style={{ margin: 0 }}>clear selection</h3>

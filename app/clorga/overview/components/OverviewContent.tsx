@@ -18,15 +18,17 @@ export default function OverviewContent() {
       <div className={styles.TitleContainer}>
         <h1>Overview</h1>
       </div>
-      <CellContainer
-        title={`${activeProject ? activeProject : 'select project'}`}
-      >
-        <ProjectsDropdown
-          projects={projects}
-          activeProject={activeProject}
-          setActiveProject={setActiveProject}
-        />
-      </CellContainer>
+      <div className={styles.OverviewContainer}>
+        <CellContainer
+          title={`${activeProject ? activeProject : 'select project'}`}
+        >
+          <ProjectsDropdown
+            projects={projects}
+            activeProject={activeProject}
+            setActiveProject={setActiveProject}
+          />
+        </CellContainer>
+      </div>
     </div>
   );
 }

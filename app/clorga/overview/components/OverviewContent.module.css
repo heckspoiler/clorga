@@ -3,3 +3,14 @@
     font-variation-settings: "wdth" 200, "wght" 400;
     padding: 0.5rem 0;
 }
+
+.OverviewContainer {
+    display: flex;
+    min-height: calc(100vh - 6rem);
+}
+
+.DynamicContent {
+    height: 10vw;
+    width: 10vw;
+    background-color: blue;
+}
