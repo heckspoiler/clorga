@@ -17,6 +17,7 @@ type CanvasProps = {
   selectedIdea: string | null;
   setScaleSize: React.Dispatch<React.SetStateAction<number>>;
   setSelectedIdea: React.Dispatch<React.SetStateAction<string | null>>;
+  isVisible: boolean;
 };
 
 export default function Canvas({
@@ -26,6 +27,7 @@ export default function Canvas({
   setScaleSize,
   selectedIdea,
   setSelectedIdea,
+  isVisible,
 }: CanvasProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -62,14 +64,16 @@ export default function Canvas({
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('keyup', handleKeyUp);
+    if (!isVisible) {
+      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener('keyup', handleKeyUp);
+    }
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('keyup', handleKeyUp);
     };
-  }, []);
+  }, [isVisible]);
 
   const updateLineCoordinates = () => {
     const coordinates = [];

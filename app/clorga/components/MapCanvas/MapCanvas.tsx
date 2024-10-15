@@ -50,6 +50,7 @@ export default function MapCanvas({
         setScaleSize={setScaleSize}
         selectedIdea={selectedIdea}
         setSelectedIdea={setSelectedIdea}
+        isVisible={isVisible}
       />
       <BringBackButton />
       <ScaleContainer
