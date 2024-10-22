@@ -77,7 +77,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
     const affectedProject = project?.project_name;
 
     const itemsPerRow = 5;
-    const rowHeight = 220;
+    const rowHeight = 140;
     const columnWidth = 21;
 
     return (
@@ -93,12 +93,12 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
           ref={ref}
           style={{
             position: 'absolute',
-            top: `${Math.floor(index / itemsPerRow) * rowHeight + 50}px`, // Calculate row based on index
-            left: `${(index % itemsPerRow) * columnWidth + 1.5}rem`, // Calculate column based on index
+            top: `${Math.floor(index / itemsPerRow) * rowHeight + 50}px`,
+            left: `${(index % itemsPerRow) * columnWidth + 1.5}rem`,
             cursor: 'move',
             zIndex: hoveredProject === affectedProject ? 2 : 0,
             scale:
-              scaleSize < 1 && hoveredProject === affectedProject ? 1.2 : 1,
+              scaleSize < 0.8 && hoveredProject === affectedProject ? 1.1 : 1,
           }}
           className={styles.Project}
         >

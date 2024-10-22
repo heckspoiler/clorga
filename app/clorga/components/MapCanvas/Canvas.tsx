@@ -95,23 +95,23 @@ export default function Canvas({
       case 1:
         return 1;
       case 2:
-        return 1.5;
-      case 3:
         return 2;
-      case 4:
-        return 2.5;
-      case 5:
+      case 3:
         return 3;
-      case 6:
-        return 3.5;
-      case 7:
+      case 4:
         return 4;
-      case 8:
-        return 4.5;
-      case 9:
+      case 5:
         return 5;
-      default:
+      case 6:
         return 5.5;
+      case 7:
+        return 6;
+      case 8:
+        return 6.5;
+      case 9:
+        return 7;
+      default:
+        return 7.5;
     }
   };
 
@@ -235,7 +235,7 @@ export default function Canvas({
               x2={line.x2}
               y2={line.y2}
               stroke={`rgba(0, 0, 0, ${showLines ? 0.5 : 0})`}
-              strokeWidth={line.thickness * scaleSize * 0.8}
+              strokeWidth={line.thickness * scaleSize * 0.5}
             />
           ))}
         </svg>
