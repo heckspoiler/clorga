@@ -20,7 +20,7 @@ export default function MapCanvas({
   const [scaleSize, setScaleSize] = useState(1);
   const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(true);
-  const [showLines, setShowLines] = useState(true);
+  const [showLines, setShowLines] = useState(false);
 
   projects?.forEach((project) => {
     project.project_ideas.forEach((idea) => {
