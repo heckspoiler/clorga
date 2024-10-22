@@ -6,7 +6,6 @@
     transform-origin: center;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
     border-radius: var(--radius);
     box-shadow: 3px 3px 10px rgb(221, 221, 221);
 }
@@ -26,6 +25,9 @@
     border-bottom: var(--border);
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .TitleContainer h3 {
@@ -35,10 +37,6 @@
 
 }
 
-.IdeaContainer {
-
-    border-top: var(--border);
-}
 
 .IdeaContainerLower {
     padding: 1rem;
@@ -57,13 +55,6 @@
     padding: 1rem;
 }
 
-.DueDateContainer {
-    padding: 1rem;
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-    position: relative
-}
 
 .DueDate {
     border: none;
@@ -89,7 +80,7 @@
     height: fit-content;
     width: fit-content;
     min-width: 8rem;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     background-color: white;
     border: var(--border);
     top: calc(100% + 1px);
@@ -97,13 +88,14 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    line-height: px;
 }
 
 .DueDateTooltip span {
     text-decoration: underline;
 }
 
-.DueDate:hover .DueDateTooltip {
+.DueDateIndicator:hover .DueDateTooltip {
     visibility: visible;
 
 }

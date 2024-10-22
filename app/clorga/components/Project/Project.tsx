@@ -2,13 +2,14 @@
 
 import React, { useState, useEffect } from 'react';
 import Draggable from 'react-draggable';
-import type { Project as ProjectType } from '../../page';
+import type { Project as ProjectType, Idea } from '../../page';
 import styles from './Project.module.css';
 import { formatDate } from '@/utils/helpers/formatDate';
 import { formattedDate } from '@/utils/helpers/handleFormSubmit';
 
 import { warningShades } from '@/utils/colorArrays';
 import { tooltipColorSetter } from '@/utils/helpers/tooltipColorSetter';
+import Duedate from './Duedate/Duedate';
 
 interface ProjectProps {
   project: ProjectType;
@@ -16,10 +17,23 @@ interface ProjectProps {
   index: number;
   isSpacebar: boolean;
   scaleSize: number;
+  onIdeaClick: (idea: Idea) => void;
+  highlightedIdeas: string[]; // Array of highlighted idea IDs
 }
 
 const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
-  ({ project, updateLineCoordinates, index, isSpacebar, scaleSize }, ref) => {
+  (
+    {
+      project,
+      updateLineCoordinates,
+      index,
+      isSpacebar,
+      scaleSize,
+      onIdeaClick,
+      highlightedIdeas, // Added to props to handle highlighting
+    },
+    ref
+  ) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
     const safeGreen = '#a1d99b';
@@ -35,6 +49,14 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
     const handleSelectIdea = (ideaTitle: string) => {
       setSelectedIdea(ideaTitle);
       setIsDropdownOpen(false); // Close dropdown on selection
+
+      // Find the clicked idea object and trigger the onIdeaClick callback
+      const clickedIdea = project.project_ideas.find(
+        (idea) => idea.title.toLowerCase() === ideaTitle
+      );
+      if (clickedIdea) {
+        onIdeaClick(clickedIdea); // Trigger the idea click handler
+      }
     };
 
     useEffect(() => {
@@ -63,6 +85,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
         onDrag={updateLineCoordinates}
         onStop={updateLineCoordinates}
         disabled={isSpacebar}
+        cancel=".NonDraggable"
       >
         <div
           onMouseEnter={() => setHoveredProject(project.project_name)}
@@ -90,36 +113,17 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
                 ? `${project.project_name.slice(0, 18)}...`
                 : project?.project_name || ''}
             </h3>
+
+            <Duedate
+              styles={styles}
+              backgroundColor={backgroundColor}
+              amountDays={amountDays}
+              formatDate={formatDate}
+              project={project}
+              index={index}
+            />
           </div>
-          {/* Due Date Section */}
-          <div className={styles.DueDateContainer}>
-            <label>Due Date:</label>
-            <div className={styles.DueDate}>
-              <p key={index} className={styles.Date}>
-                {formatDate(project.due_date)}
-              </p>
-              {project.due_date && (
-                <div
-                  style={{ backgroundColor: backgroundColor }}
-                  className={styles.DueDateIndicator}
-                >
-                  <div className={styles.DueDateTooltip}>
-                    {amountDays !== undefined && amountDays >= 0 ? (
-                      <p>
-                        due in <span>{amountDays}</span> days
-                      </p>
-                    ) : (
-                      <p>
-                        <span>overdue </span> ( {amountDays && amountDays * -1}{' '}
-                        days)
-                      </p>
-                    )}
-                  </div>
-                </div>
-              )}
-            </div>
-          </div>
-          {/* Close Due Date section */}
+
           <div className={styles.IdeaContainer}>
             <div className={styles.IdeaDropdownContainer}>
               <label>Select Idea</label>

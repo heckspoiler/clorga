@@ -21,6 +21,12 @@ export default function MapCanvas({
   const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(true);
 
+  projects?.forEach((project) => {
+    project.project_ideas.forEach((idea) => {
+      console.log(idea.tags);
+    });
+  });
+
   const { projectsStore, setProjects } = projectStore();
 
   useEffect(() => {
