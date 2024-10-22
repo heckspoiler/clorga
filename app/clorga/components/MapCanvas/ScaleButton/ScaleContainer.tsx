@@ -6,18 +6,23 @@ import styles from './ScaleContainer.module.css';
 import Keybinds from './Keybinds/Keybinds';
 import { Scale } from 'lucide-react';
 import ScaleButtons from './ScaleButtons';
+import ShowLinesButton from '../ShowLinesButton/ShowLinesButton';
 
 export default function ScaleContainer({
   scaleSize,
   setScaleSize,
   isVisible,
   setIsVisible,
+  setShowLines,
+  showLines,
 }: {
   styles?: any;
   scaleSize: number;
   setScaleSize: any;
   isVisible: boolean;
   setIsVisible: any;
+  setShowLines: any;
+  showLines: boolean;
 }) {
   const [scaleNumber, setScaleNumber] = useState(100);
   const [isHovered, setIsHovered] = useState(false);
@@ -28,6 +33,11 @@ export default function ScaleContainer({
 
   return (
     <div className={styles.ZoomContainer}>
+      <ShowLinesButton
+        styles={styles}
+        setShowLines={setShowLines}
+        showLines={showLines}
+      />
       <FormVisibleButton isVisible={isVisible} setIsVisible={setIsVisible} />
       <div
         className={styles.ZoomLegendWindow}

@@ -20,6 +20,7 @@ export default function MapCanvas({
   const [scaleSize, setScaleSize] = useState(1);
   const [selectedIdea, setSelectedIdea] = useState<string | null>(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [showLines, setShowLines] = useState(true);
 
   projects?.forEach((project) => {
     project.project_ideas.forEach((idea) => {
@@ -57,14 +58,16 @@ export default function MapCanvas({
         selectedIdea={selectedIdea}
         setSelectedIdea={setSelectedIdea}
         isVisible={isVisible}
+        showLines={showLines}
       />
-      <BringBackButton />
       <ScaleContainer
         scaleSize={scaleSize}
         setScaleSize={setScaleSize}
         styles={styles}
         isVisible={isVisible}
         setIsVisible={setIsVisible}
+        showLines={showLines}
+        setShowLines={setShowLines}
       />
       {initialProjects && (
         <InputField

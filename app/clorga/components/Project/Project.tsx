@@ -30,7 +30,7 @@ const Project = React.forwardRef<HTMLDivElement, ProjectProps>(
       isSpacebar,
       scaleSize,
       onIdeaClick,
-      highlightedIdeas, // Added to props to handle highlighting
+      highlightedIdeas,
     },
     ref
   ) => {

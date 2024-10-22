@@ -9,6 +9,7 @@ import {
   handleMouseUp,
   handleWheel,
 } from '@/utils/helpers/canvasHandlers';
+import { isSubmittedStore } from '@/utils/isSubmittedStore';
 
 type CanvasProps = {
   styles: any;
@@ -18,6 +19,7 @@ type CanvasProps = {
   setScaleSize: React.Dispatch<React.SetStateAction<number>>;
   setSelectedIdea: React.Dispatch<React.SetStateAction<string | null>>;
   isVisible: boolean;
+  showLines: boolean;
 };
 
 function getCommonTags(ideasA: string[], ideasB: string[]): number {
@@ -35,6 +37,7 @@ export default function Canvas({
   selectedIdea,
   setSelectedIdea,
   isVisible,
+  showLines,
 }: CanvasProps) {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const projectRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -48,6 +51,8 @@ export default function Canvas({
   const [isSpacebar, setIsSpacebar] = useState(false);
   const [enableZoom, setEnableZoom] = useState(false);
   const [highlightedIdeas, setHighlightedIdeas] = useState<string[]>([]);
+
+  const { isSubmitted } = isSubmittedStore();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -181,6 +186,10 @@ export default function Canvas({
     );
   };
 
+  useEffect(() => {
+    updateLineCoordinates([]);
+  }, [isSubmitted]);
+
   return (
     <div
       className={styles.CanvasContainer}
@@ -225,7 +234,7 @@ export default function Canvas({
               y1={line.y1}
               x2={line.x2}
               y2={line.y2}
-              stroke="rgba(0, 0, 0, 0.5)"
+              stroke={`rgba(0, 0, 0, ${showLines ? 0.5 : 0})`}
               strokeWidth={line.thickness * scaleSize * 0.8}
             />
           ))}
