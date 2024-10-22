@@ -28,8 +28,8 @@ export default async function Index() {
   const { data: initialProjects } = await supabase.from('projects').select('*');
 
   return (
-    <main className={styles.Main}>
+    <section className={styles.Main}>
       <MapCanvas initialProjects={initialProjects} />
-    </main>
+    </section>
   );
 }

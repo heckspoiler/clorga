@@ -40,11 +40,6 @@ export const metadata: Metadata = {
     description: 'Organize your projects and ideas effortlessly with Clorga.',
     images: ['/images/clorga-twitter-image.png'],
   },
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-  },
 };
 
 export default function RootLayout({
