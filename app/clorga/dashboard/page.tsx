@@ -24,5 +24,9 @@ export default async function PrivatePage() {
 
   const user = userData[0];
 
-  return <ClientDashboard user={user} />;
+  return (
+    <div>
+      <ClientDashboard user={user} />
+    </div>
+  );
 }

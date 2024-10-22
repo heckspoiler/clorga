@@ -22,29 +22,17 @@ export default function UserSpaceIcon({
     setIsClicked((prevState) => !prevState);
   };
 
-  useEffect(() => {
-    const handleBodyClick = () => {
-      setIsClicked(false);
-    };
-
-    if (isClicked) {
-      document.body.addEventListener('click', handleBodyClick);
-    }
-
-    return () => {
-      document.body.removeEventListener('click', handleBodyClick);
-    };
-  }, [isClicked]);
-
   return (
-    <div className={styles.UserIconContainer} onClick={handleClick}>
-      <UserIcon
-        width={width}
-        height={height}
-        strokeWidth={strokeWidth}
-        data-tooltip-id="user-tooltip"
-      />
-      <TopbarTooltip styles={styles} isClicked={isClicked} />
+    <div className={styles.UserIconContainer}>
+      <div onClick={handleClick}>
+        <UserIcon
+          width={width}
+          height={height}
+          strokeWidth={strokeWidth}
+          data-tooltip-id="user-tooltip"
+        />
+      </div>
+      {isClicked && <TopbarTooltip styles={styles} isClicked={isClicked} />}
     </div>
   );
 }

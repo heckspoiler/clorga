@@ -17,23 +17,21 @@
 
 .TopbarContainer {
     width: 80%;
-    padding: 1rem 3rem;
+    padding: 1rem 2rem;
     border: var(--border);
     border-radius: var(--radius);
-    display: flex;
-    align-items: center;
-    background-color: white;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     box-shadow: 1px 1px 30px transparent;
     transition: box-shadow 0.2s var(--bezier);
-
+    box-sizing: border-box;
+    background-color: white;
 }
+
 
 .TopbarVisible {
     transform: translateY(1rem);
     transition: transform 0.3s var(--bezier);
-
 }
 
 
@@ -46,7 +44,6 @@
 .LogoContainer a {
     box-shadow: none;
     border: none;
-    width: fit-content;
 }
 
 .LogoContainer .ArrowDown {
@@ -65,7 +62,9 @@
 .Navbar {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 100%;
+    padding: 0;
 }
 
 .NavbarItems {
@@ -81,7 +80,7 @@
     position: relative;
     border-right: var(--border);
     border-radius: none;
-    min-width: 4rem;
+    min-width: 15rem;
     height: 100%;
     display: flex;
     overflow: hidden;
@@ -98,7 +97,7 @@
     text-align: center;
     margin: auto;
     height: 100%;
-    padding: 0rem 4rem;
+    padding: 0rem 2rem;
     width: 100%;
     display: flex;
     align-items: center;
@@ -112,6 +111,10 @@
 .UserIconContainer {
     position: relative;
     cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: right;
+    justify-content: right;
 }
 
 .TooltipContent {

@@ -11,12 +11,6 @@ export default function Navigation({ styles }: { styles: any }) {
         <li>
           <Link href="/clorga/overview">Overview</Link>
         </li>
-        <li>
-          <Link href="">That</Link>
-        </li>
-        <li>
-          <Link href="">Thut</Link>
-        </li>
       </ul>
     </nav>
   );
