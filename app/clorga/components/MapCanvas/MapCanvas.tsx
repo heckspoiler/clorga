@@ -4,12 +4,12 @@
 import React, { useState, useEffect } from 'react';
 import { useProjects } from '@/utils/supabase/useProjects';
 import type { Project } from '@/app/clorga/page';
-import BringBackButton from '../../../components/general/BringBackButton';
 import Canvas from './Canvas';
 import ScaleContainer from './ScaleButton/ScaleContainer';
 import InputField from '../InputField/InputField';
 import styles from './MapCanvas.module.css';
 import { projectStore } from '@/utils/projectstore';
+import { useOrganizationStore } from '@/utils/OrganizationStore';
 
 export default function MapCanvas({
   initialProjects,
@@ -23,6 +23,18 @@ export default function MapCanvas({
   const [showLines, setShowLines] = useState(false);
 
   const { projectsStore, setProjects } = projectStore();
+  const { organizationId, setOrganizationId } = useOrganizationStore();
+
+  useEffect(() => {
+    if (
+      projects &&
+      projects[0] &&
+      typeof projects[0].organization_id === 'string'
+    ) {
+      console.log(projects[0].organization_id);
+      setOrganizationId(projects[0].organization_id);
+    }
+  }, [projects]);
 
   useEffect(() => {
     if (projects) setProjects(projects);

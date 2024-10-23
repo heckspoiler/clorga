@@ -1,6 +1,7 @@
 'use client';
 import React, { useEffect } from 'react';
 import { userStore } from '@/utils/userStore';
+import InviteUserForm from './userInvite/InviteUser';
 
 export default function ClientDashboard({ user }: { user: any }) {
   const { setUser } = userStore();
@@ -18,5 +19,11 @@ export default function ClientDashboard({ user }: { user: any }) {
     setUser(userDetails);
   }, []);
 
-  return <h1>{<>{firstName ? firstName : 'you!'}</>}</h1>;
+  return (
+    <>
+      <h1>{<>{firstName ? firstName : 'you!'}</>}</h1>
+      <p>Welcome to your dashboard!</p>
+      <InviteUserForm />
+    </>
+  );
 }

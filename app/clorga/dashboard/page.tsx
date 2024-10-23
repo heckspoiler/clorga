@@ -22,6 +22,8 @@ export default async function PrivatePage() {
     return null;
   }
 
+  console.log(userData);
+
   const user = userData[0];
 
   return (

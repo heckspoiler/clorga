@@ -21,11 +21,14 @@ export type Project = {
   due_date: string | null;
   project_tags: Array<string> | null;
   color: string;
+  organization_id?: number;
 };
 
 export default async function Index() {
   const supabase = createClient();
   const { data: initialProjects } = await supabase.from('projects').select('*');
+
+  console.log(initialProjects);
 
   return (
     <section className={styles.Main}>
