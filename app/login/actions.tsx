@@ -19,6 +19,6 @@ export async function login(formData: any) {
     redirect('/login/error');
   }
 
-  revalidatePath('/', 'layout');
+  revalidatePath('/clorga/dashboard', 'layout');
   redirect('/clorga/dashboard');
 }
