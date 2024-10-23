@@ -15,7 +15,6 @@ export default function PricingCard({
   pricingTiers: PricingTier[];
   email: string | undefined;
 }) {
-  console.log(email);
   return (
     <>
       {pricingTiers.map((tier, index) => (

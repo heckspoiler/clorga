@@ -16,7 +16,6 @@ export default function Navbar() {
   const [index, setIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    console.log(index);
     const block = blockRef.current;
 
     if (!block) return;
