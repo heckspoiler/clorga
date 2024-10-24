@@ -29,8 +29,6 @@ export default async function Index() {
   const supabase = createClient();
   const { data: initialProjects } = await supabase.from('projects').select('*');
 
-  console.log(initialProjects);
-
   return (
     <section className={styles.Main}>
       <MapCanvas initialProjects={initialProjects} />

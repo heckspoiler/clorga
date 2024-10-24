@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation'; // Import the useSearchParams hook
+import { useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
 
 export default function AcceptInviteContent() {
@@ -10,8 +10,8 @@ export default function AcceptInviteContent() {
   const [email, setEmail] = useState('');
   const [organizationName, setOrganizationName] = useState('');
 
-  const searchParams = useSearchParams(); // Get the search parameters from the URL
-  const token = searchParams.get('token'); // Extract the 'token' from the query parameters
+  const searchParams = useSearchParams();
+  const token = searchParams.get('token');
 
   useEffect(() => {
     const fetchInvite = async () => {
@@ -28,7 +28,7 @@ export default function AcceptInviteContent() {
         } else if (inviteData?.length > 0) {
           const invite = inviteData[0];
           setInviteData(invite);
-          setEmail(invite.email); // Set the email state
+          setEmail(invite.email);
 
           const { data: organizationData, error: orgError } = await supabase
             .from('organizations')
@@ -60,7 +60,9 @@ export default function AcceptInviteContent() {
         <p>{error}</p>
       ) : inviteData ? (
         <div>
-          <h2>Invitation Details</h2>
+          <h2>
+            You've been invited to work with {organizationName} on Clorga!
+          </h2>
           <p>Email: {email}</p>
           <p>Organization: {organizationName}</p>
         </div>

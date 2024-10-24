@@ -31,7 +31,6 @@ export default function MapCanvas({
       typeof projects[0].organization_id === 'string' &&
       typeof projects[0].organization_name === 'string'
     ) {
-      console.log(projects[0].organization_name);
       setOrganizationId(projects[0].organization_id);
       setOrganizationName(projects[0].organization_name);
     }
