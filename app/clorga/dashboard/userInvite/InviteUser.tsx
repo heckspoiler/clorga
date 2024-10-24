@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+'use client';
+
+import React, { useState, useEffect } from 'react';
+
+import { useOrganizationStore } from '@/utils/OrganizationStore';
 
 export default function InviteUserForm() {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState('');
+  const { organizationId, organizationName } = useOrganizationStore();
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -13,17 +18,16 @@ export default function InviteUserForm() {
       const response = await fetch('/api/send-invite', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, organizationId: 'your-organization-id' }), // Replace with actual org ID
+        body: JSON.stringify({ email, organizationId, organizationName }),
       });
 
-      // Parse response as JSON
       if (!response.ok) {
         const errorData = await response.json();
         setStatus(
           `Failed to send invite: ${errorData.error || 'Unknown error'}`
         );
       } else {
-        const result = await response.json(); // Parse JSON only if the response is valid
+        const result = await response.json();
         setStatus(result.message);
       }
     } catch (error) {

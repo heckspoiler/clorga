@@ -1,4 +1,3 @@
-// app/clorga/components/MapCanvas/MapCanvas.tsx
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -23,16 +22,18 @@ export default function MapCanvas({
   const [showLines, setShowLines] = useState(false);
 
   const { projectsStore, setProjects } = projectStore();
-  const { organizationId, setOrganizationId } = useOrganizationStore();
+  const { setOrganizationId, setOrganizationName } = useOrganizationStore();
 
   useEffect(() => {
     if (
       projects &&
       projects[0] &&
-      typeof projects[0].organization_id === 'string'
+      typeof projects[0].organization_id === 'string' &&
+      typeof projects[0].organization_name === 'string'
     ) {
-      console.log(projects[0].organization_id);
+      console.log(projects[0].organization_name);
       setOrganizationId(projects[0].organization_id);
+      setOrganizationName(projects[0].organization_name);
     }
   }, [projects]);
 

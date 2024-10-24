@@ -14,8 +14,7 @@ export default async function PrivatePage() {
 
   const { data: userData, error: userError } = await supabase
     .from('users')
-    .select('*')
-    .eq('email', data.user.email);
+    .select('*');
 
   if (userError || !userData?.[0]) {
     redirect('/login');

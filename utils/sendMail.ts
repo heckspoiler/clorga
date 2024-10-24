@@ -1,18 +1,20 @@
+// utils/sendMail.ts
 import nodemailer from 'nodemailer';
-import { google } from 'googleapis';
 
 const createTransporter = async () => {
   const transporter = nodemailer.createTransport({
     host: 'smtp.gmail.com',
     port: 465,
+    secure: true,
     auth: {
-      user: process.env.GMAIL_USER, // Your Gmail email address
-      pass: process.env.SMTP_PASSWORD, // Your App-Specific Password
+      user: process.env.SMTP_EMAIL,
+      pass: process.env.SMTP_PASSWORD,
     },
   });
 
   return transporter;
 };
+
 export const sendEmail = async ({
   to,
   subject,
@@ -25,7 +27,7 @@ export const sendEmail = async ({
   const transporter = await createTransporter();
 
   const mailOptions = {
-    from: `Your Name <${process.env.GMAIL_USER}>`,
+    from: process.env.SMTP_EMAIL,
     to,
     subject,
     html,

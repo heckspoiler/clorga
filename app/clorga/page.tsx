@@ -21,7 +21,8 @@ export type Project = {
   due_date: string | null;
   project_tags: Array<string> | null;
   color: string;
-  organization_id?: number;
+  organization_id?: string;
+  organization_name?: string;
 };
 
 export default async function Index() {
