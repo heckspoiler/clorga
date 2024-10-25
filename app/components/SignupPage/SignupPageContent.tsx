@@ -9,7 +9,7 @@ export default function LoginPageContent() {
 
   return (
     <div className={styles.Main}>
-      <SignupField styles={styles} />
+      <SignupField />
     </div>
   );
 }

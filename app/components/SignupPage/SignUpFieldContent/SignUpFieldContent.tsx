@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState } from 'react';
-import Formwrapper from '../MultistepForm/Formwrapper';
 import styles from './Multistep.module.css';
 
 type UserDetailData = {
@@ -38,11 +37,9 @@ export default function UserDetailForm({
     address: '',
   });
 
-  // Basic email and phone validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^[0-9]{10}$/; // Assumes a 10-digit phone number
+  const phoneRegex = /^[0-9]{10}$/;
 
-  // Function to handle validation when the user submits the form or changes inputs
   const validateFields = () => {
     let formErrors = {
       firstName: '',
@@ -115,7 +112,7 @@ export default function UserDetailForm({
   };
 
   return (
-    <Formwrapper title={'Enter your Details'}>
+    <>
       <div className={styles.SameLineContainer}>
         <div className={styles.FormRow}>
           <h5>First Name</h5>
@@ -212,6 +209,6 @@ export default function UserDetailForm({
           )}
         </div>
       </div>
-    </Formwrapper>
+    </>
   );
 }

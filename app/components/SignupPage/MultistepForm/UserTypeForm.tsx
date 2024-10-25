@@ -21,7 +21,7 @@ export default function UserTypeForm({
   updateFields,
 }: CompanyDataProps) {
   return (
-    <Formwrapper title={'Hello there!'}>
+    <>
       <div className={styles.FormRow}>
         <h5>
           Do you want to set up a team to collaborate with multiple users?
@@ -82,6 +82,6 @@ export default function UserTypeForm({
           <p className={styles.ChangeLater}>you can change this later</p>
         </div>
       </div>
-    </Formwrapper>
+    </>
   );
 }

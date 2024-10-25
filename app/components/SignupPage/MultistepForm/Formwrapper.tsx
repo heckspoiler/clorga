@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './Multistep.module.css';
 
 type FormWrapperProps = {
-  title: string;
+  title: string | null | undefined;
   children: React.ReactNode;
 };
 

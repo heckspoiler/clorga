@@ -14,6 +14,7 @@ const onlyLogoPaths = [
   '/forgotpassword',
   '/dashboard',
   '/subscribe',
+  '/accept-invite',
 ];
 
 export function HeaderContent({ user }: { user: any }) {

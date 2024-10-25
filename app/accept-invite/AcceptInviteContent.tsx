@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { createClient } from '@/utils/supabase/client';
+import AcceptInviteForm from './components/AcceptInviteForm.tsx/AcceptInviteForm';
+import styles from './page.module.css';
 
 export default function AcceptInviteContent() {
   const [inviteData, setInviteData] = useState(null);
@@ -39,9 +41,7 @@ export default function AcceptInviteContent() {
           if (orgError) {
             setError('Error fetching organization name.');
           } else {
-            setOrganizationName(
-              organizationData?.name || 'Unknown Organization'
-            );
+            setOrganizationName(organizationData?.name || 'Your Collaborators');
           }
         }
       }
@@ -55,16 +55,16 @@ export default function AcceptInviteContent() {
   }
 
   return (
-    <div style={{ paddingTop: '8rem' }}>
+    <div>
       {error ? (
         <p>{error}</p>
       ) : inviteData ? (
-        <div>
-          <h2>
-            You've been invited to work with {organizationName} on Clorga!
-          </h2>
-          <p>Email: {email}</p>
-          <p>Organization: {organizationName}</p>
+        <div className={styles.Main}>
+          <AcceptInviteForm
+            email={email}
+            organizationName={organizationName}
+            token={token}
+          />
         </div>
       ) : (
         <p>Loading...</p>

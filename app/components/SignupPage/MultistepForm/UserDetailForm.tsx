@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import Formwrapper from './Formwrapper';
+import React, { useState, useEffect } from 'react';
 import styles from './Multistep.module.css';
 import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
@@ -11,6 +10,9 @@ type UserDetailData = {
   confirmPassword: string;
   phone: string;
   address: string;
+  token?: string;
+  givenEmail?: string;
+  organizationName?: string;
 };
 
 type UserDetailDataProps = UserDetailData & {
@@ -26,6 +28,9 @@ export default function UserDetailForm({
   phone,
   address,
   updateFields,
+  token,
+  givenEmail,
+  organizationName,
 }: UserDetailDataProps) {
   const [errors, setErrors] = useState({
     firstName: '',
@@ -37,6 +42,12 @@ export default function UserDetailForm({
     address: '',
   });
 
+  useEffect(() => {
+    if (givenEmail) {
+      updateFields({ email: givenEmail });
+    }
+  }, [givenEmail, updateFields]);
+
   const validatePhoneNumber = (phone: string) => {
     const phoneNumber = parsePhoneNumberFromString(phone);
     if (!phoneNumber || !phoneNumber.isValid()) {
@@ -45,9 +56,7 @@ export default function UserDetailForm({
     return '';
   };
 
-  // Basic email and phone validation regex
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^[0-9]{10}$/; // Assumes a 10-digit phone number
 
   const validateFields = () => {
     let formErrors = {
@@ -119,7 +128,7 @@ export default function UserDetailForm({
   };
 
   return (
-    <Formwrapper title={'Enter your Details'}>
+    <>
       <div className={styles.SameLineContainer}>
         <div className={styles.FormRow}>
           <h5>First Name</h5>
@@ -155,7 +164,7 @@ export default function UserDetailForm({
           type="email"
           onChange={(e) => updateFields({ email: e.target.value })}
           onBlur={handleBlur}
-          value={email}
+          value={givenEmail || email} // Prefills with givenEmail if available
           className={errors.email ? styles.ErrorInput : ''}
         />
         {errors.email && <p className={styles.ErrorText}>{errors.email}</p>}
@@ -216,6 +225,6 @@ export default function UserDetailForm({
           )}
         </div>
       </div>
-    </Formwrapper>
+    </>
   );
 }

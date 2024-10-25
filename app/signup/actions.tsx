@@ -11,12 +11,12 @@ type SignupData = {
   lastName: string;
   phone: string;
   address: string;
+  token?: string;
 };
 
 export async function signup(data: SignupData) {
   const supabase = createClient();
 
-  // Step 1: Sign up the user via Supabase Auth
   const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
     email: data.email,
     password: data.password,

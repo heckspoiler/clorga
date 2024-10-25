@@ -1,12 +1,19 @@
 import React from 'react';
 
-import { signup } from '@/app/signup/actions';
+import styles from './SignupPage.module.css';
+import SignUpForm from './MultistepForm/SignupForm';
 
-import Plussign from '../general/Plussign';
-import SignUpFieldContent from './SignUpFieldContent/SignUpFieldContent';
-import SignUpForm from './MultistepForm/Multistep';
-
-export default function SignupField({ styles }: { styles: any }) {
+export default function SignupField({
+  title,
+  email,
+  token,
+  organizationName,
+}: {
+  title?: string;
+  email?: string;
+  token?: string;
+  organizationName?: string;
+}) {
   return (
     <>
       <div className={styles.TitleContainer}>
@@ -17,8 +24,13 @@ export default function SignupField({ styles }: { styles: any }) {
           </p>
         </div>
       </div>
-      <div className={styles.FormContainer}>
-        <SignUpForm />
+      <div className={styles.FormContainer} title={title}>
+        <SignUpForm
+          email={email}
+          title={title}
+          token={token}
+          organizationName={organizationName}
+        />
       </div>
     </>
   );

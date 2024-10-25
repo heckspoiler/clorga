@@ -1,12 +1,9 @@
-'use client';
-
-import React, { FormEvent, useState } from 'react';
+import React, { FormEvent, useState, useEffect } from 'react';
 import styles from './Multistep.module.css';
 import UserDetailForm from './UserDetailForm';
 import { signup } from '@/app/signup/actions';
-import GithubLogo from '../../general/GithubLogo';
-import GoogleLogo from '../../general/GoogleLogo';
 import AuthButtons from './AuthButtons';
+import Formwrapper from './Formwrapper';
 
 type FormData = {
   firstName: string;
@@ -16,6 +13,8 @@ type FormData = {
   email: string;
   password: string;
   confirmPassword: string;
+  token?: string;
+  givenEmail?: string;
 };
 
 const INITIAL_DATA: FormData = {
@@ -26,10 +25,25 @@ const INITIAL_DATA: FormData = {
   confirmPassword: '',
   phone: '',
   address: '',
+  token: '',
 };
 
-export default function SignupForm() {
-  const [data, setData] = useState<FormData>(INITIAL_DATA);
+export default function SignupForm({
+  email,
+  token,
+  title,
+  organizationName,
+}: {
+  email?: string;
+  token?: string;
+  title?: string;
+  organizationName?: string;
+}) {
+  const [data, setData] = useState<FormData>({
+    ...INITIAL_DATA,
+    email: email || '',
+    token: token || '',
+  });
 
   function updateFields(fields: Partial<FormData>) {
     setData((prev) => ({ ...prev, ...fields }));
@@ -38,18 +52,17 @@ export default function SignupForm() {
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
 
-    // Perform client-side validation here if necessary
     const isValid = validateFields();
     if (!isValid) return;
 
     try {
-      await signup(data); // Call signup function to create user
+      await signup(data);
     } catch (error) {
       console.error('Signup error:', error);
     }
   }
 
-  // Simple client-side validation logic (you can expand it as needed)
+  // Simple client-side validation logic
   const validateFields = () => {
     if (
       !data.email ||
@@ -72,7 +85,9 @@ export default function SignupForm() {
   return (
     <div className={styles.Form}>
       <form onSubmit={handleSubmit}>
-        <UserDetailForm {...data} updateFields={updateFields} />
+        <Formwrapper title={title ? title : 'Subscribe to Clorga'}>
+          <UserDetailForm {...data} updateFields={updateFields} />
+        </Formwrapper>
         <div className={styles.ButtonContainer}>
           <button type="submit" className={styles.SubmitButton}>
             Sign Up
