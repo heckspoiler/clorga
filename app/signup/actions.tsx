@@ -16,20 +16,30 @@ type SignupData = {
 export async function signup(data: SignupData) {
   const supabase = createClient();
 
-  // Step 1: Sign up the user via Supabase Auth
-  const { data: signUpData, error: signUpError } = await supabase.auth.signUp({
-    email: data.email,
-    password: data.password,
-  });
+  try {
+    const { data: signUpData, error: signUpError } = await supabase.auth.signUp(
+      {
+        email: data.email,
+        password: data.password,
+      }
+    );
 
-  if (signUpError) {
-    console.error('Signup error:', signUpError);
-    redirect('/error');
-  }
+    if (signUpError) {
+      console.error('Signup error:', JSON.stringify(signUpError, null, 2));
 
-  const userId = signUpData?.user?.id;
+      console.log('name: ', signUpError.name);
+      console.log('code: ', signUpError.code);
 
-  if (userId) {
+      return redirect('/error');
+    }
+
+    const userId = signUpData?.user?.id;
+    if (!userId) {
+      console.error('Signup error: User ID is undefined after signup.');
+
+      return redirect('/error');
+    }
+
     const { error: insertError } = await supabase.from('users').insert([
       {
         id: userId,
@@ -38,15 +48,23 @@ export async function signup(data: SignupData) {
         phone: data.phone,
         address: data.address,
         email: data.email,
+        has_access: false,
       },
     ]);
 
     if (insertError) {
-      console.error('Error inserting user profile:', insertError);
-      redirect('/error');
+      console.error(
+        'Error inserting user profile:',
+        JSON.stringify(insertError, null, 2)
+      );
+      return redirect('/error');
     }
-  }
 
-  revalidatePath('/');
-  redirect('/stripe');
+    // Step 3: Revalidate and redirect if successful
+    revalidatePath('/');
+    redirect('/stripe');
+  } catch (error) {
+    console.error('Unexpected error:', JSON.stringify(error, null, 2));
+    redirect('/error');
+  }
 }
