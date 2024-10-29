@@ -23,7 +23,7 @@ export default function AcceptInviteForm({
         email={email}
         token={token}
         organizationName={organizationName}
-        title={`Collaborate with ${organizationName} on Clorga`}
+        title={`Collaborate with ${organizationName}`}
       />
     </section>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
-import { signUpAction } from '@/app/actions';
-
+import { signup } from '@/app/signup/actions';
 type signupButtonProps = {
   email: string;
   password: string;

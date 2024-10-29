@@ -1,9 +1,12 @@
+'use client';
+
 import React, { FormEvent, useState, useEffect } from 'react';
 import styles from './Multistep.module.css';
 import UserDetailForm from './UserDetailForm';
 import { signup } from '@/app/signup/actions';
 import AuthButtons from './AuthButtons';
 import Formwrapper from './Formwrapper';
+import { signUpAction } from '@/app/actions';
 
 type FormData = {
   firstName: string;
